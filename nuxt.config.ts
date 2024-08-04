@@ -71,7 +71,7 @@ export default defineNuxtConfig({
                     content:
                         'Logistics Network Federation is a premier web development and digital marketing agency specializing in creating stunning, responsive websites and innovative marketing solutions.',
                 },
-                { name: 'author', content: 'Codaski' },
+                { name: 'author', content: 'AMJ Technologies' },
                 { name: 'application-name', content: 'Logistics Network Federation' },
                 {
                     name: 'keywords',

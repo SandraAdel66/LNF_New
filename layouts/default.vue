@@ -5,7 +5,7 @@
     <div class="relative flex min-h-screen flex-col">
         <ToastList />
         <TheHeader />
-        <main class="grow z-50">
+        <main class="grow">
             <slot />
         </main>
         <TheFooter />

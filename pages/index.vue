@@ -5,25 +5,26 @@ useSeoMeta({
 const texts = [
     {
         id: 'web-development',
-        text: 'Web Development',
+        text: 'Uniting for a Stronger Tomorrow',
         icon: 'solar:code-square-linear',
-        description: 'Expertly crafted, responsive websites to enhance your online presence and engage your audience. Transform your vision with Logistics Network Federation.',
+        description:
+            'LNF stands as a beacon of cooperative strength and shared vision, transcending the traditional boundaries of competition. By banding together, we leverage our combined expertise, resources, and networks to achieve unprecedented success.',
     },
     {
         id: 'graphic-design',
-        text: 'Graphic Design',
+        text: 'Financial Protection',
         icon: 'solar:pallete-2-linear',
         description: 'Stunning, impactful designs tailored to your brand. Elevate your identity and captivate your audience with our creative expertise.',
     },
     {
         id: 'media-production',
-        text: 'Media Production',
+        text: 'Increasing Membership',
         icon: 'solar:special-effects-linear',
         description: "High-quality video and photography production to tell your brand's story and engage your audience. Let's create captivating visuals together.",
     },
     {
         id: 'marketing-strategies',
-        text: 'Marketing Strategies',
+        text: 'Mutual Benefits',
         icon: 'solar:chat-square-2-linear',
         description: 'Tailored marketing strategies, including SEO and social media, to reach your target audience effectively and drive business growth.',
     },
@@ -81,7 +82,7 @@ const activeSkillCategoryId = ref('all');
 const skillsCategories = ref([
     { id: 'all', name: 'All', icon: 'solar:align-left-linear' },
     { id: 'web-developing', name: 'Web Developing', icon: 'solar:code-square-linear' },
-    { id: 'graphic-design', name: 'Graphic Design', icon: 'ssolar:pallete-2-linear' },
+    { id: 'graphic-design', name: 'Graphic Design', icon: 'solar:pallete-2-linear' },
     { id: 'media-production', name: 'Media Production', icon: 'solar:special-effects-linear' },
     { id: 'marketing-strategies', name: 'Marketing Strategies', icon: 'solar:chat-square-2-linear' },
 ]);
@@ -94,48 +95,48 @@ const selectSkillCategoryId = (id: string) => {
 <template>
     <div class="mt-8">
         <section class="lg:min-h-[30rem] grid lg:grid-cols-12 gap-5 items-center container px-6 md:px-12">
-            <div class="flex items-center lg:col-span-7 justify-start">
+            <div class="flex items-center lg:col-span-8 justify-start">
                 <div class="flex flex-col gap-3">
                     <div class="font-extrabold text-5xl -intro-y">
-                        <div>We do</div>
-                        <div :class="'text-primary'">{{ currentText }}</div>
+                        <div class="font-normal text-xl">Logistics Network Federation</div>
+                        <div :class="'mt-2 text-primary'">{{ currentText }}</div>
                     </div>
                     <p :class="['font-light', 'opacity-85', 'text-xl', { '-intro-x': addIntroClass }]">
                         {{ currentDescription }}
                     </p>
                     <div class="mt-5 flex items-center gap-5">
                         <NuxtLink href="/services">
-                            <button class="btn w-full btn-outline-primary btn-rounded btn-lg gap-3 px-6">
+                            <button class="btn w-full btn-primary btn-rounded gap-3 px-6">
                                 <Icon name="solar:maximize-square-2-linear" class="size-6" />
-                                <span>More Services</span>
+                                <span>Services</span>
                             </button>
                         </NuxtLink>
                         <NuxtLink href="/portfolio">
-                            <button class="btn w-full btn-secondary btn-rounded btn-lg gap-3 px-6">
-                                <Icon name="solar:gallery-minimalistic-linear" class="size-6" />
-                                <span>Our Portfolio</span>
+                            <button class="btn w-full btn-secondary btn-rounded gap-3 px-6">
+                                <Icon name="solar:documents-linear" class="size-6" />
+                                <span>Apply Now</span>
                             </button>
                         </NuxtLink>
                     </div>
                 </div>
             </div>
-            <div class="flex items-center lg:col-span-5 justify-end">
+            <div class="flex items-center lg:col-span-4 justify-end">
                 <div class="flex flex-col grow place-items-end gap-5 max-w-[30rem]">
-                    <div
-                        v-for="item in texts"
-                        :key="item.id"
-                        :class="[currentId === item.id ? 'w-full h-32 p-5' : 'p-3 flex items-center place-content-center', 'bg-primary']"
-                        class="rounded-2xl size-12 ease-in-out duration-[1s] overflow-hidden text-slate-900"
-                    >
-                        <TransitionFade :duration="{ enter: 300, leave: 0 }">
-                            <Icon v-if="currentId !== item.id" :name="item.icon" class="w-full h-full" />
-                            <div v-else class="font-medium text-lg">{{ currentDescription }}</div>
-                        </TransitionFade>
-                    </div>
+                    <!--                    <div-->
+                    <!--                        v-for="item in texts"-->
+                    <!--                        :key="item.id"-->
+                    <!--                        :class="[currentId === item.id ? 'w-full h-32 p-5' : 'p-3 flex items-center place-content-center', 'bg-primary']"-->
+                    <!--                        class="rounded-2xl size-12 ease-in-out duration-[1s] overflow-hidden text-slate-900"-->
+                    <!--                    >-->
+                    <!--                        <TransitionFade :duration="{ enter: 300, leave: 0 }">-->
+                    <!--                            <Icon v-if="currentId !== item.id" :name="item.icon" class="w-full h-full" />-->
+                    <!--                            <div v-else class="text-lg">{{ currentDescription }}</div>-->
+                    <!--                        </TransitionFade>-->
+                    <!--                    </div>-->
                 </div>
             </div>
         </section>
-        <section class="relative bg-slate-800 mt-8">
+        <section class="relative bg-white mt-8">
             <div class="flex flex-col gap-5">
                 <div class="text-center mt-8">
                     <span class="text-4xl font-extrabold"><span class="font-medium text-primary mr-2">Our</span>Skills</span>
