@@ -1,0 +1,27 @@
+@layer components {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        @apply m-0;
+    }
+
+    //ul, ol {
+    //  @apply list-inside text-sm marker:text-alternative
+    //}
+    //
+    //ol {
+    //  @apply list-decimal
+    //}
+    //
+    //ul {
+    //  @apply list-disc
+    //}
+    //
+    //ul li, ol li {
+    //  @apply py-1.5
+    //}
+}

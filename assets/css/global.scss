@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Google Fonts Imports */
+@import url(https://fonts.bunny.net/css?family=cairo:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);
+
+@layer base {
+    :root {
+        --color-primary: 34 197 94;
+        --color-secondary: 55 65 81; /* Slate 800 */
+        --color-alternative: 251 146 60; /* Orange 400 */
+        --color-success: 21 128 61; /* Green 700 */
+        --color-info: 203 213 225; /* Slate 300 */
+        --color-warning: 234 179 8; /* Yellow 500 */
+        --color-pending: 203 213 225; /* Slate 300 */
+        --color-danger: 220 38 38; /* Red 600 */
+        --color-light: 241 245 249; /* Slate 100 */
+        --color-dark: 17 24 39; /* Slate 900 */
+    }
+
+    .dark {
+        --color-primary: 34 197 94; /* Green */
+        --color-success: 21 128 61; /* Green 700 */
+        --color-info: 100 116 139; /* Slate 700 */
+        --color-warning: 234 179 8; /* Yellow 500 */
+        --color-pending: 100 116 139; /* Slate 700 */
+        --color-light: 30 41 59; /* Slate 800 */
+    }
+
+    html {
+        font-family: 'Cairo', serif;
+        @apply text-slate-100 text-lg min-h-screen bg-slate-900;
+        & body {
+            @apply m-0 antialiased bg-no-repeat bg-right-top;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.dev/svgjs' width='1920' height='720' preserveAspectRatio='none' viewBox='0 0 1920 720'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1017%26quot%3b)' fill='none'%3e%3crect width='1920' height='720' x='0' y='0' %3e%3c/rect%3e%3cpath d='M2049.71 690.25C1919.43 688.6 1853.8 572.86 1550.97 539.05 1248.13 505.24 1230.82 39.85 1052.22-10.19' stroke='rgba(34%2c 197%2c 94%2c 0.1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M2086.18 308.64C1838.41 310.92 1617.19 569.67 1129.57 567.84 641.95 566.01 459.11-42.45 172.96-70.91' stroke='rgba(34%2c 197%2c 94%2c 0.1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M2220.33 240.29C2065.49 250.29 1960.74 545.95 1678.32 542.69 1395.89 539.43 1333.58-18.63 1136.3-77.9' stroke='rgba(34%2c 197%2c 94%2c 0.1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M2159.6 479.96C1916.22 474.58 1721.56 146.75 1246.51 141.56 771.47 136.37 566.44-44.61 333.43-45.57' stroke='rgba(34%2c 197%2c 94%2c 0.1)' stroke-width='2'%3e%3c/path%3e%3cpath d='M1983.05 249.62C1842.51 249.33 1705.59 159.62 1428.14 159.62 1150.68 159.62 1159.57 251.84 873.22 249.62 586.88 247.4 484.66-106.84 318.31-123.67' stroke='rgba(34%2c 197%2c 94%2c 0.1)' stroke-width='2'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1017'%3e%3crect width='1920' height='720' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+        }
+    }
+}
+
+
+/* Main Style Files */
+@import './component/_media';
+@import './component/_btn.scss';
+@import './component/_form-check.scss';
+@import './component/_form-control.scss';
+@import './component/_form-help.scss';
+@import './component/_form-inline.scss';
+@import './component/_form-label.scss';
+@import './component/_form-reset.scss';
+@import './component/_form-select.scss';
+@import './component/_intro.scss';
+@import './component/_table.scss';
+@import './component/_zoom-in.scss';
+@import './component/_table-report.scss';
+@import './component/_video-container.scss';
+@import './component/_section-divider.scss';
+@import './component/_box.scss';
+@import './component/_typography.scss';
+
+/* Plugin & Packages Style Files */
+@import '@vuepic/vue-datepicker/dist/main.css';
+@import '@vuepic/vue-datepicker/dist/main.css';
+
+/* Extra Styles */
+.text-justify-center {
+    @apply text-center;
+    text-align-last: center;
+}
+
+.section-bg {
+    @apply bg-primary bg-blend-multiply bg-fixed bg-center bg-cover;
+    //background-image: url('./images/bg/bg.svg');
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.swiper-pagination .swiper-pagination-bullet {
+    @apply bg-white opacity-25;
+}
+
+.swiper-pagination .swiper-pagination-bullet-active {
+    @apply bg-primary opacity-100;
+}
+
+.dp__main {
+    font-family: 'Lexend', serif;
+    @apply text-sm;
+}
+
+.dp__calendar {
+    @apply text-xs;
+}
+
+.dp__range_start {
+    @apply rounded-l-full;
+}
+
+.dp__range_end {
+    @apply rounded-r-full;
+}
+
+:focus {
+    outline: none !important;
+}
