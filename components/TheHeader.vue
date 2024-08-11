@@ -111,15 +111,6 @@ const headerMenu = ref([
 ]);
 
 const route = useRoute();
-
-const selectedHeaderMenuId = ref();
-const activeHeaderMenuItem = (id: number) => {
-    if (selectedHeaderMenuId.value !== id || selectedHeaderMenuId.value === undefined) {
-        selectedHeaderMenuId.value = id;
-    } else {
-        selectedHeaderMenuId.value = undefined;
-    }
-};
 </script>
 
 <template>
@@ -143,11 +134,11 @@ const activeHeaderMenuItem = (id: number) => {
                             <li>
                                 <HeadlessMenu as="div" class="relative group">
                                     <HeadlessMenuButton
-                                        class="flex items-center gap-3 py-4 px-5 hover:text-blue-400 whitespace-nowrap cursor-pointer"
+                                        class="flex items-center gap-3 py-2 px-3 hover:text-blue-400 whitespace-nowrap cursor-pointer"
                                         :class="route.fullPath === item.link && 'bg-primary'"
                                     >
-                                        <Icon v-if="item.icon" :name="item.icon" class="shrink-0 size-6 opacity-75" />
-                                        <span class="2xl:text-base text-sm leading-10">{{ item.name }}</span>
+                                        <Icon v-if="item.icon" :name="item.icon" class="shrink-0 size-5 opacity-75" />
+                                        <span class="text-sm leading-10">{{ item.name }}</span>
                                         <Icon v-if="item.childMenu" name="solar:alt-arrow-down-linear" class="group-hover:-rotate-90 transition-all shrink-0 size-4 opacity-75" />
                                     </HeadlessMenuButton>
                                     <TransitionExpand>
@@ -155,9 +146,9 @@ const activeHeaderMenuItem = (id: number) => {
                                             class="absolute left-0 ease-in-out duration-1000 bg-secondary overflow-hidden text-slate-100 mt-1 rounded-lg shadow-lg z-50"
                                         >
                                             <HeadlessMenuItem v-for="child in item.childMenu" :key="child.id">
-                                                <NuxtLink :href="child.link" class="flex items-center gap-3 whitespace-nowrap px-5 py-3 hover:bg-primary">
+                                                <NuxtLink :href="child.link" class="flex items-center gap-3 whitespace-nowrap px-3 py-0.5 hover:bg-primary">
                                                     <Icon v-if="child.icon" :name="child.icon" class="shrink-0 size-4 opacity-75" />
-                                                    <span class="text-sm">{{ child.name }}</span>
+                                                    <span class="text-sm leading-10">{{ child.name }}</span>
                                                 </NuxtLink>
                                             </HeadlessMenuItem>
                                         </HeadlessMenuItems>
@@ -169,17 +160,15 @@ const activeHeaderMenuItem = (id: number) => {
                             <li>
                                 <NuxtLink
                                     :href="item.link"
-                                    class="flex items-center gap-3 py-4 px-5 hover:text-blue-400 whitespace-nowrap cursor-pointer"
+                                    class="flex items-center gap-3 py-2 px-3 hover:text-blue-400 whitespace-nowrap cursor-pointer"
                                     :class="route.fullPath === item.link && 'bg-primary'"
-                                    @click="activeHeaderMenuItem(item.id)"
                                 >
-                                    <Icon v-if="item.icon" :name="item.icon" class="shrink-0 size-6 opacity-75" />
-                                    <span class="2xl:text-base text-sm leading-10">{{ item.name }}</span>
+                                    <Icon v-if="item.icon" :name="item.icon" class="shrink-0 size-5 opacity-75" />
+                                    <span class="text-sm leading-10">{{ item.name }}</span>
                                 </NuxtLink>
                             </li>
                         </template>
                     </template>
-                    <li class="relative group"></li>
                 </ul>
             </div>
         </div>

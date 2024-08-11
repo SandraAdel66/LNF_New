@@ -14,7 +14,6 @@ export default defineNuxtConfig({
         config: {},
         viewer: false,
     },
-
     postcss: {
         plugins: {
             tailwindcss: {},

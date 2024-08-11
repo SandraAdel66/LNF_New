@@ -97,9 +97,9 @@ const selectSkillCategoryId = (id: string) => {
         <section class="lg:min-h-[30rem] grid lg:grid-cols-12 gap-5 items-center container px-6 md:px-12">
             <div class="flex items-center lg:col-span-8 justify-start">
                 <div class="flex flex-col gap-3">
-                    <div class="font-extrabold text-5xl -intro-y">
-                        <div class="font-normal text-xl">Logistics Network Federation</div>
-                        <div :class="'mt-2 text-primary'">{{ currentText }}</div>
+                    <div class="-intro-y">
+                        <div class="font-normal 2xl:text-xl text-lg">Logistics Network Federation</div>
+                        <div :class="'font-extrabold 2xl:text-5xl text-4xl mt-2 leading-tight text-primary'">{{ currentText }}</div>
                     </div>
                     <p :class="['font-light', 'opacity-85', 'text-xl', { '-intro-x': addIntroClass }]">
                         {{ currentDescription }}

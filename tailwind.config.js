@@ -40,6 +40,15 @@ export default {
                 '1/2': '50%',
                 '3/4': '75%',
             },
+            fontSize: {
+                sm: '0.8rem',
+                base: '1rem',
+                xl: '1.25rem',
+                '2xl': '1.563rem',
+                '3xl': '1.953rem',
+                '4xl': '2.441rem',
+                '5xl': '3.052rem',
+            },
             strokeWidth: {
                 0.5: 0.5,
                 1.5: 1.5,
@@ -50,9 +59,9 @@ export default {
                 'bounce-slow': 'bounce 10s linear infinite',
             },
             fontWeight: {
-                normal: '500',
-                medium: '600',
-                semibold: '700',
+                normal: '400',
+                medium: '500',
+                semibold: '600',
             },
             backgroundImage: {
                 'hero-pattern': "url('/images/bg.svg')",
