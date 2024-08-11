@@ -5,8 +5,8 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     devServer: {
         port: 8717,
-        host: 'lnfederation.test',
-        url: 'http://lnfederation.test',
+        host: process.env.APP_URL ?? 'lnfederation.test',
+        url: process.env.APP_URL ?? 'http://lnfederation.test',
     },
     tailwindcss: {
         cssPath: ['~/assets/css/global.scss', { injectPosition: 'first' }],
@@ -40,7 +40,7 @@ export default defineNuxtConfig({
         dirs: ['./stores'],
     },
     site: {
-        url: 'https://lnfederation.test',
+        url: process.env.APP_URL ?? 'https://lnfederation.test',
         name: 'Logistics Network Federation',
         description:
             'Logistics Network Federation is a premier web development and digital marketing agency specializing in creating stunning, responsive websites and innovative marketing solutions.',
@@ -94,7 +94,7 @@ export default defineNuxtConfig({
                         'object-src': ["'none'"],
                         'script-src': ["'self'", "'unsafe-inline'", 'https://apis.google.com'],
                         'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.bunny.net'],
-                        'connect-src': ["'self'", 'https://api.lnfederation.test'],
+                        'connect-src': ["'self'", process.env.APP_URL ?? 'https://api.lnfederation.test'],
                     },
                 },
             },

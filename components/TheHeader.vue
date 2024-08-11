@@ -109,7 +109,6 @@ const headerMenu = ref([
         target: false,
     },
 ]);
-
 const route = useRoute();
 </script>
 
