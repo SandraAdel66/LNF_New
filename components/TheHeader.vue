@@ -1,115 +1,12 @@
 <script setup lang="ts">
-const headerMenu = ref([
-    {
-        id: 1,
-        name: 'Home',
-        icon: 'solar:home-2-linear',
-        link: '/',
-        type: true,
-        target: false,
-    },
-    {
-        id: 2,
-        name: 'About',
-        icon: 'solar:info-square-linear',
-        link: '/about',
-        type: true,
-        target: false,
-    },
-    {
-        id: 3,
-        name: 'Services',
-        icon: 'solar:maximize-square-2-linear',
-        link: '/services',
-        type: true,
-        target: false,
-        childMenu: [
-            {
-                id: 8,
-                name: 'Services One',
-                icon: 'solar:maximize-square-2-linear',
-                link: '/service/some-service-name-one',
-                type: true,
-                target: false,
-            },
-            {
-                id: 9,
-                name: 'Services Two',
-                icon: 'solar:maximize-square-2-linear',
-                link: '/service/some-service-name-two',
-                type: true,
-                target: false,
-            },
-            {
-                id: 10,
-                name: 'Services Three',
-                icon: 'solar:maximize-square-2-linear',
-                link: '/service/some-service-name-three',
-                type: true,
-                target: false,
-            },
-        ],
-    },
-    {
-        id: 4,
-        name: 'Membership Guidelines',
-        icon: 'solar:clipboard-list-linear',
-        link: '/portfolio',
-        type: true,
-        target: false,
-    },
-    {
-        id: 5,
-        name: 'Events',
-        icon: 'solar:calendar-linear',
-        link: '/events',
-        type: true,
-        target: false,
-        childMenu: [
-            {
-                id: 8,
-                name: 'Services One',
-                icon: 'solar:maximize-square-2-linear',
-                link: '/service/some-service-name-one',
-                type: true,
-                target: false,
-            },
-            {
-                id: 9,
-                name: 'Services Two',
-                icon: 'solar:maximize-square-2-linear',
-                link: '/service/some-service-name-two',
-                type: true,
-                target: false,
-            },
-            {
-                id: 10,
-                name: 'Services Three',
-                icon: 'solar:maximize-square-2-linear',
-                link: '/service/some-service-name-three',
-                type: true,
-                target: false,
-            },
-        ],
-    },
-    {
-        id: 6,
-        name: 'News',
-        icon: 'solar:document-text-linear',
-        link: '/blog',
-        type: true,
-        target: false,
-    },
-    {
-        id: 7,
-        name: 'Contact',
-        icon: 'solar:letter-outline',
-        link: '/contact',
-        type: true,
-        target: false,
-    },
-]);
 const route = useRoute();
+
+const headerMenuId = ref<number>(useSettingValue('header_menu'));
+
+const { data: headerMenu } = await useApiFetch(`/api/get-menu/${headerMenuId.value}`, {
+    lazy: true,
+    transform: (headerMenu) => (headerMenu as ApiResponse).data as NavigationMenu,
+});
 </script>
 
 <template>
@@ -128,8 +25,8 @@ const route = useRoute();
         <div class="bg-secondary text-slate-100 px-6 md:px-12">
             <div class="container px-6 md:px-12">
                 <ul class="flex items-center divide-x divide-slate-100/10">
-                    <template v-for="item in headerMenu" :key="item.id">
-                        <template v-if="item.childMenu">
+                    <template v-for="item in (headerMenu as NavigationMenu).menuItems as NavigationMenuItem[]" :key="item.id">
+                        <template v-if="item.children.length > 0">
                             <li>
                                 <HeadlessMenu as="div" class="relative group">
                                     <HeadlessMenuButton
@@ -137,14 +34,14 @@ const route = useRoute();
                                         :class="route.fullPath === item.link && 'bg-primary'"
                                     >
                                         <Icon v-if="item.icon" :name="item.icon" class="shrink-0 size-5 opacity-75" />
-                                        <span class="text-sm leading-10">{{ item.name }}</span>
-                                        <Icon v-if="item.childMenu" name="solar:alt-arrow-down-linear" class="group-hover:-rotate-90 transition-all shrink-0 size-4 opacity-75" />
+                                        <span class="text-sm leading-10 capitalize">{{ item.name }}</span>
+                                        <Icon name="solar:alt-arrow-down-linear" class="group-hover:-rotate-90 transition-all shrink-0 size-4 opacity-75" />
                                     </HeadlessMenuButton>
                                     <TransitionExpand>
                                         <HeadlessMenuItems
                                             class="absolute left-0 ease-in-out duration-1000 bg-secondary overflow-hidden text-slate-100 mt-1 rounded-lg shadow-lg z-50"
                                         >
-                                            <HeadlessMenuItem v-for="child in item.childMenu" :key="child.id">
+                                            <HeadlessMenuItem v-for="child in item.children" :key="child.id">
                                                 <NuxtLink :href="child.link" class="flex items-center gap-3 whitespace-nowrap px-3 py-0.5 hover:bg-primary">
                                                     <Icon v-if="child.icon" :name="child.icon" class="shrink-0 size-4 opacity-75" />
                                                     <span class="text-sm leading-10">{{ child.name }}</span>
@@ -163,7 +60,7 @@ const route = useRoute();
                                     :class="route.fullPath === item.link && 'bg-primary'"
                                 >
                                     <Icon v-if="item.icon" :name="item.icon" class="shrink-0 size-5 opacity-75" />
-                                    <span class="text-sm leading-10">{{ item.name }}</span>
+                                    <span class="text-sm leading-10 capitalize">{{ item.name }}</span>
                                 </NuxtLink>
                             </li>
                         </template>
@@ -173,9 +70,3 @@ const route = useRoute();
         </div>
     </div>
 </template>
-
-<style scoped>
-.group:hover .group-hover\:block {
-    display: inline-flex;
-}
-</style>

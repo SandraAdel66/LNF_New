@@ -29,7 +29,8 @@
         "@vuepic/vue-datepicker": "^8.8.1",
         "nuxt": "^3.12.4",
         "pinia": "^2.1.7",
-        "vue": "latest"
+        "vue": "latest",
+        "vue-select": "^4.0.0-beta.6"
     },
     "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610",
     "devDependencies": {

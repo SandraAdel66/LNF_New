@@ -38,6 +38,13 @@
     }
 }
 
+.prose {
+    max-width: 100% !important;
+    & h1, h2, h3, h4, h5, h6, p {
+        margin: 1rem 0 0 0 !important;
+    }
+}
+
 /* Main Style Files */
 @import './component/_media';
 @import './component/_btn.scss';

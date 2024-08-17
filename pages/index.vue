@@ -1,6 +1,14 @@
 <script setup lang="ts">
+const slug = ref('home');
+
+const { data: page, status } = await useApiFetch(`/api/get-page/${slug.value}`, {
+    lazy: true,
+    transform: (page) => (page as ApiResponse).data as Page,
+});
+
 useSeoMeta({
-    title: 'Home',
+    title: (page.value as Page)?.name,
+    description: (page.value as Page)?.des,
 });
 const texts = [
     {
@@ -29,7 +37,6 @@ const texts = [
         description: 'Tailored marketing strategies, including SEO and social media, to reach your target audience effectively and drive business growth.',
     },
 ];
-
 const currentText = ref(texts[0].text);
 const currentId = ref(texts[0].id);
 const currentIcon = ref(texts[0].icon);
@@ -39,7 +46,6 @@ let textIndex = 0;
 let charIndex = 0;
 const typingSpeed = 100;
 const pauseDuration = 4000;
-
 const typeText = () => {
     if (charIndex < texts[textIndex].text.length) {
         currentText.value = texts[textIndex].text.substring(0, charIndex + 1);
@@ -49,25 +55,21 @@ const typeText = () => {
         setTimeout(() => {
             textIndex = (textIndex + 1) % texts.length;
             charIndex = 0;
-            currentId.value = texts[textIndex].id;
             currentIcon.value = texts[textIndex].icon;
             currentDescription.value = texts[textIndex].description;
             typeText();
         }, pauseDuration);
     }
 };
-
 watch(currentId, () => {
     addIntroClass.value = true;
     setTimeout(() => {
         addIntroClass.value = false;
     }, 1000); // Adjust duration as needed
 });
-
 onMounted(() => {
     typeText();
 });
-
 const skills = ref([
     { category: 'web-developing', name: 'PHP', icon: 'simple-icons:php' },
     { category: 'web-developing', name: 'Javascript', icon: 'akar-icons:javascript-fill' },
@@ -86,7 +88,6 @@ const skillsCategories = ref([
     { id: 'media-production', name: 'Media Production', icon: 'solar:special-effects-linear' },
     { id: 'marketing-strategies', name: 'Marketing Strategies', icon: 'solar:chat-square-2-linear' },
 ]);
-
 const selectSkillCategoryId = (id: string) => {
     activeSkillCategoryId.value = id;
 };
@@ -101,9 +102,9 @@ const selectSkillCategoryId = (id: string) => {
                         <div class="font-normal 2xl:text-xl text-lg">Logistics Network Federation</div>
                         <div :class="'font-extrabold 2xl:text-5xl text-4xl mt-2 leading-tight text-primary'">{{ currentText }}</div>
                     </div>
-                    <p :class="['font-light', 'opacity-85', 'text-xl', { '-intro-x': addIntroClass }]">
-                        {{ currentDescription }}
-                    </p>
+                    <!--                    <p :class="['font-light', 'opacity-85', 'text-xl', { '-intro-x': addIntroClass }]">-->
+                    <!--                        {{ currentDescription }}-->
+                    <!--                    </p>-->
                     <div class="mt-5 flex items-center gap-5">
                         <NuxtLink href="/services">
                             <button class="btn w-full btn-primary btn-rounded gap-3 px-6">
@@ -136,34 +137,34 @@ const selectSkillCategoryId = (id: string) => {
                 </div>
             </div>
         </section>
-        <section class="relative bg-white mt-8">
-            <div class="flex flex-col gap-5">
-                <div class="text-center mt-8">
-                    <span class="text-4xl font-extrabold"><span class="font-medium text-primary mr-2">Our</span>Skills</span>
-                </div>
-                <div class="container flex flex-col gap-8 px-6 md:px-12 py-5">
-                    <div class="flex items-center gap-5 mx-auto">
-                        <button
-                            v-for="cat in skillsCategories"
-                            :key="cat.id"
-                            :class="[activeSkillCategoryId === cat.id ? 'btn-primary' : 'btn-secondary opacity-50', 'btn  btn-rounded gap-2']"
-                            @click="selectSkillCategoryId(cat.id)"
-                        >
-                            <Icon :name="cat.icon" class="size-5" />
-                            <span>{{ cat.name }}</span>
-                        </button>
-                    </div>
-                    <ul class="grid md:grid-cols-6 sm:grid-cols-4 grid-cols-2 gap-8 lg:grid-cols-8 p-5">
-                        <li v-for="skill in skills" :key="skill.icon" class="flex place-content-center group intro-x">
-                            <div class="flex flex-col flex-wrap gap-2 text-center opacity-50 group-hover:opacity-100 ease-in-out duration-300">
-                                <Icon :name="skill.icon" class="size-16 mx-auto" />
-                                <span class="group-hover:text-primary transition-colors font-medium whitespace-nowrap">{{ skill.name }}</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        <!--        <section class="relative bg-white mt-8">-->
+        <!--            <div class="flex flex-col gap-5">-->
+        <!--                <div class="text-center mt-8">-->
+        <!--                    <span class="text-4xl font-extrabold"><span class="font-medium text-primary mr-2">Our</span>Skills</span>-->
+        <!--                </div>-->
+        <!--                <div class="container flex flex-col gap-8 px-6 md:px-12 py-5">-->
+        <!--                    <div class="flex items-center gap-5 mx-auto">-->
+        <!--                        <button-->
+        <!--                            v-for="cat in skillsCategories"-->
+        <!--                            :key="cat.id"-->
+        <!--                            :class="[activeSkillCategoryId === cat.id ? 'btn-primary' : 'btn-secondary opacity-50', 'btn  btn-rounded gap-2']"-->
+        <!--                            @click="selectSkillCategoryId(cat.id)"-->
+        <!--                        >-->
+        <!--                            <Icon :name="cat.icon" class="size-5" />-->
+        <!--                            <span>{{ cat.name }}</span>-->
+        <!--                        </button>-->
+        <!--                    </div>-->
+        <!--                    <ul class="grid md:grid-cols-6 sm:grid-cols-4 grid-cols-2 gap-8 lg:grid-cols-8 p-5">-->
+        <!--                        <li v-for="skill in skills" :key="skill.icon" class="flex place-content-center group intro-x">-->
+        <!--                            <div class="flex flex-col flex-wrap gap-2 text-center opacity-50 group-hover:opacity-100 ease-in-out duration-300">-->
+        <!--                                <Icon :name="skill.icon" class="size-16 mx-auto" />-->
+        <!--                                <span class="group-hover:text-primary transition-colors font-medium whitespace-nowrap">{{ skill.name }}</span>-->
+        <!--                            </div>-->
+        <!--                        </li>-->
+        <!--                    </ul>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </section>-->
     </div>
 </template>
 
