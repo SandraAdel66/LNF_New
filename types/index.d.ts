@@ -64,6 +64,36 @@ type PublicSetting = {
     value: any;
 };
 
+type ApplicationFormType = {
+    name: string | null;
+    email: string | null;
+    image: Media | null;
+    addressLine1: string | null;
+    addressLine2: string | null;
+    city: string | null;
+    state: string | null;
+    postalCode: string | null;
+    phone: string | null;
+    fpp: string | null;
+    website: string | null;
+    profile: string | null;
+    businessEst: string | null;
+    membersCount: number | null;
+    contactPersons: ContactPersons[];
+    countryId: number | null;
+    detectedCountryId: number | null;
+};
+
+type ContactPersons = {
+    title: string | null;
+    email: string | null;
+    firstName: string | null;
+    lastName: string | null;
+    jobTitle: string | null;
+    phoneNumber: string | null;
+    cellNumber: string | null;
+};
+
 type Article = {
     id: number;
     name: string;
@@ -317,25 +347,6 @@ type Role = {
     name: string;
     permissions: string[];
 };
-
-type ContactPerson = {
-    id?: number;
-    userId?: number | undefined;
-    title: string | undefined | null;
-    name: string | undefined | null;
-    email: string | undefined | null;
-    birthDate: string | undefined | null;
-    phone: string | undefined | null;
-    phoneKeyId: number | null | undefined;
-    phoneKey: string | undefined | null;
-    cell: string | undefined | null;
-    cellKeyId: number | null | undefined;
-    cellKey: string | undefined | null;
-    company?: User;
-    jobTitle: string | undefined | null;
-    imageUrl: string | undefined | null;
-    image: Media | null;
-};
 type UserGroup = {
     id: number;
     name: string;
@@ -392,7 +403,6 @@ type User = {
     country: Country;
     imageUrl: string;
     image: Media | null;
-    contactPersons?: ContactPerson[];
     services?: number[] | Resource[];
     certificates?: number[] | Resource[];
     networks?: Network[];

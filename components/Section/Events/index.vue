@@ -34,7 +34,7 @@ console.log(events.value);
                         <Icon class="size-6 opacity-75" name="solar:calendar-line-duotone" />
                         <div class="font-semibold text-xl">Upcoming Conferences</div>
                     </div>
-                    <template v-for="event in (events as Exhibition[]).filter((e) => e.type === 'conferences' && !e.eventOver)" :key="index">
+                    <template v-for="(event, index) in (events as Exhibition[]).filter((e) => e.type === 'conferences' && !e.eventOver)" :key="index">
                         <SectionEventsCard :event="event" />
                     </template>
                     <div class="border-b" />
@@ -45,7 +45,7 @@ console.log(events.value);
                         <Icon class="size-6 opacity-75" name="solar:calendar-line-duotone" />
                         <div class="font-semibold text-xl">Previous Conferences</div>
                     </div>
-                    <template v-for="event in (events as Exhibition[]).filter((e) => e.type === 'conferences' && e.eventOver)" :key="index">
+                    <template v-for="(event, index) in (events as Exhibition[]).filter((e) => e.type === 'conferences' && e.eventOver)" :key="index">
                         <SectionEventsCard :event="event" />
                     </template>
                 </template>
@@ -56,7 +56,7 @@ console.log(events.value);
                         <Icon class="size-5 opacity-75" name="solar:calendar-line-duotone" />
                         <div class="font-semibold text-lg">Upcoming Exhibitions</div>
                     </div>
-                    <template v-for="event in (events as Exhibition[]).filter((e) => e.type === 'exhibitions' && !e.eventOver)" :key="index">
+                    <template v-for="(event, index) in (events as Exhibition[]).filter((e) => e.type === 'exhibitions' && !e.eventOver)" :key="index">
                         <SectionEventsCard :event="event" />
                     </template>
                 </template>
@@ -65,7 +65,7 @@ console.log(events.value);
                         <Icon class="size-5 opacity-75" name="solar:calendar-line-duotone" />
                         <div class="font-semibold text-lg">Previous Exhibitions</div>
                     </div>
-                    <template v-for="event in (events as Exhibition[]).filter((e) => e.type === 'exhibitions' && e.eventOver)" :key="index">
+                    <template v-for="(event, index) in (events as Exhibition[]).filter((e) => e.type === 'exhibitions' && e.eventOver)" :key="index">
                         <SectionEventsCard :event="event" />
                     </template>
                 </template>
