@@ -9,7 +9,7 @@ const route = useRoute();
 const refValue = ref<any>(route.query?.ref);
 const isLoading = ref(false);
 const clientIp = useVisitStore();
-const clientCountryId = ref((resources.countries as Country[]).find((c) => c.code === clientIp.ipDetails?.countryCode)?.id);
+const clientCountryId = ref((resources.countries as Country[])?.find((c) => c.code === clientIp.ipDetails?.countryCode)?.id);
 const applicationForm = ref({
     countryId: clientCountryId.value, // Done
     name: undefined, // Done
