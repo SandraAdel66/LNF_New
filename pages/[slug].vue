@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import ContactForm from '~/components/Section/ContactForm.vue';
-
 const route = useRoute();
 const slug = ref(route.params.slug);
 
@@ -23,6 +21,7 @@ useSeoMeta({
             <SectionGuideLine v-if="slug === 'membership'" />
             <SectionContactForm v-if="slug === 'contact'" />
             <SectionEvents v-if="slug === 'events'" />
+            <SectionArticles v-if="slug === 'news'" />
         </div>
     </div>
 </template>

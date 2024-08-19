@@ -54,12 +54,33 @@ type ApiResponseData =
     | Resource
     | Resource[]
     | Continent
-    | Continent[];
+    | Continent[]
+    | Article
+    | Article[];
 
 type PublicSetting = {
     id: number;
     name: string;
     value: any;
+};
+
+type Article = {
+    id: number;
+    name: string;
+    slug: string;
+    position: number;
+    featured: boolean;
+    active: boolean;
+    shortDes: string;
+    des: string;
+    publishDate: string;
+    publishDateFormatted: string;
+    imageUrl: string;
+    image: Media | null;
+    deleted: boolean;
+    readingTime: string;
+    deletedAt: string | null;
+    createdAt: string | null;
 };
 
 type Service = {
