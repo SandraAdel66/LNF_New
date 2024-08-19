@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useYearArray } from '~/composables/useYearsArray';
-import { email, required } from '@vuelidate/validators';
+import { email, numeric, required } from '@vuelidate/validators';
 import useVuelidate from '@vuelidate/core';
 
 const resources = useResourceStore();
@@ -52,7 +52,7 @@ const rules = ref({
     website: { required },
     profile: {},
     businessEst: { required },
-    membersCount: { required },
+    membersCount: { required, numeric },
     countryId: { required }, // Done
     contactPersons: Array.from({ length: 1 }, () => ({
         title: { required },
@@ -244,6 +244,7 @@ onMounted(() => {
                                 class="lg:col-span-6"
                                 label="Approximate Number Of Employees"
                                 name="employees-num"
+                                type="number"
                                 placeholder="Example: 1,2 or 20"
                             />
                             <FormSelectInput
