@@ -242,12 +242,12 @@ onMounted(async () => {
         </div>
         <div v-if="file && file.fullUrl" class="border bg-slate-50 border-dashed relative group flex justify-center ease-in-out duration-300 px-6 pt-5 pb-6 rounded-xl">
             <div class="absolute inset-0 hidden group-hover:flex items-center justify-center z-10 ease-in-out duration-300 group gap-5">
-                <label :for="name + '-update-file'" class="btn btn-primary btn-rounded whitespace-nowrap btn-sm">
+                <label :for="name + '-update-file'" class="btn btn-primary whitespace-nowrap btn-sm">
                     <Icon class="h-5 w-5 mr-2" name="solar:gallery-send-broken" />
                     <span class="font-semibold">Update Image</span>
                     <input :id="name + '-update-file'" :name="name + '-update-file'" class="sr-only" type="file" @change="onUploadFile" />
                 </label>
-                <button class="btn btn-danger btn-rounded group btn-sm" type="button" @click="removeFile">
+                <button class="btn btn-danger group btn-sm" type="button" @click="removeFile">
                     <Icon class="mr-2 w-5 h-5" name="clarity:close-line" />
                     <span>Remove</span>
                 </button>

@@ -41,7 +41,7 @@ const sendMessage = async () => {
         useToast({ title: 'Error', message: 'Please fill all required fields', type: 'error', duration: 5000 });
         return false;
     }
-    const { data, error } = await useApiFetch(`/api/network-send-message`, {
+    const { data, error } = await useApiFetch(`/api/contact-us-public`, {
         method: 'POST',
         body: contactForm.value,
         lazy: true,
@@ -63,26 +63,23 @@ const sendMessage = async () => {
 </script>
 
 <template>
-    <div class="grid lg:grid-cols-12 items-start gap-5">
-        <div class="lg:col-span-4 flex flex-col gap-5">
-            <ApplicationAddressBlock />
-            <ApplicationEmailBlock />
-        </div>
-        <div class="lg:col-span-8 p-5 bg-white rounded-2xl border border-slate-200/75">
-            <form class="grid lg:grid-cols-12 gap-5" @submit.prevent="sendMessage">
-                <FormTextInput v-model="contactForm.name" :errors="v$.name.$errors" class="lg:col-span-6" label="Full Name" name="name" placeholder="Full Name" />
-                <FormTextInput v-model="contactForm.phone" :errors="v$.phone.$errors" class="lg:col-span-6" label="Phone" name="name" placeholder="+1 234 5678 9123" />
-                <FormTextInput v-model="contactForm.email" :errors="v$.email.$errors" class="lg:col-span-6" label="Email" name="email" placeholder="name@company.com" type="email" />
-                <FormTextInput v-model="contactForm.address" :errors="v$.address.$errors" class="lg:col-span-6" label="Address" name="address" placeholder="Address" />
-                <FormTextInput v-model="contactForm.subject" :errors="v$.subject.$errors" class="lg:col-span-12" label="Subject" name="subject" placeholder="Subject" />
-                <FormTextInput v-model="contactForm.message" :errors="v$.message.$errors" class="lg:col-span-12" label="Message" name="message" placeholder="Message" type="textarea" />
-                <div class="lg:col-span-12">
-                    <button :disabled="isLoading" class="group btn btn-primary btn-rounded w-full" type="submit">
-                        <Icon :name="isLoading ? 'svg-spinners:3-dots-fade' : 'solar:plain-broken'" class="mr-4 size-5 group-hover:mr-2 group-hover:rotate-45 ease-in-out duration-300" />
-                        <span>Send</span>
-                    </button>
-                </div>
-            </form>
-        </div>
+    <div class="p-5 bg-white rounded-2xl border border-slate-200/75">
+        <form class="grid lg:grid-cols-12 gap-5" @submit.prevent="sendMessage">
+            <FormTextInput v-model="contactForm.name" :errors="v$.name.$errors" class="lg:col-span-6" label="Full Name" name="name" placeholder="Full Name" />
+            <FormTextInput v-model="contactForm.phone" :errors="v$.phone.$errors" class="lg:col-span-6" label="Phone" name="name" placeholder="+1 234 5678 9123" />
+            <FormTextInput v-model="contactForm.email" :errors="v$.email.$errors" class="lg:col-span-6" label="Email" name="email" placeholder="name@company.com" type="email" />
+            <FormTextInput v-model="contactForm.address" :errors="v$.address.$errors" class="lg:col-span-6" label="Address" name="address" placeholder="Address" />
+            <FormTextInput v-model="contactForm.subject" :errors="v$.subject.$errors" class="lg:col-span-12" label="Subject" name="subject" placeholder="Subject" />
+            <FormTextInput v-model="contactForm.message" :errors="v$.message.$errors" class="lg:col-span-12" label="Message" name="message" placeholder="Message" type="textarea" />
+            <div class="lg:col-span-12">
+                <button :disabled="isLoading" class="group btn btn-primary w-full" type="submit">
+                    <Icon
+                        :name="isLoading ? 'svg-spinners:3-dots-fade' : 'solar:plain-broken'"
+                        class="mr-4 size-5 group-hover:mr-2 group-hover:rotate-45 ease-in-out duration-300"
+                    />
+                    <span>Send</span>
+                </button>
+            </div>
+        </form>
     </div>
 </template>

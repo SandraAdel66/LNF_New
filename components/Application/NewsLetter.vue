@@ -37,7 +37,7 @@ const newsLetter = ref({
                             <span id="mce-EMAIL-HELPERTEXT" class="helper_text" />
                         </div>
                         <div class="clear foot mt-2">
-                            <button id="mc-embedded-subscribe" class="group btn btn-primary btn-rounded px-4 btn-sm" name="subscribe" type="submit" value="Subscribe">
+                            <button id="mc-embedded-subscribe" class="group btn btn-primary px-4 btn-sm" name="subscribe" type="submit" value="Subscribe">
                                 <Icon class="mr-4 size-5 group-hover:mr-2 group-hover:rotate-45 ease-in-out duration-300" name="solar:plain-broken" />
                                 <span>Join</span>
                             </button>

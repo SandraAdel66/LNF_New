@@ -37,7 +37,7 @@ const resources = useResourceStore();
                 </h4>
                 <p class="font-light line-clamp-2">{{ props.benefit.shortDes }}</p>
                 <div class="mt-4 inline-block align-bottom">
-                    <button class="btn btn-dark btn-rounded px-6">Read More</button>
+                    <button class="btn btn-dark px-6">Read More</button>
                 </div>
             </div>
         </NuxtLink>

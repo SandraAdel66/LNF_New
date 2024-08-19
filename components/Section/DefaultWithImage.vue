@@ -14,13 +14,13 @@ const props = defineProps<{
             </div>
             <div class="flex gap-5 max-w-3xl mx-auto">
                 <NuxtLink v-if="props.section.buttonOneActive">
-                    <button :class="'btn btn-rounded gap-2 btn-' + props.section.buttonStyleOne">
+                    <button :class="'btn  gap-2 btn-' + props.section.buttonStyleOne">
                         <Icon v-if="props.section.buttonIconOne" :name="props.section.buttonIconOne" class="size-5" />
                         {{ props.section.buttonTextOne }}
                     </button>
                 </NuxtLink>
                 <NuxtLink v-if="props.section.buttonTwoActive">
-                    <button :class="'btn btn-rounded gap-2 btn-' + props.section.buttonStyleTwo">
+                    <button :class="'btn  gap-2 btn-' + props.section.buttonStyleTwo">
                         <Icon v-if="props.section.buttonIconTwo" :name="props.section.buttonIconTwo" class="size-5" />
                         {{ props.section.buttonTextTwo }}
                     </button>
@@ -29,7 +29,11 @@ const props = defineProps<{
             <div class="max-w-5xl mx-auto flex justify-center mt-8">
                 <div class="relative max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch md:max-w-2xl lg:max-w-none">
                     <div aria-hidden="true" class="absolute top-1/2 w-full h-1 bg-gradient-to-r from-primary to-primary-hover hidden lg:block" />
-                    <div v-for="(item, index) in props.section.children" :key="item.id" class="relative flex h-full flex-col items-center p-6 bg-white rounded-3xl shadow-xl intro-x">
+                    <div
+                        v-for="(item, index) in props.section.children"
+                        :key="item.id"
+                        class="relative flex h-full flex-col items-center p-6 bg-white rounded-3xl shadow-xl intro-x"
+                    >
                         <div class="flex justify-center items-center h-12 w-12 rounded-tl-full rounded-tr-full rounded-bl-full bg-primary text-white font-bold mb-3 text-lg">
                             {{ index + 1 }}
                         </div>

@@ -145,12 +145,12 @@ watchEffect(() => {
             >
                 <template #option="option">
                     <div
-                        class="text-sm group flex items-center py-1.5 hover:bg-primary rounded-full px-4 ease-in-out duration-100 cursor-pointer first:border-t-0 last:border-b-0 truncate border-y border-dashed border-slate-100"
+                        class="text-sm group flex items-center py-1.5 hover:bg-primary rounded-lg px-4 ease-in-out duration-100 cursor-pointer first:border-t-0 last:border-b-0 truncate border-y border-dashed border-slate-100"
                     >
                         <NuxtImg
                             v-if="$attrs.imgvalue"
                             :alt="option[$attrs.labelvalue]"
-                            :class="[isRoundedImage ? 'rounded-full w-5 h-5' : 'rounded-sm w-6 h-4', 'mr-2 object-contain bg-white shrink-0']"
+                            :class="[isRoundedImage ? 'rounded-lg w-5 h-5' : 'rounded-sm w-6 h-4', 'mr-2 object-contain bg-white shrink-0']"
                             :src="option[$attrs.imgvalue]"
                             :title="option[$attrs.labelvalue]"
                         />
@@ -166,7 +166,7 @@ watchEffect(() => {
                             <NuxtImg
                                 v-if="$attrs.imgvalue"
                                 :alt="name"
-                                :class="[isRoundedImage ? 'rounded-full w-5 h-5' : 'rounded-sm w-6 h-4', ' mr-2 object-contain bg-white shrink-0']"
+                                :class="[isRoundedImage ? 'rounded-lg w-5 h-5' : 'rounded-sm w-6 h-4', ' mr-2 object-contain bg-white shrink-0']"
                                 :src="imageUrl"
                                 :title="name"
                             />
@@ -185,7 +185,7 @@ watchEffect(() => {
                     <label :for="name" class="sr-only">{{ label }}</label>
                     <input
                         :id="name"
-                        :class="[icon ? 'pl-10' : 'pl-4', errors.length > 0 ? 'border !border-danger' : '', 'vs__search form-control form-control-rounded']"
+                        :class="[icon ? 'pl-10' : 'pl-4', errors.length > 0 ? 'border !border-danger' : '', 'vs__search form-control']"
                         v-bind="attributes"
                         v-on="events"
                     />

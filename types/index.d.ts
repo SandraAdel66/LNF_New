@@ -9,10 +9,13 @@ type ApiResponse = {
     meta?: any;
 };
 
-type MemberVote = {
-    countryId: undefined | number;
-    memberId: undefined | number;
-    countryMembers: User[] | undefined;
+type Policy = {
+    id: number;
+    title: string;
+    slug: string;
+    active: boolean;
+    description: string | null;
+    position: number | null;
 };
 
 type ApiResponseData =
@@ -22,8 +25,10 @@ type ApiResponseData =
     | Testimonial
     | Partner[]
     | Partner
-    | Benefit
-    | Benefit[]
+    | Service
+    | Policy[]
+    | Policy
+    | Service[]
     | Page
     | Conferences
     | Conferences[]
@@ -57,14 +62,19 @@ type PublicSetting = {
     value: any;
 };
 
-type Benefit = {
+type Service = {
     id: number;
     name: string;
     slug: string;
     icon: string | null;
-    contents: Content[];
+    shortDescription: string | null;
+    description: string | null;
+    parentId: number | null;
+    type: string | null;
+    position: number | null;
+    active: boolean;
     imageUrl: string | null;
-    shortDes: string | null;
+    image: Media | null;
 };
 type Testimonial = {
     id: number;

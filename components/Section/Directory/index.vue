@@ -133,13 +133,20 @@ const headerSettings = {
                     />
                     <FormTextInput v-model="serverParams.filters.city" :disabled="isLoading" placeholder="City" rounded />
                     <FormSelectInput v-model="serverParams.orderBy" :disabled="isLoading" :select-data="sortByList" keyvalue="id" labelvalue="name" placeholder="Sort by" />
-                    <FormSelectInput v-model="serverParams.orderByDirection" :disabled="isLoading" :select-data="sortingDirections" keyvalue="id" labelvalue="name" placeholder="Sort Direction" />
+                    <FormSelectInput
+                        v-model="serverParams.orderByDirection"
+                        :disabled="isLoading"
+                        :select-data="sortingDirections"
+                        keyvalue="id"
+                        labelvalue="name"
+                        placeholder="Sort Direction"
+                    />
                     <FormTextInput v-model="serverParams.filters.name" :disabled="isLoading" class="lg:col-span-2" placeholder="Company Name" rounded />
-                    <button :disabled="isLoading" class="btn btn-primary btn-rounded gap-2 font-light" type="submit">
+                    <button :disabled="isLoading" class="btn btn-primary gap-2 font-light" type="submit">
                         <Icon class="size-5" name="solar:rounded-magnifer-linear" />
                         <span>Submit</span>
                     </button>
-                    <button :disabled="isLoading" class="btn btn-secondary btn-rounded gap-2 font-light" type="button" @click="resetFilter">
+                    <button :disabled="isLoading" class="btn btn-secondary gap-2 font-light" type="button" @click="resetFilter">
                         <Icon class="size-5" name="solar:refresh-line-duotone" />
                         <span>Reset</span>
                     </button>
@@ -197,7 +204,7 @@ const headerSettings = {
                                                 </td>
                                                 <td class="text-right">
                                                     <NuxtLink :href="row.wsaId === (userStore.user as User).wsaId ? '/dashboard' : '/member/' + row.wsaId" target="_blank">
-                                                        <button class="btn btn-secondary btn-rounded btn-sm gap-3 font-light px-4" type="button">
+                                                        <button class="btn btn-secondary btn-sm gap-3 font-light px-4" type="button">
                                                             <Icon class="size-4" name="solar:eye-line-duotone" />
                                                             View
                                                         </button>
@@ -226,7 +233,12 @@ const headerSettings = {
                         <ul class="block md:hidden space-y-5">
                             <li v-for="row in rows" :key="row.id" class="p-5 bg-white/50 border rounded-xl divide-y divide-dashed text-right">
                                 <div class="py-3 flex items-start justify-between gap-3">
-                                    <NuxtImg :alt="row.name" :src="row.imageUrl" :title="row.name" class="ring-4 ring-slate-400/10 h-12 !rounded-md w-24 object-contain p-1 shrink-0 bg-white" />
+                                    <NuxtImg
+                                        :alt="row.name"
+                                        :src="row.imageUrl"
+                                        :title="row.name"
+                                        class="ring-4 ring-slate-400/10 h-12 !rounded-md w-24 object-contain p-1 shrink-0 bg-white"
+                                    />
                                     <div class="flex flex-col gap-0.5">
                                         <div class="flex items-center gap-1.5">
                                             <span class="truncate font-normal 2xl:max-w-64 max-w-44">{{ row.name }}</span>
@@ -255,7 +267,7 @@ const headerSettings = {
                                 </div>
                                 <div class="py-3">
                                     <NuxtLink :href="row.wsaId === (userStore.user as User).wsaId ? '/dashboard' : '/member/' + row.wsaId" target="_blank">
-                                        <button class="btn btn-primary w-full btn-rounded gap-3" type="button">
+                                        <button class="btn btn-primary w-full gap-3" type="button">
                                             <Icon class="size-4" name="solar:eye-line-duotone" />
                                             View
                                         </button>
@@ -265,7 +277,9 @@ const headerSettings = {
                         </ul>
                     </template>
                 </div>
-                <div v-else class="py-8 font-lg text-center bg-white rounded-3xl border border-dashed text-slate-500 font-light">You can search for members using the above form...</div>
+                <div v-else class="py-8 font-lg text-center bg-white rounded-3xl border border-dashed text-slate-500 font-light">
+                    You can search for members using the above form...
+                </div>
             </div>
             <template v-if="searchInit">
                 <TablePagination :page="serverParams.page" :pending="status === 'pending'" :rows="directory as ApiResponse" class="mx-12" @change-page="changePage" />
@@ -276,26 +290,30 @@ const headerSettings = {
                 <div class="text-center text-lg font-normal opacity-85">Login or Apply for membership to view WSA Elite Directory</div>
                 <div class="flex items-center gap-5 place-content-center">
                     <NuxtLink v-if="headerSettings.registerButtonActive" :target="headerSettings.registerButton.target" :to="headerSettings.registerButton.url">
-                        <button :class="'btn btn-rounded btn-sm px-5 btn-' + headerSettings.registerButton.style">
+                        <button :class="'btn  btn-sm px-5 btn-' + headerSettings.registerButton.style">
                             <Icon v-if="headerSettings.registerButton.icon" :name="headerSettings.registerButton.icon" class="size-5 mr-2" />
                             <span>{{ headerSettings.registerButton.label }}</span>
                         </button>
                     </NuxtLink>
                     <NuxtLink v-if="headerSettings.loginButtonActive" :target="headerSettings.loginButton.target" :to="headerSettings.loginButton.url">
-                        <button :class="'btn btn-rounded btn-sm px-5 btn-' + headerSettings.loginButton.style">
+                        <button :class="'btn  btn-sm px-5 btn-' + headerSettings.loginButton.style">
                             <Icon v-if="headerSettings.loginButton.icon" :name="headerSettings.loginButton.icon" class="size-5 mr-2" />
                             <span>{{ headerSettings.loginButton.label }}</span>
                         </button>
                     </NuxtLink>
                 </div>
-                <div class="text-sm mt-12 w-full grow px-6 md:px-12">
+                <div class="text-sm mt-12 w-full grow px-6">
                     <div class="grid grid-cols-3 gap-5 items-center justify-between text-left">
                         <div class="p-3">Company Name</div>
                         <div class="p-3">Country</div>
                         <div class="text-right p-3">View</div>
                     </div>
                     <ul class="mt-1.5 space-y-3">
-                        <li v-for="line in 5" :key="line" class="p-3 bg-white border !border-slate-100 rounded-lg uppercase grid grid-cols-3 gap-5 items-center justify-between text-left">
+                        <li
+                            v-for="line in 5"
+                            :key="line"
+                            class="p-3 bg-white border !border-slate-100 rounded-lg uppercase grid grid-cols-3 gap-5 items-center justify-between text-left"
+                        >
                             <div class="flex items-center gap-3">
                                 <div class="bg-slate-200 blur-sm h-10 w-16 rounded-md" />
                                 <div>

@@ -24,7 +24,7 @@ async function openModal() {
         </template>
         <template #footer>
             <div class="w-full flex items-center justify-end gap-5">
-                <button class="btn-rounded btn-sm btn btn-danger px-4" type="button" @click="closeModal">
+                <button class="btn-sm btn btn-danger px-4" type="button" @click="closeModal">
                     <Icon class="w-5 h-5 mr-2" name="solar:close-circle-linear" />
                     <span>Close</span>
                 </button>

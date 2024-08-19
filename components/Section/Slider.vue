@@ -32,7 +32,7 @@ const { data, status } = await useApiFetch(`/api/slider-public`, {
                     <!--                            <template v-if="!userStore.token">-->
                     <!--                                <div v-if="slide.buttonOneActive" class="space-x-4 intro-y">-->
                     <!--                                    <NuxtLink :target="slide.buttonOne.target" :to="slide.buttonOne.url">-->
-                    <!--                                        <button :class="['btn btn-lg !px-8 btn-rounded btn-' + slide.buttonOne.style + ' mt-4']">-->
+                    <!--                                        <button :class="['btn btn-lg !px-8  btn-' + slide.buttonOne.style + ' mt-4']">-->
                     <!--                                            {{ slide.buttonOne.label }}-->
                     <!--                                        </button>-->
                     <!--                                    </NuxtLink>-->

@@ -38,7 +38,7 @@ const props = defineProps({
     },
     rounded: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     autofocus: {
         type: Boolean,
@@ -148,7 +148,7 @@ watchEffect(() => {
                     :readonly="readonly"
                     :required="required"
                     :rows="rows"
-                    class="form-control font-light rounded-2xl"
+                    class="form-control font-light rounded-lg"
                 />
             </div>
             <div v-if="description" class="form-help" v-html="description" />

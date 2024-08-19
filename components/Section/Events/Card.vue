@@ -26,7 +26,7 @@ function handleResize() {
 </script>
 
 <template>
-    <div class="intro-x mt-4 grid grid-cols-12 items-start lg:gap-4 overflow-hidden text-base bg-white rounded-3xl min-h-64">
+    <div class="intro-x mt-4 grid grid-cols-12 items-start lg:gap-4 overflow-hidden text-base bg-white rounded-lg min-h-64">
         <div class="relative xl:col-span-4 col-span-12 group bg-white border h-full overflow-hidden">
             <div class="z-30 absolute top-0 left-0 py-2 px-4 text-white bg-primary text-center">
                 <div
@@ -37,7 +37,8 @@ function handleResize() {
                     {{ datePart }}
                 </div>
             </div>
-            <NuxtImg :alt="event.title" :src="event.imageUrl" class="object-cover w-full h-full inset-0 group-hover:scale-125 ease-in-out duration-[4s]" /></div>
+            <NuxtImg :alt="event.title" :src="event.imageUrl" class="object-cover w-full h-full inset-0 group-hover:scale-125 ease-in-out duration-[4s]" />
+        </div>
         <div class="xl:col-span-8 col-span-12 h-full p-4">
             <h1 v-if="event.title" class="text-lg font-semibold capitalize pb-2 border-b truncate">
                 {{ event.title }}
@@ -58,33 +59,33 @@ function handleResize() {
                         </div>
                     </div>
                 </div>
-                <div class="md:flex items-center sm:mt-0 mt-2 md:gap-6 md:space-y-0 space-y-2">
+                <div class="md:flex items-center sm:mt-0 mt-3 md:gap-6 md:space-y-0 space-y-2">
                     <div v-if="event.companies" class="flex items-center gap-2">
                         <Icon class="size-6 opacity-75" name="solar:buildings-linear" />
                         <div>
                             <span>{{ event.companies }}</span
-                            ><span class="ml-1">Companies</span>
+                            ><span class="ml-2 opacity-75 font-light text-sm">Companies</span>
                         </div>
                     </div>
                     <div v-if="event.delegates" class="flex items-center gap-2">
                         <Icon class="size-6 opacity-75" name="solar:users-group-two-rounded-outline" />
                         <div>
                             <span>{{ event.delegates }}</span
-                            ><span class="ml-1">Delegates</span>
+                            ><span class="ml-2 opacity-75 font-light text-sm">Delegates</span>
                         </div>
                     </div>
                     <div v-if="event.sessions" class="flex items-center gap-2">
                         <Icon class="size-6 opacity-75" name="solar:chat-square-arrow-linear" />
                         <div>
                             <span>{{ event.sessions }}</span
-                            ><span class="ml-1">Sessions</span>
+                            ><span class="ml-2 opacity-75 font-light text-sm">Sessions</span>
                         </div>
                     </div>
-                    <div v-if="event.countries" class="flex items-center">
-                        <Icon class="size-6 opacity-75" name="solar:earth-outline" />
+                    <div v-if="event.countries" class="flex items-center gap-2">
+                        <Icon class="size-6 opacity-75 font-light text-sm" name="solar:earth-outline" />
                         <div>
                             <span>{{ event.countries }}</span
-                            ><span class="ml-1">Countries</span>
+                            ><span class="ml-2 opacity-75 font-light text-sm">Countries</span>
                         </div>
                     </div>
                 </div>
@@ -92,19 +93,23 @@ function handleResize() {
             <p v-if="event.shortDes" class="mt-2 font-light text-justify line-clamp-5">{{ event.shortDes }}</p>
             <div v-if="event.gallery && event.gallery?.length > 0" class="flex items-center gap-4 p-1 border mt-2 rounded-md">
                 <template v-for="(image, index) in event.gallery" :key="image.id">
-                    <div v-if="screenWidth >= 1400 ? index < 12 : screenWidth >= 768 ? index < 8 : index < 4" class="group bg-white object-cover w-full h-12 rounded-md border overflow-hidden">
-                        <NuxtImg :alt="event.title" :src="image.fullUrl" class="object-cover rounded-md w-full h-12 inset-0 group-hover:scale-125 ease-in-out duration-300" /></div>
+                    <div
+                        v-if="screenWidth >= 1400 ? index < 12 : screenWidth >= 768 ? index < 8 : index < 4"
+                        class="group bg-white object-cover w-full h-12 rounded-md border overflow-hidden"
+                    >
+                        <NuxtImg :alt="event.title" :src="image.fullUrl" class="object-cover rounded-md w-full h-12 inset-0 group-hover:scale-125 ease-in-out duration-300" />
+                    </div>
                 </template>
             </div>
             <div class="mt-5">
                 <a v-if="!event.eventOver" :href="event.urlPath" target="_blank">
-                    <button class="btn btn-rounded btn-primary w-full">
+                    <button class="btn btn-primary w-full">
                         {{ event.urlText }}
                     </button>
                 </a>
                 <template v-else>
                     <NuxtLink v-if="event.gallery?.length > 0" :href="'/event/' + event.slug">
-                        <button class="btn btn-rounded btn-primary w-full">View Gallery</button>
+                        <button class="btn btn-primary w-full">View Gallery</button>
                     </NuxtLink>
                 </template>
             </div>

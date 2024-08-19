@@ -80,11 +80,11 @@ const changePage = async (value: number) => {
                     placeholder="Country"
                 />
                 <FormTextInput v-model="serverParams.filters.city" :disabled="isLoading" class="lg:col-span-2" placeholder="City" rounded />
-                <button :disabled="isLoading" class="btn btn-primary btn-rounded gap-2 font-light lg:col-span-2" type="submit">
+                <button :disabled="isLoading" class="btn btn-primary gap-2 font-light lg:col-span-2" type="submit">
                     <Icon class="size-5" name="solar:rounded-magnifer-linear" />
                     <span>Submit</span>
                 </button>
-                <button :disabled="isLoading" class="btn btn-secondary btn-rounded gap-2 font-light lg:col-span-2" type="button" @click="resetFilter">
+                <button :disabled="isLoading" class="btn btn-secondary gap-2 font-light lg:col-span-2" type="button" @click="resetFilter">
                     <Icon class="size-5" name="solar:refresh-line-duotone" />
                     <span>Reset</span>
                 </button>
@@ -163,7 +163,9 @@ const changePage = async (value: number) => {
                     </table>
                 </template>
             </div>
-            <div v-else class="py-8 font-lg text-center bg-white rounded-3xl border border-dashed text-slate-500 font-light">You can search for members using the above form...</div>
+            <div v-else class="py-8 font-lg text-center bg-white rounded-3xl border border-dashed text-slate-500 font-light">
+                You can search for members using the above form...
+            </div>
         </div>
         <template v-if="searchInit">
             <TablePagination :page="serverParams.page" :pending="status === 'pending'" :rows="directory as ApiResponse" class="mx-12" @change-page="changePage" />

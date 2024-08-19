@@ -15,7 +15,7 @@ const props = defineProps<{
             <div v-if="props.section.buttonOneActive">
                 <template v-if="props.section.buttonLinkTypeOne">
                     <NuxtLink v-if="props.section.buttonRouteOne" :to="props.section.buttonRouteOne">
-                        <button :class="'btn-' + props.section.buttonStyleOne" class="btn btn-rounded px-6 md:w-fit w-full">
+                        <button :class="'btn-' + props.section.buttonStyleOne" class="btn px-6 md:w-fit w-full">
                             <Icon v-if="props.section.buttonIconOne" :name="props.section.buttonIconOne" class="size-5 mr-2" />
                             {{ props.section.buttonTextOne }}
                         </button>
@@ -23,7 +23,7 @@ const props = defineProps<{
                 </template>
                 <template v-else>
                     <a v-if="props.section.buttonRouteOne" :href="props.section.buttonRouteOne">
-                        <button :class="'btn-' + props.section.buttonStyleOne" class="btn btn-rounded px-6 md:w-fit w-full">
+                        <button :class="'btn-' + props.section.buttonStyleOne" class="btn px-6 md:w-fit w-full">
                             <Icon v-if="props.section.buttonIconOne" :name="props.section.buttonIconOne" class="size-5 mr-2" />
                             {{ props.section.buttonTextOne }}
                         </button>
@@ -33,7 +33,7 @@ const props = defineProps<{
             <div v-if="props.section.buttonTwoActive">
                 <template v-if="props.section.buttonLinkTypeTwo">
                     <NuxtLink v-if="props.section.buttonRouteTwo" :to="props.section.buttonRouteTwo">
-                        <button :class="'btn-' + props.section.buttonStyleTwo" class="btn btn-rounded px-6 md:w-fit w-full">
+                        <button :class="'btn-' + props.section.buttonStyleTwo" class="btn px-6 md:w-fit w-full">
                             <Icon v-if="props.section.buttonIconTwo" :name="props.section.buttonIconTwo" class="size-5 mr-2" />
                             {{ props.section.buttonTextTwo }}
                         </button>
@@ -41,7 +41,7 @@ const props = defineProps<{
                 </template>
                 <template v-else>
                     <a v-if="props.section.buttonRouteTwo" :href="props.section.buttonRouteTwo">
-                        <button :class="'btn-' + props.section.buttonStyleTwo" class="btn btn-rounded px-6 md:w-fit w-full">
+                        <button :class="'btn-' + props.section.buttonStyleTwo" class="btn px-6 md:w-fit w-full">
                             <Icon v-if="props.section.buttonIconTwo" :name="props.section.buttonIconTwo" class="size-5 mr-2" />
                             {{ props.section.buttonTextTwo }}
                         </button>

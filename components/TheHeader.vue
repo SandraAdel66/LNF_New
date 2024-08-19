@@ -16,14 +16,14 @@ const { data: headerMenu } = await useApiFetch(`/api/get-menu/${headerMenuId.val
                 <NuxtImg class="h-24 shrink-0" title="Logistics Network Federation" alt="Logistics Network Federation" src="/images/lnf-logo.svg" />
             </NuxtLink>
             <NuxtLink href="/application-form">
-                <button class="btn btn-rounded btn-primary gap-3 px-6">
+                <button class="btn btn-primary gap-3 px-6">
                     <Icon name="solar:documents-linear" class="size-5" />
                     <span>Application Form</span>
                 </button>
             </NuxtLink>
         </div>
-        <div class="bg-secondary text-slate-100 px-6 md:px-12">
-            <div class="container px-6 md:px-12">
+        <div class="bg-secondary text-slate-100 px-6">
+            <div class="container px-6">
                 <ul class="flex items-center divide-x divide-slate-100/10">
                     <template v-for="item in (headerMenu as NavigationMenu).menuItems as NavigationMenuItem[]" :key="item.id">
                         <template v-if="item.children.length > 0">

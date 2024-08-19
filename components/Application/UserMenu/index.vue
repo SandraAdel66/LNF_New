@@ -68,7 +68,10 @@ async function logout() {
                         </div>
                     </div>
                     <div>
-                        <Icon :class="[userMenuOpen ? 'rotate-180' : '', 'ease-in-out duration-300 dark:text-slate-400 text-slate-600 size-5']" name="solar:alt-arrow-down-broken" />
+                        <Icon
+                            :class="[userMenuOpen ? 'rotate-180' : '', 'ease-in-out duration-300 dark:text-slate-400 text-slate-600 size-5']"
+                            name="solar:alt-arrow-down-broken"
+                        />
                     </div>
                 </HeadlessMenuButton>
                 <TransitionSlide>
@@ -98,13 +101,13 @@ async function logout() {
         </div>
         <template v-else>
             <NuxtLink v-if="headerSettings.registerButtonActive" :target="headerSettings.registerButton.target" :to="headerSettings.registerButton.url">
-                <button :class="'btn btn-rounded btn-sm px-5 btn-' + headerSettings.registerButton.style">
+                <button :class="'btn  btn-sm px-5 btn-' + headerSettings.registerButton.style">
                     <Icon v-if="headerSettings.registerButton.icon" :name="headerSettings.registerButton.icon" class="size-5 mr-2" />
                     <span>{{ headerSettings.registerButton.label }}</span>
                 </button>
             </NuxtLink>
             <NuxtLink v-if="headerSettings.loginButtonActive" :target="headerSettings.loginButton.target" :to="headerSettings.loginButton.url">
-                <button :class="'btn btn-rounded btn-sm px-5 btn-' + headerSettings.loginButton.style">
+                <button :class="'btn  btn-sm px-5 btn-' + headerSettings.loginButton.style">
                     <Icon v-if="headerSettings.loginButton.icon" :name="headerSettings.loginButton.icon" class="size-5 mr-2" />
                     <span>{{ headerSettings.loginButton.label }}</span>
                 </button>

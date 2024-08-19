@@ -418,7 +418,7 @@ const convertAndAddCourierCBM = () => {
             <button
                 v-for="tab in tabs"
                 :key="tab.id"
-                :class="[activeTab !== tab.id ? 'bg-white text-slate-600 opacity-75' : 'btn-primary', 'btn  btn-rounded gap-3 grow']"
+                :class="[activeTab !== tab.id ? 'bg-white text-slate-600 opacity-75' : 'btn-primary', 'btn   gap-3 grow']"
                 @click="toggleActiveTab(tab.id)"
             >
                 <Icon v-if="tab.icon" :name="tab.icon" class="size-5" />
@@ -431,10 +431,18 @@ const convertAndAddCourierCBM = () => {
                     <div class="font-light text-sm">Please enter the weight and size of your freight:</div>
                     <div class="mt-3 grid lg:grid-cols-12 gap-3">
                         <FormTextInput v-model="weight.value" class="lg:col-span-3" name="weight-value" placeholder="Enter weight value" type="number" />
-                        <FormSelectInput v-model="weight.unit" :select-data="unitList" class="lg:col-span-3" keyvalue="id" labelvalue="name" name="weight-unit" placeholder="Select your unit" />
+                        <FormSelectInput
+                            v-model="weight.unit"
+                            :select-data="unitList"
+                            class="lg:col-span-3"
+                            keyvalue="id"
+                            labelvalue="name"
+                            name="weight-unit"
+                            placeholder="Select your unit"
+                        />
 
-                        <button class="lg:col-span-2 btn btn-primary btn-rounded" type="button" @click="convertUnitsKg">Convert</button>
-                        <button class="lg:col-span-1 btn btn-light bg-slate-50 btn-rounded" type="button" @click="resetWeight">Reset</button>
+                        <button class="lg:col-span-2 btn btn-primary" type="button" @click="convertUnitsKg">Convert</button>
+                        <button class="lg:col-span-1 btn btn-light bg-slate-50" type="button" @click="resetWeight">Reset</button>
                         <div class="lg:col-span-3 bg-slate-50 flex items-center place-content-center text-sm justify-between py-2 px-5 rounded-full">
                             <span>{{ weight.output ?? 0 }}</span>
                             <span class="text-xs font-light">Kilograms</span>
@@ -445,10 +453,18 @@ const convertAndAddCourierCBM = () => {
                     <div class="font-light text-sm">Please enter the measure and size of your freight:</div>
                     <div class="mt-3 grid lg:grid-cols-12 gap-3">
                         <FormTextInput v-model="size.value" class="lg:col-span-3" name="size-value" placeholder="Enter Measure value" type="number" />
-                        <FormSelectInput v-model="size.unit" :select-data="sizesList" class="lg:col-span-3" keyvalue="id" labelvalue="name" name="size-unit" placeholder="Select your unit" />
+                        <FormSelectInput
+                            v-model="size.unit"
+                            :select-data="sizesList"
+                            class="lg:col-span-3"
+                            keyvalue="id"
+                            labelvalue="name"
+                            name="size-unit"
+                            placeholder="Select your unit"
+                        />
 
-                        <button class="lg:col-span-2 btn btn-primary btn-rounded" type="button" @click="convertUnitsMeter">Convert</button>
-                        <button class="lg:col-span-1 btn btn-light bg-slate-50 btn-rounded" type="button" @click="resetSize">Reset</button>
+                        <button class="lg:col-span-2 btn btn-primary" type="button" @click="convertUnitsMeter">Convert</button>
+                        <button class="lg:col-span-1 btn btn-light bg-slate-50" type="button" @click="resetSize">Reset</button>
                         <div class="lg:col-span-3 bg-slate-50 flex items-center place-content-center text-sm justify-between py-2 px-5 rounded-full">
                             <span>{{ size.output ?? 0 }}</span>
                             <span class="text-xs font-light">Meters</span>
@@ -459,10 +475,18 @@ const convertAndAddCourierCBM = () => {
                     <div class="font-light text-sm">Please enter CBM to Convert to AirFreight Weight:</div>
                     <div class="mt-3 grid lg:grid-cols-12 gap-3">
                         <FormTextInput v-model="cbm.value" class="lg:col-span-3" name="size-value" placeholder="Enter Measure value" type="number" />
-                        <FormSelectInput v-model="cbm.unit" :select-data="airCBM" class="lg:col-span-3" keyvalue="id" labelvalue="name" name="size-unit" placeholder="Select your unit" />
+                        <FormSelectInput
+                            v-model="cbm.unit"
+                            :select-data="airCBM"
+                            class="lg:col-span-3"
+                            keyvalue="id"
+                            labelvalue="name"
+                            name="size-unit"
+                            placeholder="Select your unit"
+                        />
 
-                        <button class="lg:col-span-2 btn btn-primary btn-rounded" type="button" @click="convertUnitsCBM">Convert</button>
-                        <button class="lg:col-span-1 btn btn-light bg-slate-50 btn-rounded" type="button" @click="resetCBM">Reset</button>
+                        <button class="lg:col-span-2 btn btn-primary" type="button" @click="convertUnitsCBM">Convert</button>
+                        <button class="lg:col-span-1 btn btn-light bg-slate-50" type="button" @click="resetCBM">Reset</button>
                         <div class="lg:col-span-3 bg-slate-50 flex items-center place-content-center text-sm justify-between py-2 px-5 rounded-full">
                             <span>{{ cbm.output ?? 0 }}</span>
                             <span class="text-xs font-light">Kilograms</span>
@@ -476,8 +500,8 @@ const convertAndAddCourierCBM = () => {
                         <FormTextInput v-model="dimensions.width" class="lg:col-span-3" name="size-value" placeholder="Enter width value in inch" type="number" />
                         <FormTextInput v-model="dimensions.height" class="lg:col-span-3" name="size-value" placeholder="Enter height value in inch" type="number" />
 
-                        <button class="lg:col-span-2 btn btn-primary btn-rounded" type="button" @click="convertUnitsDimension">Convert</button>
-                        <button class="lg:col-span-1 btn btn-light bg-slate-50 btn-rounded" type="button" @click="resetDimensions">Reset</button>
+                        <button class="lg:col-span-2 btn btn-primary" type="button" @click="convertUnitsDimension">Convert</button>
+                        <button class="lg:col-span-1 btn btn-light bg-slate-50" type="button" @click="resetDimensions">Reset</button>
                         <div class="lg:col-span-12 grid lg:grid-cols-12 gap-3">
                             <div class="lg:col-span-3 bg-slate-50 flex items-center place-content-center text-sm justify-between py-2 px-5 rounded-full">
                                 <span>{{ dimensions.outputCFeet ?? 0 }}</span>
@@ -517,9 +541,9 @@ const convertAndAddCourierCBM = () => {
                             placeholder="Select your unit"
                         />
                         <div class="lg:col-span-12 flex lg:flex-row flex-col gap-5 justify-end mt-5">
-                            <button class="lg:col-span-2 btn btn-primary btn-rounded" type="button" @click="convertAndAddSeaCBM">Add</button>
-                            <button class="lg:col-span-1 btn btn-light bg-slate-50 btn-rounded" type="button" @click="resetCurrentSeaMeasurement">Reset Current</button>
-                            <button class="lg:col-span-1 btn btn-danger btn-rounded" type="button" @click="resetAllSeaMeasurements">Reset All Values</button>
+                            <button class="lg:col-span-2 btn btn-primary" type="button" @click="convertAndAddSeaCBM">Add</button>
+                            <button class="lg:col-span-1 btn btn-light bg-slate-50" type="button" @click="resetCurrentSeaMeasurement">Reset Current</button>
+                            <button class="lg:col-span-1 btn btn-danger" type="button" @click="resetAllSeaMeasurements">Reset All Values</button>
                         </div>
                     </div>
                 </div>
@@ -581,9 +605,9 @@ const convertAndAddCourierCBM = () => {
                             placeholder="Select your unit"
                         />
                         <div class="lg:col-span-12 flex lg:flex-row flex-col gap-5 justify-end mt-5">
-                            <button class="lg:col-span-2 btn btn-primary btn-rounded" type="button" @click="convertAndAddAirCBM">Add</button>
-                            <button class="lg:col-span-1 btn btn-light bg-slate-50 btn-rounded" type="button" @click="resetCurrentAirMeasurement">Reset Current</button>
-                            <button class="lg:col-span-1 btn btn-danger btn-rounded" type="button" @click="resetAllAirMeasurements">Reset All Values</button>
+                            <button class="lg:col-span-2 btn btn-primary" type="button" @click="convertAndAddAirCBM">Add</button>
+                            <button class="lg:col-span-1 btn btn-light bg-slate-50" type="button" @click="resetCurrentAirMeasurement">Reset Current</button>
+                            <button class="lg:col-span-1 btn btn-danger" type="button" @click="resetAllAirMeasurements">Reset All Values</button>
                         </div>
                     </div>
                 </div>
@@ -637,9 +661,27 @@ const convertAndAddCourierCBM = () => {
                     <div class="mt-3 grid lg:grid-cols-12 gap-3">
                         <FormTextInput v-model="courier.activeCourierMeasure.qty" class="lg:col-span-3" name="weight-value" placeholder="QTY of boxes" type="number" />
                         <FormTextInput v-model="courier.activeCourierMeasure.des" class="lg:col-span-9" name="weight-value" placeholder="Description" />
-                        <FormTextInput v-model="courier.activeCourierMeasure.length" class="lg:col-span-3" name="weight-value" placeholder="Please enter length per box" type="number" />
-                        <FormTextInput v-model="courier.activeCourierMeasure.width" class="lg:col-span-3" name="weight-value" placeholder="Please enter width per box" type="number" />
-                        <FormTextInput v-model="courier.activeCourierMeasure.height" class="lg:col-span-3" name="weight-value" placeholder="Please enter height per box" type="number" />
+                        <FormTextInput
+                            v-model="courier.activeCourierMeasure.length"
+                            class="lg:col-span-3"
+                            name="weight-value"
+                            placeholder="Please enter length per box"
+                            type="number"
+                        />
+                        <FormTextInput
+                            v-model="courier.activeCourierMeasure.width"
+                            class="lg:col-span-3"
+                            name="weight-value"
+                            placeholder="Please enter width per box"
+                            type="number"
+                        />
+                        <FormTextInput
+                            v-model="courier.activeCourierMeasure.height"
+                            class="lg:col-span-3"
+                            name="weight-value"
+                            placeholder="Please enter height per box"
+                            type="number"
+                        />
                         <FormSelectInput
                             v-model="courier.activeCourierMeasure.unit"
                             :clearable="false"
@@ -651,9 +693,9 @@ const convertAndAddCourierCBM = () => {
                             placeholder="Select your unit"
                         />
                         <div class="lg:col-span-12 flex lg:flex-row flex-col gap-5 justify-end mt-5">
-                            <button class="lg:col-span-2 btn btn-primary btn-rounded" type="button" @click="convertAndAddCourierCBM">Add</button>
-                            <button class="lg:col-span-1 btn btn-light bg-slate-50 btn-rounded" type="button" @click="resetCurrentCourierMeasurement">Reset Current</button>
-                            <button class="lg:col-span-1 btn btn-danger btn-rounded" type="button" @click="resetAllCourierMeasurements">Reset All Values</button>
+                            <button class="lg:col-span-2 btn btn-primary" type="button" @click="convertAndAddCourierCBM">Add</button>
+                            <button class="lg:col-span-1 btn btn-light bg-slate-50" type="button" @click="resetCurrentCourierMeasurement">Reset Current</button>
+                            <button class="lg:col-span-1 btn btn-danger" type="button" @click="resetAllCourierMeasurements">Reset All Values</button>
                         </div>
                     </div>
                 </div>

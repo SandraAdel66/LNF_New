@@ -95,7 +95,7 @@ const selectSkillCategoryId = (id: string) => {
 
 <template>
     <div class="mt-8">
-        <section class="lg:min-h-[30rem] grid lg:grid-cols-12 gap-5 items-center container px-6 md:px-12">
+        <section class="lg:min-h-[30rem] grid lg:grid-cols-12 gap-5 items-center container px-6">
             <div class="flex items-center lg:col-span-8 justify-start">
                 <div class="flex flex-col gap-3">
                     <div class="-intro-y">
@@ -142,7 +142,7 @@ const selectSkillCategoryId = (id: string) => {
         <!--                <div class="text-center mt-8">-->
         <!--                    <span class="text-4xl font-extrabold"><span class="font-medium text-primary mr-2">Our</span>Skills</span>-->
         <!--                </div>-->
-        <!--                <div class="container flex flex-col gap-8 px-6 md:px-12 py-5">-->
+        <!--                <div class="container flex flex-col gap-8 px-6  py-5">-->
         <!--                    <div class="flex items-center gap-5 mx-auto">-->
         <!--                        <button-->
         <!--                            v-for="cat in skillsCategories"-->

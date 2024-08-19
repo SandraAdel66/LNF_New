@@ -2,12 +2,16 @@ export const useResourceStore = defineStore('resource', () => {
     const countries = ref<Country[]>();
     const cities = ref<City[]>();
     const settings = ref<PublicSetting[]>();
+    const services = ref<Service[]>();
 
     const setCountries = (data?: Country[]) => {
         countries.value = data;
     };
     const setCities = (data?: City[]) => {
         cities.value = data;
+    };
+    const setServices = (data?: Service[]) => {
+        services.value = data;
     };
 
     const setSettings = (data?: PublicSetting[]) => {
@@ -22,10 +26,12 @@ export const useResourceStore = defineStore('resource', () => {
         if (res.value) {
             setCountries((res.value as any).countries as Country[]);
             setCities((res.value as any).cities as City[]);
+            setServices((res.value as any).services as Service[]);
         }
         if (error && error.value) {
             setCountries();
             setCities();
+            setServices();
             console.error(error);
         }
     };
@@ -52,5 +58,7 @@ export const useResourceStore = defineStore('resource', () => {
         setCountries,
         cities,
         fetchResources,
+        services,
+        setServices,
     };
 });

@@ -6,7 +6,7 @@
         <NuxtRouteAnnouncer />
         <NuxtLayout>
             <div>
-                <NuxtLoadingIndicator :duration="5000" :height="4" :throttle="0" class="z-[9999]" color="rgb(34 197 94)" />
+                <NuxtLoadingIndicator :duration="5000" :height="4" :throttle="0" class="z-[9999]" color="rgb(26 101 164)" />
                 <NuxtPage />
             </div>
         </NuxtLayout>

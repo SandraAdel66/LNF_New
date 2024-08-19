@@ -16,7 +16,7 @@ const userStore = useUserStore();
             <div v-if="props.section.buttonOneActive" class="whitespace-nowrap">
                 <template v-if="props.section.buttonLinkTypeOne">
                     <NuxtLink :href="props.section.buttonRouteOne">
-                        <button :class="'btn btn-rounded px-6 btn-' + props.section.buttonStyleOne">
+                        <button :class="'btn  px-6 btn-' + props.section.buttonStyleOne">
                             <Icon v-if="props.section.buttonIconOne" :name="props.section.buttonIconOne" class="size-5 mr-2" />
                             {{ props.section.buttonTextOne }}
                         </button>
@@ -24,7 +24,7 @@ const userStore = useUserStore();
                 </template>
                 <template v-else>
                     <a :href="props.section.buttonRouteOne">
-                        <button :class="'btn btn-rounded px-6 btn-' + props.section.buttonStyleOne">
+                        <button :class="'btn  px-6 btn-' + props.section.buttonStyleOne">
                             <Icon v-if="props.section.buttonIconOne" :name="props.section.buttonIconOne" class="size-5 mr-2" />
                             {{ props.section.buttonTextOne }}
                         </button>
