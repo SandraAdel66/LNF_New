@@ -17,21 +17,21 @@ useSeoMeta({
     <div v-if="status !== 'pending'">
         <SectionBenefitsHeader :benefit="service" />
         <div class="my-8 container px-6 grid lg:grid-cols-12 gap-5">
-            <div class="lg:col-span-4 bg-white rounded-2xl p-5">
+            <div class="lg:col-span-4 p-5 bg-slate-50 rounded-lg shadow-sm">
                 <ul class="list-disc list-outside pl-5">
                     <li v-for="(service, index) in resources.services" :key="index">
                         <NuxtLink
                             :href="'/service/' + service.slug"
                             :disabled="service.slug === slug"
                             type="button"
-                            :class="[service.slug === slug ? 'opacity-100 text-primary' : 'opacity-50', 'py-1 font-semibold hover:text-primary']"
+                            :class="[service.slug === slug ? 'opacity-100 text-primary' : 'opacity-65', 'py-1 font-medium hover:text-primary']"
                         >
                             <span>{{ service.name }}</span>
                         </NuxtLink>
                     </li>
                 </ul>
             </div>
-            <div class="lg:col-span-8 prose prose-slate prose-sm" v-html="(service as Service).description" />
+            <div class="lg:col-span-8 prose text-black prose-sm" v-html="(service as Service).description" />
         </div>
     </div>
 </template>

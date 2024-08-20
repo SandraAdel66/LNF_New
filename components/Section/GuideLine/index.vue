@@ -10,7 +10,7 @@ const toggleSectionIndex = (index: number) => {
 </script>
 <template>
     <div v-if="policies && policies.length > 0" class="grid lg:grid-cols-12 gap-5 mb-8">
-        <div class="lg:col-span-4 p-5 bg-slate-50 rounded-xl border border-slate-200/75 shadow-sm">
+        <div class="lg:col-span-4 p-5 bg-slate-50 rounded-xl shadow-sm">
             <ul class="list-disc list-inside">
                 <li v-for="(policy, index) in policies" :key="index">
                     <button

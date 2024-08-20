@@ -41,7 +41,7 @@ export default {
                 '3/4': '75%',
             },
             fontSize: {
-                xs: '0.70rem',
+                xs: '0.75rem',
                 sm: '0.85rem',
                 base: '1rem',
                 xl: '1.25rem',

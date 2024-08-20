@@ -109,5 +109,15 @@ export default defineNuxtConfig({
         // exclude all URLs that start with /dashboard
         exclude: ['/dashboard/**'],
     },
-    modules: ['@nuxtjs/tailwindcss', '@pinia/nuxt', '@morev/vue-transitions/nuxt', 'nuxt-headlessui', '@nuxt/image', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/icon'],
+    modules: [
+        '@nuxtjs/tailwindcss',
+        'vue3-carousel-nuxt',
+        '@pinia/nuxt',
+        '@morev/vue-transitions/nuxt',
+        'nuxt-headlessui',
+        '@nuxt/image',
+        '@nuxt/eslint',
+        '@nuxtjs/seo',
+        '@nuxt/icon',
+    ],
 });

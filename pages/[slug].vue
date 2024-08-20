@@ -15,8 +15,7 @@ useSeoMeta({
 
 <template>
     <div v-if="status !== 'pending'">
-        <PageHeader :page="page as Page" />
-        <div class="container my-8 px-6">
+        <div class="container my-5 px-6">
             <SectionAbout v-if="slug === 'about'" :sections="(page as Page).pageSections as PageSection[]" />
             <SectionGuideLine v-if="slug === 'membership'" />
             <SectionContactForm v-if="slug === 'contact'" />

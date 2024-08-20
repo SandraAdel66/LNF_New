@@ -26,8 +26,8 @@ function handleResize() {
 </script>
 
 <template>
-    <div class="text-sm intro-x mt-4 grid grid-cols-12 items-start lg:gap-4 overflow-hidden bg-white rounded-lg min-h-64">
-        <div class="relative xl:col-span-4 col-span-12 group bg-white border h-full overflow-hidden">
+    <div class="border border-slate-100 text-sm intro-x mt-4 ease-in-out duration-300 grid grid-cols-12 hover:shadow-lg items-start lg:gap-4 overflow-hidden rounded-lg min-h-64">
+        <div class="relative xl:col-span-4 col-span-12 group bg-white h-full overflow-hidden">
             <div class="z-30 absolute top-0 left-0 py-2 px-4 text-white bg-primary text-center">
                 <div
                     v-for="(datePart, index) in splitDate(event.startDateFront)"
@@ -37,7 +37,12 @@ function handleResize() {
                     {{ datePart }}
                 </div>
             </div>
-            <NuxtImg :alt="event.title" :src="event.imageUrl" class="object-cover w-full h-full inset-0 group-hover:scale-125 ease-in-out duration-[4s]" />
+            <NuxtImg
+                :alt="event.title"
+                :src="event.imageUrl"
+                :class="event.eventOver && 'grayscale'"
+                class="object-cover w-full h-full inset-0 group-hover:scale-125 ease-in-out duration-[4s]"
+            />
         </div>
         <div class="xl:col-span-8 col-span-12 h-full p-4">
             <h1 v-if="event.title" class="text-base font-semibold capitalize pb-2 border-b truncate">

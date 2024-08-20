@@ -25,6 +25,8 @@ type ApiResponseData =
     | Testimonial
     | Partner[]
     | Partner
+    | Team
+    | Team[]
     | Service
     | Policy[]
     | Policy
@@ -62,6 +64,22 @@ type PublicSetting = {
     id: number;
     name: string;
     value: any;
+};
+
+type Team = {
+    id: number;
+    name: string;
+    title: string;
+    network: string;
+    showHome: boolean;
+    position: number;
+    active: boolean;
+    imageUrl: string;
+    image: Media | null;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string;
+    deleted: boolean;
 };
 
 type ApplicationFormType = {
