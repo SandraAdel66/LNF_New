@@ -16,7 +16,7 @@ const toggleSectionIndex = (index: number) => {
                     <button
                         :disabled="selectedSectionIndex === index"
                         type="button"
-                        :class="[selectedSectionIndex === index ? 'opacity-100 text-primary' : 'opacity-65', 'py-1 font-normal hover:text-primary']"
+                        :class="[selectedSectionIndex === index ? 'opacity-100 text-primary' : 'opacity-65', 'py-0.5 font-medium hover:text-primary']"
                         @click="toggleSectionIndex(index)"
                     >
                         <span class="">{{ policy.title }}</span>
@@ -24,7 +24,7 @@ const toggleSectionIndex = (index: number) => {
                 </li>
             </ul>
         </div>
-        <div class="lg:col-span-8 prose prose-slate">
+        <div class="lg:col-span-8 prose prose-slate prose-sm">
             <div v-html="policies[selectedSectionIndex].description" />
         </div>
     </div>

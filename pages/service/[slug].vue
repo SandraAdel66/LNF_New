@@ -26,12 +26,12 @@ useSeoMeta({
                             type="button"
                             :class="[service.slug === slug ? 'opacity-100 text-primary' : 'opacity-50', 'py-1 font-semibold hover:text-primary']"
                         >
-                            <span class="text-sm uppercase">{{ service.name }}</span>
+                            <span>{{ service.name }}</span>
                         </NuxtLink>
                     </li>
                 </ul>
             </div>
-            <div class="lg:col-span-8 prose prose-slate" v-html="(service as Service).description" />
+            <div class="lg:col-span-8 prose prose-slate prose-sm" v-html="(service as Service).description" />
         </div>
     </div>
 </template>

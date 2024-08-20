@@ -16,7 +16,7 @@ const { data: article, status } = await useApiFetch(`/api/get-article/${slug.val
         <div class="container px-6 my-5 space-y-1.5">
             <div class="opacity-75 text-light font-sm">{{ (article as Article).publishDateFormatted }}</div>
             <div class="text-xl font-medium">{{ (article as Article).name }}</div>
-            <div class="lg:col-span-8 prose prose-slate" v-html="(article as Article).des" />
+            <div class="lg:col-span-8 prose prose-slate prose-sm" v-html="(article as Article).des" />
         </div>
     </div>
 </template>

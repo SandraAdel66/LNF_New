@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Google Fonts Imports */
-@import url(https://fonts.bunny.net/css?family=lexend:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);
+@import url(https://fonts.bunny.net/css?family=montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);
 
 @layer base {
     :root {
@@ -29,8 +29,8 @@
     }
 
     html {
-        font-family: "Lexend", serif;
-        @apply text-lg min-h-screen font-light;
+        font-family: "Montserrat", serif;
+        @apply text-lg min-h-screen;
         & body {
             @apply m-0 antialiased text-sm text-secondary ;
         }
