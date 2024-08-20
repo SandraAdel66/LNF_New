@@ -41,6 +41,12 @@ function handleResize() {
             </h1>
             <div class="mt-2 border-b pb-3">
                 <div class="flex flex-col items-start justify-between gap-1 md:space-y-0 space-y-2">
+                    <div v-if="event.startDateFormatted" class="flex items-center gap-2">
+                        <Icon class="size-4 opacity-75" name="solar:calendar-linear" />
+                        <span class="font-semibold">
+                            {{ event.startDateFormatted }}
+                        </span>
+                    </div>
                     <div v-if="event.venue" class="flex items-center gap-2">
                         <Icon class="size-4 opacity-75" name="solar:buildings-2-line-duotone" />
                         <span class="font-semibold">
