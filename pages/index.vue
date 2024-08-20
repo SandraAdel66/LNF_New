@@ -137,34 +137,61 @@ const selectSkillCategoryId = (id: string) => {
                 </div>
             </div>
         </section>
-        <!--        <section class="relative bg-white mt-8">-->
-        <!--            <div class="flex flex-col gap-5">-->
-        <!--                <div class="text-center mt-8">-->
-        <!--                    <span class="text-4xl font-extrabold"><span class="font-medium text-primary mr-2">Our</span>Skills</span>-->
-        <!--                </div>-->
-        <!--                <div class="container flex flex-col gap-8 px-6  py-5">-->
-        <!--                    <div class="flex items-center gap-5 mx-auto">-->
-        <!--                        <button-->
-        <!--                            v-for="cat in skillsCategories"-->
-        <!--                            :key="cat.id"-->
-        <!--                            :class="[activeSkillCategoryId === cat.id ? 'btn-primary' : 'btn-secondary opacity-50', 'btn  btn-rounded gap-2']"-->
-        <!--                            @click="selectSkillCategoryId(cat.id)"-->
-        <!--                        >-->
-        <!--                            <Icon :name="cat.icon" class="size-5" />-->
-        <!--                            <span>{{ cat.name }}</span>-->
-        <!--                        </button>-->
-        <!--                    </div>-->
-        <!--                    <ul class="grid md:grid-cols-6 sm:grid-cols-4 grid-cols-2 gap-8 lg:grid-cols-8 p-5">-->
-        <!--                        <li v-for="skill in skills" :key="skill.icon" class="flex place-content-center group intro-x">-->
-        <!--                            <div class="flex flex-col flex-wrap gap-2 text-center opacity-50 group-hover:opacity-100 ease-in-out duration-300">-->
-        <!--                                <Icon :name="skill.icon" class="size-16 mx-auto" />-->
-        <!--                                <span class="group-hover:text-primary transition-colors font-medium whitespace-nowrap">{{ skill.name }}</span>-->
-        <!--                            </div>-->
-        <!--                        </li>-->
-        <!--                    </ul>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </section>-->
+        <section class="relative bg-slate-50 py-12">
+            <div class="container px-6">
+                <div class="text-center">
+                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">The Core</span>Idea</span>
+                </div>
+                <div class="max-w-5xl mx-auto text-base mt-3 text-center">
+                    The Logistics Network Federation (LNF) stands as a beacon of cooperative strength and shared vision transcending the traditional boundaries of competition. It
+                    is the embodiment of a powerful idea: At the heart of the LNF lies a simple yet profound idea: unity in diversity. By bringing together freight and logistics
+                    networks from across the globe, we harness a wealth of experience, perspectives, and capabilities. However, with this vast potential also come our shared
+                    challenges—increasing member networks, ensuring profitability, solidifying the credibility of our financial protection schemes, and organizing hallmark events
+                    that epitomize our collaborative spirit and shared expertise. The LNF is about creating a symbiotic ecosystem where every network flourishes, transforming
+                    individual successes into shared victories to achieve unprecedented success.
+                </div>
+            </div>
+        </section>
+        <section class="relative bg-white py-12">
+            <div class="container px-6">
+                <div class="text-center">
+                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">Board</span>Members</span>
+                </div>
+                <SectionTeam class="mt-8" />
+            </div>
+        </section>
+        <section class="relative bg-slate-50 py-12">
+            <div class="container px-6">
+                <div class="text-center">
+                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">About</span>LNF</span>
+                </div>
+                <div class="max-w-5xl mx-auto text-base mt-3 text-center">
+                    In an era where change is the only constant, and innovation is the engine of growth, we find ourselves at a crossroads. How do we navigate the complexities of
+                    global trade, regulatory landscapes, and technological disruptions? The answer lies in unity, collaboration, and collective innovation. LNF, the Logistics
+                    Networks Federation of Freight Forwarders, is a non-governmental, membership-based organization founded in 2023 and headquartered in New York, USA. We represent
+                    service providers in logistics and freight networks and supply chain management. Through our services and publications, we support various areas of logistics
+                    activity and help formulate industry policy on critical logistics issues. We promote trade facilitation and best practices among the freight-forwarding
+                    community.
+                </div>
+            </div>
+        </section>
+        <section class="relative white py-12">
+            <div class="flex flex-col gap-5">
+                <div class="text-center mt-8">
+                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">Our</span>Networks</span>
+                </div>
+                <div class="container flex flex-col gap-8 px-6 py-5">
+                    <ul class="grid md:grid-cols-6 sm:grid-cols-4 grid-cols-2 gap-8 lg:grid-cols-8 p-5">
+                        <li v-for="skill in skills" :key="skill.icon" class="flex place-content-center group intro-x">
+                            <div class="flex flex-col flex-wrap gap-2 text-center opacity-50 group-hover:opacity-100 ease-in-out duration-300">
+                                <Icon :name="skill.icon" class="size-16 mx-auto" />
+                                <span class="group-hover:text-primary transition-colors font-medium whitespace-nowrap">{{ skill.name }}</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
