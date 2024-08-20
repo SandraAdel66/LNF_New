@@ -14,7 +14,7 @@ useSeoMeta({
 </script>
 
 <template>
-    <div v-if="status !== 'pending'" class="bg-slate-50">
+    <div v-if="status !== 'pending'">
         <SectionBenefitsHeader :benefit="service" />
         <div class="my-8 container px-6 grid lg:grid-cols-12 gap-5">
             <div class="lg:col-span-4 bg-white rounded-2xl p-5">

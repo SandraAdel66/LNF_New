@@ -10,16 +10,16 @@ const toggleSectionIndex = (index: number) => {
 </script>
 <template>
     <div v-if="policies && policies.length > 0" class="grid lg:grid-cols-12 gap-5 mb-8">
-        <div class="lg:col-span-4 p-5 bg-white/75 rounded-xl">
+        <div class="lg:col-span-4 p-5 bg-slate-50 rounded-xl border border-slate-200/75 shadow-sm">
             <ul class="list-disc list-inside">
                 <li v-for="(policy, index) in policies" :key="index">
                     <button
                         :disabled="selectedSectionIndex === index"
                         type="button"
-                        :class="[selectedSectionIndex === index ? 'opacity-100 text-primary' : 'opacity-50', 'py-1 font-semibold hover:text-primary']"
+                        :class="[selectedSectionIndex === index ? 'opacity-100 text-primary' : 'opacity-65', 'py-1 font-normal hover:text-primary']"
                         @click="toggleSectionIndex(index)"
                     >
-                        <span class="text-sm uppercase">{{ policy.title }}</span>
+                        <span class="">{{ policy.title }}</span>
                     </button>
                 </li>
             </ul>
