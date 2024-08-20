@@ -25,6 +25,7 @@ const toggleSectionIndex = (index: number) => {
             </ul>
         </div>
         <div class="lg:col-span-8 prose prose-slate prose-sm">
+            <div class="font-bold text-3xl">{{ policies[selectedSectionIndex].title }}</div>
             <div v-html="policies[selectedSectionIndex].description" />
         </div>
     </div>
