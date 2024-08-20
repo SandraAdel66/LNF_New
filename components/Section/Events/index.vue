@@ -20,7 +20,7 @@ console.log(events.value);
 <template>
     <div v-if="status !== 'pending'">
         <div>
-            <div class="flex flex-col gap-5 mt-8">
+            <div class="grid lg:grid-cols-3 gap-5">
                 <template v-for="(event, index) in events as Exhibition[]" :key="index">
                     <SectionEventsCard :event="event" />
                 </template>
