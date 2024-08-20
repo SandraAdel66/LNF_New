@@ -26,7 +26,7 @@ function handleResize() {
 </script>
 
 <template>
-    <div class="text-sm intro-x mt-4 grid grid-cols-12 items-start lg:gap-4 overflow-hidden text-base bg-white rounded-lg min-h-64">
+    <div class="text-sm intro-x mt-4 grid grid-cols-12 items-start lg:gap-4 overflow-hidden bg-white rounded-lg min-h-64">
         <div class="relative xl:col-span-4 col-span-12 group bg-white border h-full overflow-hidden">
             <div class="z-30 absolute top-0 left-0 py-2 px-4 text-white bg-primary text-center">
                 <div
