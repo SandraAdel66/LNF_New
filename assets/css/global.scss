@@ -36,6 +36,11 @@
         }
     }
 }
+/* Extra Styles */
+.text-justify-center {
+    @apply text-justify;
+    text-align-last: center;
+}
 
 .prose {
     max-width: 100% !important;
