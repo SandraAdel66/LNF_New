@@ -53,16 +53,18 @@ onMounted(async () => {
                 <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuTwo" :menu="footerData.menus.footerMenuTwo" />
                 <div class="lg:col-span-4 hidden md:block intro-y h-full">
                     <h2 class="font-medium text-blue-500 text-sm whitespace-nowrap">Bank Details</h2>
-                    <ul class="divide-y divide-dashed divide-white/20">
-                        <li class="text-light text-xs flex items-center gap-5 justify-between py-2">
-                            <div class="opacity-75">SWIFT Code</div>
-                            <div>{{ footerData.swiftCode }}</div>
-                        </li>
-                        <li class="text-light text-xs flex items-center gap-5 justify-between py-2">
-                            <div class="opacity-75">USD IBAN</div>
-                            <div>{{ footerData.usdIBAN }}</div>
-                        </li>
-                    </ul>
+                    <div class="mt-2">
+                        <ul class="divide-y divide-dashed divide-white/20 leading-tight">
+                            <li class="text-light text-xs text-left py-2">
+                                <div class="opacity-75">SWIFT Code</div>
+                                <div class="mt-1.5">{{ footerData.swiftCode }}</div>
+                            </li>
+                            <li class="text-light text-xs text-left py-2">
+                                <div class="opacity-75">USD IBAN</div>
+                                <div class="mt-1.5">{{ footerData.usdIBAN }}</div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

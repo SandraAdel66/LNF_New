@@ -13,6 +13,7 @@ useSeoMeta({
 const texts = [
     {
         id: 'web-development',
+        imageUrl: '/images/about-bg3.jpg',
         text: 'Uniting for a Stronger Tomorrow',
         icon: 'solar:code-square-linear',
         description:
@@ -20,18 +21,21 @@ const texts = [
     },
     {
         id: 'graphic-design',
+        imageUrl: '/images/about-bg3-light.jpg',
         text: 'Financial Protection',
         icon: 'solar:pallete-2-linear',
         description: 'Stunning, impactful designs tailored to your brand. Elevate your identity and captivate your audience with our creative expertise.',
     },
     {
         id: 'media-production',
+        imageUrl: '/images/bulb-with-eyes.jpg',
         text: 'Increasing Membership',
         icon: 'solar:special-effects-linear',
         description: "High-quality video and photography production to tell your brand's story and engage your audience. Let's create captivating visuals together.",
     },
     {
         id: 'marketing-strategies',
+        imageUrl: '/images/ui-ux.jpg',
         text: 'Mutual Benefits',
         icon: 'solar:chat-square-2-linear',
         description: 'Tailored marketing strategies, including SEO and social media, to reach your target audience effectively and drive business growth.',
@@ -40,6 +44,7 @@ const texts = [
 const currentText = ref(texts[0].text);
 const currentId = ref(texts[0].id);
 const currentIcon = ref(texts[0].icon);
+const currentImageUrl = ref(texts[0].imageUrl);
 const currentDescription = ref(texts[0].description);
 const addIntroClass = ref(false);
 let textIndex = 0;
@@ -55,7 +60,9 @@ const typeText = () => {
         setTimeout(() => {
             textIndex = (textIndex + 1) % texts.length;
             charIndex = 0;
+            currentId.value = texts[textIndex].id;
             currentIcon.value = texts[textIndex].icon;
+            currentImageUrl.value = texts[textIndex].imageUrl;
             currentDescription.value = texts[textIndex].description;
             typeText();
         }, pauseDuration);
@@ -80,31 +87,25 @@ const skills = ref([
     { category: 'web-developing', name: 'Wordpress', icon: 'mdi:wordpress' },
     { category: 'web-developing', name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
 ]);
-const activeSkillCategoryId = ref('all');
-const skillsCategories = ref([
-    { id: 'all', name: 'All', icon: 'solar:align-left-linear' },
-    { id: 'web-developing', name: 'Web Developing', icon: 'solar:code-square-linear' },
-    { id: 'graphic-design', name: 'Graphic Design', icon: 'solar:pallete-2-linear' },
-    { id: 'media-production', name: 'Media Production', icon: 'solar:special-effects-linear' },
-    { id: 'marketing-strategies', name: 'Marketing Strategies', icon: 'solar:chat-square-2-linear' },
-]);
-const selectSkillCategoryId = (id: string) => {
-    activeSkillCategoryId.value = id;
-};
+
+const introImageUrl = ref('/images/bg.svg');
 </script>
 
 <template>
-    <div class="mt-8">
-        <section class="lg:min-h-[30rem] grid lg:grid-cols-12 gap-5 items-center container px-6">
-            <div class="flex items-center lg:col-span-8 justify-start">
+    <div>
+        <section
+            class="lg:min-h-[30rem] grid lg:grid-cols-12 gap-5 items-center container px-6 bg-cover bg-bottom bg-blue-100"
+            :style="{ backgroundImage: `url(${introImageUrl})` }"
+        >
+            <div class="flex items-center lg:col-span-7 justify-start">
                 <div class="flex flex-col gap-3">
                     <div class="-intro-y">
-                        <div class="font-normal 2xl:text-xl text-lg">Logistics Network Federation</div>
-                        <div :class="'font-extrabold 2xl:text-5xl text-4xl mt-2 leading-tight text-primary'">{{ currentText }}</div>
+                        <div class="font-normal 2xl:text-lg text-base">Logistics Network Federation</div>
+                        <div :class="'font-extrabold 2xl:text-4xl text-3xl mt-2 leading-tight text-primary'">{{ currentText }}</div>
                     </div>
-                    <!--                    <p :class="['font-light', 'opacity-85', 'text-xl', { '-intro-x': addIntroClass }]">-->
-                    <!--                        {{ currentDescription }}-->
-                    <!--                    </p>-->
+                    <p :class="['text-lg', { '-intro-x': addIntroClass }]">
+                        {{ currentDescription }}
+                    </p>
                     <div class="mt-5 flex items-center gap-5">
                         <NuxtLink href="/services">
                             <button class="btn w-full btn-primary btn-rounded gap-3 px-6">
@@ -121,20 +122,12 @@ const selectSkillCategoryId = (id: string) => {
                     </div>
                 </div>
             </div>
-            <div class="flex items-center lg:col-span-4 justify-end">
-                <div class="flex flex-col grow place-items-end gap-5 max-w-[30rem]">
-                    <!--                    <div-->
-                    <!--                        v-for="item in texts"-->
-                    <!--                        :key="item.id"-->
-                    <!--                        :class="[currentId === item.id ? 'w-full h-32 p-5' : 'p-3 flex items-center place-content-center', 'bg-primary']"-->
-                    <!--                        class="rounded-2xl size-12 ease-in-out duration-[1s] overflow-hidden text-slate-900"-->
-                    <!--                    >-->
-                    <!--                        <TransitionFade :duration="{ enter: 300, leave: 0 }">-->
-                    <!--                            <Icon v-if="currentId !== item.id" :name="item.icon" class="w-full h-full" />-->
-                    <!--                            <div v-else class="text-lg">{{ currentDescription }}</div>-->
-                    <!--                        </TransitionFade>-->
-                    <!--                    </div>-->
-                </div>
+            <div class="flex items-center place-content-center lg:col-span-5 justify-end">
+                <NuxtImg
+                    class="mx-auto size-96 border-4 border-white rounded-full object-center object-cover bg-white"
+                    :class="addIntroClass && '-intro-x'"
+                    :src="currentImageUrl"
+                />
             </div>
         </section>
         <section class="relative bg-slate-50">
