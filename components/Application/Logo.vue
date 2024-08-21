@@ -2,8 +2,8 @@
 const resources = useResourceStore();
 const settings = resources?.settings;
 const brand = ref({
-    name: settings ? settings.name : 'WSA Network',
-    logo: useSettingValue('app_logo'),
+    name: settings ? useSettingValue('app_name') : 'Logistics Network Federation',
+    logo: useSettingValue('app_logo_dark'),
 });
 </script>
 

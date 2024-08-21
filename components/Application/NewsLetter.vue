@@ -7,7 +7,7 @@ const newsLetter = ref({
 });
 </script>
 <template>
-    <div id="mc_embed_signup" class="md:col-span-12 lg:col-span-4 h-full intro-y">
+    <div id="mc_embed_signup" class="h-full intro-y">
         <form
             id="mc-embedded-subscribe-form"
             action="https://worldshippingalliance.us3.list-manage.com/subscribe/post?u=e748bb328902ff61161a65e4c&amp;id=fddb565aa1&amp;f_id=00d9c2e1f0"

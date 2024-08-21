@@ -20,7 +20,7 @@ const { data: team, status } = await useApiFetch(`/api/get-team`, {
                     <button
                         :disabled="selectedSectionIndex === index"
                         type="button"
-                        :class="[selectedSectionIndex === index ? 'opacity-100 text-primary font-semibold' : 'opacity-65', 'py-0.5 font-medium hover:text-primary']"
+                        :class="[selectedSectionIndex === index ? 'opacity-100 text-primary font-semibold' : 'opacity-65', 'py-2 font-medium hover:text-primary']"
                         @click="toggleSectionIndex(index)"
                     >
                         <span>{{ section.title }}</span>

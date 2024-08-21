@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const route = useRoute();
-
 const headerMenuId = ref<number>(useSettingValue('header_menu'));
 
 const { data: headerMenu } = await useApiFetch(`/api/get-menu/${headerMenuId.value}`, {
@@ -13,7 +12,7 @@ const { data: headerMenu } = await useApiFetch(`/api/get-menu/${headerMenuId.val
     <div class="w-full border-b-4 border-primary/85">
         <div class="sm:px-12 px-6 py-2 flex items-center gap-5 justify-between container">
             <NuxtLink href="/">
-                <NuxtImg class="h-20 shrink-0" title="Logistics Network Federation" alt="Logistics Network Federation" src="/images/lnf-logo.svg" />
+                <NuxtImg class="h-20 shrink-0" :title="useSettingValue('app_name')" :alt="useSettingValue('app_name')" :src="useSettingValue('app_logo_light')" />
             </NuxtLink>
             <div>
                 <div class="flex gap-5 items-center justify-end">

@@ -20,13 +20,8 @@ useSeoMeta({
             <div class="lg:col-span-4 p-5 bg-slate-50 rounded-lg shadow-sm">
                 <ul class="list-disc list-outside pl-5">
                     <li v-for="(service, index) in resources.services" :key="index">
-                        <NuxtLink
-                            :href="'/service/' + service.slug"
-                            :disabled="service.slug === slug"
-                            type="button"
-                            :class="[service.slug === slug ? 'opacity-100 text-primary' : 'opacity-65', 'py-1 font-medium hover:text-primary']"
-                        >
-                            <span>{{ service.name }}</span>
+                        <NuxtLink :href="'/service/' + service.slug" :disabled="service.slug === slug">
+                            <div :class="[service.slug === slug ? 'opacity-100 text-primary' : 'opacity-65', '!py-2 font-medium hover:text-primary']">{{ service.name }}</div>
                         </NuxtLink>
                     </li>
                 </ul>

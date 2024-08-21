@@ -39,7 +39,7 @@ function handleResize() {
             <h1 v-if="event.title" class="font-semibold capitalize pb-2 border-b truncate">
                 {{ event.title }}
             </h1>
-            <div class="mt-2 border-b pb-3">
+            <div class="mt-2 border-b pb-3 text-xs">
                 <div class="flex flex-col items-start justify-between gap-1 md:space-y-0 space-y-2">
                     <div v-if="event.startDateFormatted" class="flex items-center gap-2">
                         <Icon class="size-4 opacity-75" name="solar:calendar-linear" />
@@ -92,7 +92,6 @@ function handleResize() {
                 <!--                    </div>-->
                 <!--                </div>-->
             </div>
-            <p v-if="event.shortDes" class="mt-2 font-normal text-justify line-clamp-5">{{ event.shortDes }}</p>
             <div v-if="event.gallery && event.gallery?.length > 0" class="flex items-center gap-4 p-1 border mt-2 rounded-md">
                 <template v-for="(image, index) in event.gallery" :key="image.id">
                     <div

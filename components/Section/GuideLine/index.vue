@@ -16,7 +16,7 @@ const toggleSectionIndex = (index: number) => {
                     <button
                         :disabled="selectedSectionIndex === index"
                         type="button"
-                        :class="[selectedSectionIndex === index ? 'opacity-100 text-primary' : 'opacity-65', 'py-0.5 font-medium hover:text-primary']"
+                        :class="[selectedSectionIndex === index ? 'opacity-100 text-primary' : 'opacity-65', 'py-2 font-medium hover:text-primary']"
                         @click="toggleSectionIndex(index)"
                     >
                         <span class="">{{ policy.title }}</span>
