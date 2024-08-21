@@ -15,7 +15,6 @@ const texts = [
         id: 'web-development',
         imageUrl: '/images/about-bg3.jpg',
         text: 'Uniting for a Stronger Tomorrow',
-        icon: 'solar:code-square-linear',
         description:
             'LNF stands as a beacon of cooperative strength and shared vision, transcending the traditional boundaries of competition. By banding together, we leverage our combined expertise, resources, and networks to achieve unprecedented success.',
     },
@@ -23,27 +22,23 @@ const texts = [
         id: 'graphic-design',
         imageUrl: '/images/about-bg3-light.jpg',
         text: 'Financial Protection',
-        icon: 'solar:pallete-2-linear',
         description: 'Stunning, impactful designs tailored to your brand. Elevate your identity and captivate your audience with our creative expertise.',
     },
     {
         id: 'media-production',
         imageUrl: '/images/bulb-with-eyes.jpg',
         text: 'Increasing Membership',
-        icon: 'solar:special-effects-linear',
         description: "High-quality video and photography production to tell your brand's story and engage your audience. Let's create captivating visuals together.",
     },
     {
         id: 'marketing-strategies',
         imageUrl: '/images/ui-ux.jpg',
         text: 'Mutual Benefits',
-        icon: 'solar:chat-square-2-linear',
         description: 'Tailored marketing strategies, including SEO and social media, to reach your target audience effectively and drive business growth.',
     },
 ];
 const currentText = ref(texts[0].text);
 const currentId = ref(texts[0].id);
-const currentIcon = ref(texts[0].icon);
 const currentImageUrl = ref(texts[0].imageUrl);
 const currentDescription = ref(texts[0].description);
 const addIntroClass = ref(false);
@@ -61,7 +56,6 @@ const typeText = () => {
             textIndex = (textIndex + 1) % texts.length;
             charIndex = 0;
             currentId.value = texts[textIndex].id;
-            currentIcon.value = texts[textIndex].icon;
             currentImageUrl.value = texts[textIndex].imageUrl;
             currentDescription.value = texts[textIndex].description;
             typeText();
