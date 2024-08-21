@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { data: policies, status } = await useApiFetch(`/api/get-policy`, {
+const { data: policies, status } = await useApiFetch(`/api/get-guide-line`, {
     lazy: true,
     transform: (policies) => (policies as ApiResponse).data as Policy[],
 });

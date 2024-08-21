@@ -8,7 +8,6 @@ const footerData = ref({
     menus: {
         footerMenuOne: undefined,
         footerMenuTwo: undefined,
-        footerMenuThree: undefined,
     },
 });
 
@@ -34,14 +33,9 @@ const footerMenuTwo = async () => {
     footerData.value.menus.footerMenuTwo = await getMenuItems(menuId);
 };
 
-const footerMenuThree = async () => {
-    const menuId = await useSettingValue('footer_menu_3');
-    footerData.value.menus.footerMenuThree = await getMenuItems(menuId);
-};
 onMounted(async () => {
     await footerMenuOne();
     await footerMenuTwo();
-    await footerMenuThree();
 });
 </script>
 
