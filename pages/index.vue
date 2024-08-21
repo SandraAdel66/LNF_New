@@ -86,7 +86,7 @@ const introImageUrl = ref('/images/bg.svg');
 </script>
 
 <template>
-    <div>
+    <div v-if="status !== 'pending'">
         <section
             class="lg:min-h-[30rem] grid lg:grid-cols-12 gap-5 items-center container px-6 bg-cover bg-bottom bg-blue-100"
             :style="{ backgroundImage: `url(${introImageUrl})` }"
