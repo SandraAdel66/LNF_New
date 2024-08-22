@@ -2,15 +2,13 @@
 const footerData = ref({
     copyright: useSettingValue('copyrights_text') ?? null,
     address: useSettingValue('office_address') ?? null,
-    usdIBAN: useSettingValue('usd_ipan') ?? null,
-    swiftCode: useSettingValue('swift_code') ?? null,
     aboutBrandShort: useSettingValue('app_short_description') ?? null,
+
     menus: {
         footerMenuOne: undefined,
         footerMenuTwo: undefined,
     },
 });
-
 const getMenuItems = async (id) => {
     const { data: menu, error } = await useApiFetch(`/api/get-menu/${id}`, {
         transform: (headerMenu) => headerMenu.data,
@@ -54,14 +52,14 @@ onMounted(async () => {
                 <div class="lg:col-span-4 hidden md:block intro-y h-full">
                     <h2 class="font-medium text-primary text-sm whitespace-nowrap">Bank Details</h2>
                     <div class="mt-2">
-                        <ul class="divide-y divide-dashed divide-white/20 leading-tight">
-                            <li class="text-light text-xs text-left py-2">
+                        <ul class="divide-y divide-dashed divide-slate-300/75 leading-tight">
+                            <li class="text-xs text-left py-2">
                                 <div class="opacity-75">SWIFT Code</div>
-                                <div class="mt-1.5">{{ footerData.swiftCode }}</div>
+                                <div class="mt-1.5">{{ useSettingValue('swift_code') }}</div>
                             </li>
-                            <li class="text-light text-xs text-left py-2">
+                            <li class="text-xs text-left py-2">
                                 <div class="opacity-75">USD IBAN</div>
-                                <div class="mt-1.5">{{ footerData.usdIBAN }}</div>
+                                <div class="mt-1.5">{{ useSettingValue('usd_ipan') }}</div>
                             </li>
                         </ul>
                     </div>
