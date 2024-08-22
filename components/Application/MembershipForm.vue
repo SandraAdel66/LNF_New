@@ -65,6 +65,8 @@ const person = ref<ContactPersons>({
     jobTitle: null,
     phoneNumber: null,
     cellNumber: null,
+    image: null,
+    passport: null,
 });
 
 const personRules = ref({
@@ -75,6 +77,8 @@ const personRules = ref({
     jobTitle: { required },
     phoneNumber: { required },
     cellNumber: { required },
+    image: {},
+    passport: { required },
 });
 const p$ = useVuelidate(personRules, person.value);
 const resetPerson = async () => {
@@ -86,6 +90,8 @@ const resetPerson = async () => {
         jobTitle: null,
         phoneNumber: null,
         cellNumber: null,
+        image: null,
+        passport: null,
     };
 };
 onMounted(() => {
@@ -215,7 +221,6 @@ async function closeModal() {
                                 name="email"
                                 placeholder="Email"
                             />
-
                             <FormTextInput
                                 v-model="application.application.phone"
                                 :errors="v$.phone.$errors"
@@ -344,59 +349,65 @@ async function closeModal() {
             </template>
             <template #content>
                 <div class="grid lg:grid-cols-12 gap-5 items-start">
-                    <FormSelectInput
-                        v-model="person.title"
-                        :clearable="false"
-                        :errors="p$.title.$errors"
-                        :select-data="titles"
-                        class="lg:col-span-2"
-                        keyvalue="value"
-                        label="Title"
-                        labelvalue="name"
-                        name="title"
-                        placeholder="Title"
-                    />
-                    <FormTextInput
-                        v-model="person.firstName"
-                        :errors="p$.firstName.$errors"
-                        :name="'person-first-name'"
-                        class="lg:col-span-5"
-                        label="First Name"
-                        placeholder="First Name"
-                    />
-                    <FormTextInput
-                        v-model="person.lastName"
-                        :errors="p$.lastName.$errors"
-                        :name="'person-last-name'"
-                        class="lg:col-span-5"
-                        label="Last Name"
-                        placeholder="Last Name"
-                    />
-                    <FormTextInput v-model="person.email" :errors="p$.email.$errors" :name="'person-email'" class="lg:col-span-6" label="Email" placeholder="Email" />
-                    <FormTextInput
-                        v-model="person.jobTitle"
-                        :errors="p$.jobTitle.$errors"
-                        :name="'person-job-title'"
-                        class="lg:col-span-6"
-                        label="Job Title"
-                        placeholder="Job Title"
-                    />
-                    <FormTextInput
-                        v-model="person.phoneNumber"
-                        :errors="p$.phoneNumber.$errors"
-                        :name="'person-phone'"
-                        class="lg:col-span-6"
-                        label="Phone Number"
-                        placeholder="Phone Number"
-                    />
-                    <FormTextInput
-                        v-model="person.cellNumber"
-                        :errors="p$.cellNumber.$errors"
-                        :name="'person-cell'"
-                        class="lg:col-span-6"
-                        label="Fax Number"
-                        placeholder="Cell Number"
-                    />
+                    <div class="lg:col-span-4 space-y-5">
+                        <FormUploader v-model="person.image" :allowed-types="['image']" :errors="p$.image.$errors" label="Profile Image" name="profile-image" />
+                        <FormUploader v-model="person.passport" :allowed-types="['image', 'document']" :errors="p$.passport.$errors" label="Passport Photo Copy" name="passport" />
+                    </div>
+                    <div class="lg:col-span-8 grid lg:grid-cols-12 gap-5 items-start">
+                        <FormSelectInput
+                            v-model="person.title"
+                            :clearable="false"
+                            :errors="p$.title.$errors"
+                            :select-data="titles"
+                            class="lg:col-span-4"
+                            keyvalue="value"
+                            label="Title"
+                            labelvalue="name"
+                            name="title"
+                            placeholder="Title"
+                        />
+                        <FormTextInput
+                            v-model="person.firstName"
+                            :errors="p$.firstName.$errors"
+                            :name="'person-first-name'"
+                            class="lg:col-span-4"
+                            label="First Name"
+                            placeholder="First Name"
+                        />
+                        <FormTextInput
+                            v-model="person.lastName"
+                            :errors="p$.lastName.$errors"
+                            :name="'person-last-name'"
+                            class="lg:col-span-4"
+                            label="Last Name"
+                            placeholder="Last Name"
+                        />
+                        <FormTextInput v-model="person.email" :errors="p$.email.$errors" :name="'person-email'" class="lg:col-span-6" label="Email" placeholder="Email" />
+                        <FormTextInput
+                            v-model="person.jobTitle"
+                            :errors="p$.jobTitle.$errors"
+                            :name="'person-job-title'"
+                            class="lg:col-span-6"
+                            label="Job Title"
+                            placeholder="Job Title"
+                        />
+                        <FormTextInput
+                            v-model="person.phoneNumber"
+                            :errors="p$.phoneNumber.$errors"
+                            :name="'person-phone'"
+                            class="lg:col-span-6"
+                            label="Phone Number"
+                            placeholder="Phone Number"
+                        />
+                        <FormTextInput
+                            v-model="person.cellNumber"
+                            :errors="p$.cellNumber.$errors"
+                            :name="'person-cell'"
+                            class="lg:col-span-6"
+                            label="Fax Number"
+                            placeholder="Cell Number"
+                        />
+                    </div>
                 </div>
             </template>
             <template #footer>

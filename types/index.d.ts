@@ -110,6 +110,8 @@ type ContactPersons = {
     jobTitle: string | null;
     phoneNumber: string | null;
     cellNumber: string | null;
+    image: Media | null;
+    passport: Media | null;
 };
 
 type Article = {
@@ -223,6 +225,7 @@ type Exhibition = {
 type PageSection = {
     id: number;
     postTitle: string;
+    slug: string;
     title: string;
     subTitle?: string | null;
     des?: string | undefined | null;
