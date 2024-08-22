@@ -30,7 +30,7 @@
 
     html {
         font-family: "Montserrat", serif;
-        @apply text-lg min-h-screen;
+        @apply text-lg min-h-screen scroll-smooth;
         & body {
             @apply m-0 antialiased text-sm text-black ;
         }

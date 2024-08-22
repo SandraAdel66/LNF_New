@@ -40,8 +40,8 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="bg-black text-white px-4 dark:text-slate-300 -shadow-md">
-        <div class="container p-8">
+    <div class="bg-slate-100 px-4 dark:text-slate-300 -shadow-md">
+        <div class="container px-8 py-4">
             <div class="grid gap-8 md:grid-cols-12">
                 <div class="intro-y lg:col-span-4 h-full hidden lg:block">
                     <ApplicationLogo class="w-64" />
@@ -52,7 +52,7 @@ onMounted(async () => {
                 <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuOne" :menu="footerData.menus.footerMenuOne" />
                 <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuTwo" :menu="footerData.menus.footerMenuTwo" />
                 <div class="lg:col-span-4 hidden md:block intro-y h-full">
-                    <h2 class="font-medium text-blue-500 text-sm whitespace-nowrap">Bank Details</h2>
+                    <h2 class="font-medium text-primary text-sm whitespace-nowrap">Bank Details</h2>
                     <div class="mt-2">
                         <ul class="divide-y divide-dashed divide-white/20 leading-tight">
                             <li class="text-light text-xs text-left py-2">
@@ -69,7 +69,7 @@ onMounted(async () => {
             </div>
         </div>
         <div class="text-sm">
-            <div class="mx-auto max-w-7xl border-t border-dashed border-black/10 dark:border-white/10 px-8 py-4">
+            <div class="mx-auto max-w-7xl border-t border-dashed border-black/10 dark:border-white/10 px-8 py-2">
                 <div class="md:flex md:items-center md:justify-between md:gap-8 md:space-y-0 space-y-8">
                     <div class="-intro-x sm:text-sm text-xs sm:text-left text-center">
                         {{ footerData.copyright }}

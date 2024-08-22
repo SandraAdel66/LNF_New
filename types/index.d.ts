@@ -228,9 +228,9 @@ type PageSection = {
     slug: string;
     title: string;
     subTitle?: string | null;
-    des?: string | undefined | null;
-    type?: string | undefined | null;
-    active?: boolean;
+    description: string | undefined | null;
+    type: string | undefined | null;
+    active: boolean;
     buttonTextOne: string | null;
     buttonStyleOne: string | null;
     buttonRouteOne: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
