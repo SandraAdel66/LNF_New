@@ -48,7 +48,7 @@
 }
 
 .vs--single .vs__selected-options {
-    //@apply flex items-center gap-3
+    /*@apply flex items-center gap-3*/
 }
 
 .vs__actions {
@@ -64,6 +64,6 @@
 }
 
 .vs__dropdown-toggle {
-    //@apply border border-slate-200 rounded-full shadow-sm;
+    /*@apply border border-slate-200 rounded-full shadow-sm;*/
     @apply flex items-center space-x-2 relative w-full;
 }
