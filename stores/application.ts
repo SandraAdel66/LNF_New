@@ -51,6 +51,7 @@ export const useApplicationStore = defineStore('application', () => {
     };
 
     const submit = async (refValue?: number | null) => {
+        await useApiFetch('/sanctum/csrf-cookie');
         const { data, error } = await useApiFetch(`/api/application-form`, {
             method: 'POST',
             body: application.value,

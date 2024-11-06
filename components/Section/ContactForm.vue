@@ -41,6 +41,7 @@ const sendMessage = async () => {
         useToast({ title: 'Error', message: 'Please fill all required fields', type: 'error', duration: 5000 });
         return false;
     }
+    await useApiFetch('/sanctum/csrf-cookie');
     const { data, error } = await useApiFetch(`/api/contact-us-public`, {
         method: 'POST',
         body: contactForm.value,
@@ -63,7 +64,7 @@ const sendMessage = async () => {
 </script>
 
 <template>
-    <div class="p-5 bg-white rounded-2xl border border-slate-200/75">
+    <div class="p-5 bg-white rounded-2xl max-w-5xl mx-auto">
         <form class="grid lg:grid-cols-12 gap-5" @submit.prevent="sendMessage">
             <FormTextInput v-model="contactForm.name" :errors="v$.name.$errors" class="lg:col-span-6" label="Full Name" name="name" placeholder="Full Name" />
             <FormTextInput v-model="contactForm.phone" :errors="v$.phone.$errors" class="lg:col-span-6" label="Phone" name="name" placeholder="+1 234 5678 9123" />

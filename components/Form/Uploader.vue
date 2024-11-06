@@ -137,7 +137,6 @@ async function onDropFile($event: DragEvent) {
     if (fileInput) {
         const formData = new FormData();
         formData.append('file', fileInput);
-
         const { data: res } = await useApiFetch('/api/media', {
             method: 'POST',
             body: formData,
@@ -213,7 +212,6 @@ watch(
         }
     },
 );
-
 function removeFile() {
     uploading.value = true;
     file.value = null;

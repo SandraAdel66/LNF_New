@@ -77,7 +77,7 @@ const personRules = ref({
     jobTitle: { required },
     phoneNumber: { required },
     cellNumber: { required },
-    image: {},
+    image: { required },
     passport: { required },
 });
 const p$ = useVuelidate(personRules, person.value);
@@ -109,7 +109,7 @@ const applyPersonAction = async () => {
         useToast({ title: 'Error', message: 'Please fill all required fields', type: 'error', duration: 5000 });
         return false;
     }
-    if (editMode && currentEditIndex.value !== null) {
+    if (editMode.value && currentEditIndex.value !== null) {
         application.application.contactPersons[currentEditIndex.value] = { ...person.value };
     } else {
         application.addPerson(person.value);
@@ -138,7 +138,7 @@ async function closeModal() {
 }
 </script>
 <template>
-    <div>
+    <div class="max-w-7xl mx-auto">
         <template v-if="!application.success">
             <TransitionExpand>
                 <div v-if="!clientCountryId" class="flex items-center place-content-center py-12">
