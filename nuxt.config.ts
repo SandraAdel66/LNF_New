@@ -9,7 +9,7 @@ export default defineNuxtConfig({
         url: process.env.APP_URL ?? 'http://lnfederation.test',
     },
     tailwindcss: {
-        cssPath: ['~/assets/css/global.css', { injectPosition: 'first' }],
+        cssPath: ['~/assets/css/global.scss', { injectPosition: 'first' }],
         exposeConfig: true,
         config: {},
         viewer: false,
