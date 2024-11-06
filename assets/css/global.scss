@@ -1,7 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* Main Style Files */
+@use 'component/_media.scss';
+@use 'component/_btn.scss';
+@use 'component/_form-check.scss';
+@use 'component/_form-control.scss';
+@use 'component/_form-help.scss';
+@use 'component/_form-inline.scss';
+@use 'component/_form-label.scss';
+@use 'component/_form-reset.scss';
+@use 'component/_form-select.scss';
+@use 'component/_intro.scss';
+@use 'component/_table.scss';
+@use 'component/_zoom-in.scss';
+@use 'component/_table-report.scss';
+@use 'component/_video-container.scss';
+@use 'component/_section-divider.scss';
+@use 'component/_box.scss';
+@use 'component/_typography.scss';
 
+/* Plugin & Packages Style Files */
+@use '@vuepic/vue-datepicker/dist/main.css';
+@use '@vuepic/vue-datepicker/dist/main.css';
 /* Google Fonts Imports */
 @import url(https://fonts.bunny.net/css?family=montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);
 
@@ -49,28 +70,7 @@
     }
 }
 
-/* Main Style Files */
-@use 'component/_media.scss';
-@use 'component/_btn.scss';
-@use 'component/_form-check.scss';
-@use 'component/_form-control.scss';
-@use 'component/_form-help.scss';
-@use 'component/_form-inline.scss';
-@use 'component/_form-label.scss';
-@use 'component/_form-reset.scss';
-@use 'component/_form-select.scss';
-@use 'component/_intro.scss';
-@use 'component/_table.scss';
-@use 'component/_zoom-in.scss';
-@use 'component/_table-report.scss';
-@use 'component/_video-container.scss';
-@use 'component/_section-divider.scss';
-@use 'component/_box.scss';
-@use 'component/_typography.scss';
 
-/* Plugin & Packages Style Files */
-@use '@vuepic/vue-datepicker/dist/main.css';
-@use '@vuepic/vue-datepicker/dist/main.css';
 
 /* Extra Styles */
 .text-justify-center {
