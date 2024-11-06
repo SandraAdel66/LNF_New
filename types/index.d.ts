@@ -86,8 +86,8 @@ type ApplicationFormType = {
     name: string | null;
     email: string | null;
     image: Media | null;
-    addressLine1: string | null;
-    addressLine2: string | null;
+    addressLineOne: string | null;
+    addressLineTwo: string | null;
     city: string | null;
     state: string | null;
     postalCode: string | null;
@@ -396,8 +396,8 @@ type User = {
     email: string;
     wsaId?: string | null;
     group?: UserGroup;
-    addressLine1: string;
-    addressLine2: string | null;
+    addressLineOne: string;
+    addressLineTwo: string | null;
     mapLong?: string;
     mapLat?: string;
     slogan?: string | null;

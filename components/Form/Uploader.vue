@@ -221,8 +221,13 @@ function removeFile() {
 }
 
 onMounted(async () => {
-    if (value.value) {
-        await getFile(value.value);
+    if (props.modelValue) {
+        if (props.modelValue?.id) {
+            await getFile(props.modelValue?.id);
+        }
+        if (props.modelValue) {
+            await getFile(props.modelValue);
+        }
     }
 
     props.allowedTypes.forEach((type) => {

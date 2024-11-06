@@ -14,8 +14,8 @@ const clientCountryId = ref((resources.countries as Country[])?.find((c) => c.co
 
 const rules = ref({
     name: { required },
-    addressLine1: { required },
-    addressLine2: {},
+    addressLineOne: { required },
+    addressLineTwo: {},
     email: { required, email },
     image: { required },
     city: { required },
@@ -157,16 +157,16 @@ async function closeModal() {
                                     placeholder="Network Name"
                                 />
                                 <FormTextInput
-                                    v-model="application.application.addressLine1"
-                                    :errors="v$.addressLine1.$errors"
+                                    v-model="application.application.addressLineOne"
+                                    :errors="v$.addressLineOne.$errors"
                                     class="lg:col-span-6"
                                     label="Address Line 1"
                                     name="address-line-1"
                                     placeholder="Address Line 1"
                                 />
                                 <FormTextInput
-                                    v-model="application.application.addressLine2"
-                                    :errors="v$.addressLine2.$errors"
+                                    v-model="application.application.addressLineTwo"
+                                    :errors="v$.addressLineTwo.$errors"
                                     class="lg:col-span-6"
                                     label="Address Line 2"
                                     name="address-line-2"
@@ -418,7 +418,7 @@ async function closeModal() {
                     </button>
                     <button :disabled="isLoading" class="btn-rounded btn-sm btn btn-primary px-4" type="button" @click="applyPersonAction()">
                         <Icon :name="isLoading ? 'svg-spinners:3-dots-fade' : 'solar:check-circle-broken'" class="w-5 h-5 mr-2" />
-                        <span v-html="'Update'" />
+                        <span v-html="editMode ? 'Update' : 'Add'" />
                     </button>
                 </div>
             </template>
