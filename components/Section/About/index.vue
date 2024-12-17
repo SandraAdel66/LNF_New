@@ -64,8 +64,8 @@ const isSectionActive = (section: PageSection, idx: number) => {
 
                     <div v-if="status !== 'pending'" class="mt-5 grid lg:grid-cols-3 md:grid-cols-2 gap-5">
                         <div class="lg:col-span-3 md:col-span-2 font-bold text-3xl my-1.5">LNF Board Members</div>
-                        <div class="intro-x bg-slate-50 overflow-hidden border border-slate-100 shadow-sm rounded-xl" v-for="member in team as Team[]" :key="member.id">
-                            <NuxtImg class="m-0 w-full h-52 object-cover" :src="member.imageUrl" :alt="member.name" :title="member.name + ' - ' + member.title" />
+                        <div v-for="member in team as Team[]" :key="member.id" class="intro-x bg-slate-50 overflow-hidden border border-slate-100 shadow-sm rounded-xl">
+                            <NuxtImg class="m-0 w-full h-52 object-cover object-top" :src="member.imageUrl" :alt="member.name" :title="member.name + ' - ' + member.title" />
                             <div class="px-5 pt-2 pb-2">
                                 <div class="font-semibold">{{ member.name }}</div>
                                 <div class="text-xs font-light">{{ member.title }}</div>
