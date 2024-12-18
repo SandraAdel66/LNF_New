@@ -6,41 +6,52 @@ const { data: page, status } = await useApiFetch(`/api/get-page/${slug.value}`, 
     transform: (page) => (page as ApiResponse).data as Page,
 });
 
+const { data: sliders, status: slidersStatus } = await useApiFetch(`/api/get-slider`, {
+    lazy: true,
+    transform: (sliders) => (sliders as ApiResponse).data as Slider[],
+});
+
 useSeoMeta({
     title: (page.value as Page)?.name,
     description: (page.value as Page)?.des,
 });
-const texts = [
-    {
-        id: 'web-development',
-        imageUrl: '/images/about-bg3.jpg',
-        text: 'Uniting for a Stronger Tomorrow',
-        description:
-            'LNF stands as a beacon of cooperative strength and shared vision, transcending the traditional boundaries of competition. By banding together, we leverage our combined expertise, resources, and networks to achieve unprecedented success.',
-    },
-    {
-        id: 'graphic-design',
-        imageUrl: '/images/about-bg3-light.jpg',
-        text: 'Financial Protection',
-        description: 'Stunning, impactful designs tailored to your brand. Elevate your identity and captivate your audience with our creative expertise.',
-    },
-    {
-        id: 'media-production',
-        imageUrl: '/images/bulb-with-eyes.jpg',
-        text: 'Increasing Membership',
-        description: "High-quality video and photography production to tell your brand's story and engage your audience. Let's create captivating visuals together.",
-    },
-    {
-        id: 'marketing-strategies',
-        imageUrl: '/images/ui-ux.jpg',
-        text: 'Mutual Benefits',
-        description: 'Tailored marketing strategies, including SEO and social media, to reach your target audience effectively and drive business growth.',
-    },
-];
+
+const texts = sliders.value as Slider[];
+// const texts = [
+//     {
+//         id: 'web-development',
+//         imageUrl: '/images/about-bg3.jpg',
+//         text: 'Uniting for a Stronger Tomorrow',
+//         description:
+//             'LNF stands as a beacon of cooperative strength and shared vision, transcending the traditional boundaries of competition. By banding together, we leverage our combined expertise, resources, and networks to achieve unprecedented success.',
+//     },
+//     {
+//         id: 'graphic-design',
+//         imageUrl: '/images/about-bg3-light.jpg',
+//         text: 'Financial Protection',
+//         description: 'Stunning, impactful designs tailored to your brand. Elevate your identity and captivate your audience with our creative expertise.',
+//     },
+//     {
+//         id: 'media-production',
+//         imageUrl: '/images/bulb-with-eyes.jpg',
+//         text: 'Increasing Membership',
+//         description: "High-quality video and photography production to tell your brand's story and engage your audience. Let's create captivating visuals together.",
+//     },
+//     {
+//         id: 'marketing-strategies',
+//         imageUrl: '/images/ui-ux.jpg',
+//         text: 'Mutual Benefits',
+//         description: 'Tailored marketing strategies, including SEO and social media, to reach your target audience effectively and drive business growth.',
+//     },
+// ];
 const currentText = ref(texts[0].text);
 const currentId = ref(texts[0].id);
 const currentImageUrl = ref(texts[0].imageUrl);
 const currentDescription = ref(texts[0].description);
+const currentButtonOneActive = ref(texts[0].buttonOneActive);
+const currentButtonTwoActive = ref(texts[0].buttonTwoActive);
+const currentButtonOneData = ref(texts[0].buttonOne);
+const currentButtonTwoData = ref(texts[0].buttonTwo);
 const addIntroClass = ref(false);
 let textIndex = 0;
 let charIndex = 0;
@@ -58,6 +69,10 @@ const typeText = () => {
             currentId.value = texts[textIndex].id;
             currentImageUrl.value = texts[textIndex].imageUrl;
             currentDescription.value = texts[textIndex].description;
+            currentButtonOneActive.value = texts[textIndex].buttonOneActive;
+            currentButtonTwoActive.value = texts[textIndex].buttonTwoActive;
+            currentButtonOneData.value = texts[textIndex].buttonOne;
+            currentButtonTwoData.value = texts[textIndex].buttonTwo;
             typeText();
         }, pauseDuration);
     }
@@ -101,16 +116,16 @@ const introImageUrl = ref('/images/bg.svg');
                         {{ currentDescription }}
                     </p>
                     <div class="mt-5 flex items-center gap-5">
-                        <NuxtLink href="/services">
-                            <button class="btn w-full btn-primary btn-rounded gap-3 px-6">
-                                <Icon name="solar:maximize-square-2-linear" class="size-6" />
-                                <span>Services</span>
+                        <NuxtLink v-if="currentButtonOneActive" class="intro-x" :href="currentButtonOneData?.target">
+                            <button :class="'!btn-' + currentButtonOneData.style" class="btn w-full btn-primary btn-rounded gap-3 px-6">
+                                <Icon :name="currentButtonOneData.icon" class="size-6" />
+                                <span>{{ currentButtonOneData.label }}</span>
                             </button>
                         </NuxtLink>
-                        <NuxtLink href="/portfolio">
-                            <button class="btn w-full btn-secondary btn-rounded gap-3 px-6">
-                                <Icon name="solar:documents-linear" class="size-6" />
-                                <span>Apply Now</span>
+                        <NuxtLink v-if="currentButtonTwoActive" class="intro-x" :href="currentButtonTwoData?.target">
+                            <button :class="'!btn-' + currentButtonTwoData.style" class="btn w-full btn-secondary btn-rounded gap-3 px-6">
+                                <Icon :name="currentButtonTwoData.icon" class="size-6" />
+                                <span>{{ currentButtonTwoData.label }}</span>
                             </button>
                         </NuxtLink>
                     </div>

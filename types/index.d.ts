@@ -18,7 +18,29 @@ type Policy = {
     position: number | null;
 };
 
+type ButtonObjectData = {
+    icon: string;
+    label: string;
+    style: string;
+    target: string;
+};
+
+type Slider = {
+    id: number;
+    text: string;
+    buttonOne: ButtonObjectData;
+    buttonTwo: ButtonObjectData;
+    description: string;
+    position: number;
+    buttonOneActive: boolean;
+    buttonTwoActive: boolean;
+    active: boolean;
+    imageUrl: string;
+    image: Media | null;
+};
 type ApiResponseData =
+    | Slider
+    | Slider[]
     | PageSection
     | PageSection[]
     | Testimonial[]
