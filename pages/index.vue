@@ -102,41 +102,40 @@ const introImageUrl = ref('/images/bg.svg');
 
 <template>
     <div v-if="status !== 'pending'">
-        <section
-            class="lg:min-h-[30rem] grid lg:grid-cols-12 gap-5 items-center container px-6 bg-cover bg-bottom bg-blue-100"
-            :style="{ backgroundImage: `url(${introImageUrl})` }"
-        >
-            <div class="flex items-center lg:col-span-7 justify-start">
-                <div class="flex flex-col gap-3">
-                    <div class="-intro-y">
-                        <div class="font-normal 2xl:text-lg text-base">Logistics Network Federation</div>
-                        <div :class="'font-extrabold 2xl:text-4xl text-3xl mt-2 leading-tight text-primary'">{{ currentText }}</div>
-                    </div>
-                    <p :class="['text-lg', { '-intro-x': addIntroClass }]">
-                        {{ currentDescription }}
-                    </p>
-                    <div class="mt-5 flex items-center gap-5">
-                        <NuxtLink v-if="currentButtonOneActive" class="intro-x" :href="currentButtonOneData?.target">
-                            <button :class="'!btn-' + currentButtonOneData.style" class="btn w-full btn-primary btn-rounded gap-3 px-6">
-                                <Icon :name="currentButtonOneData.icon" class="size-6" />
-                                <span>{{ currentButtonOneData.label }}</span>
-                            </button>
-                        </NuxtLink>
-                        <NuxtLink v-if="currentButtonTwoActive" class="intro-x" :href="currentButtonTwoData?.target">
-                            <button :class="'!btn-' + currentButtonTwoData.style" class="btn w-full btn-secondary btn-rounded gap-3 px-6">
-                                <Icon :name="currentButtonTwoData.icon" class="size-6" />
-                                <span>{{ currentButtonTwoData.label }}</span>
-                            </button>
-                        </NuxtLink>
+        <section class="lg:min-h-[30rem] bg-cover bg-bottom bg-blue-100" :style="{ backgroundImage: `url(${introImageUrl})` }">
+            <div class="container px-6 grid lg:grid-cols-12 gap-5 items-center pt-12">
+                <div class="flex items-center lg:col-span-7 justify-start">
+                    <div class="flex flex-col gap-3">
+                        <div class="-intro-y">
+                            <div class="font-normal 2xl:text-lg text-base">Logistics Network Federation</div>
+                            <div :class="'font-extrabold 2xl:text-4xl text-3xl mt-2 leading-tight text-primary'">{{ currentText }}</div>
+                        </div>
+                        <p :class="['text-lg', { '-intro-x': addIntroClass }]">
+                            {{ currentDescription }}
+                        </p>
+                        <div class="mt-5 flex items-center gap-5">
+                            <NuxtLink v-if="currentButtonOneActive" class="intro-x" :href="currentButtonOneData?.target">
+                                <button :class="'!btn-' + currentButtonOneData.style" class="btn w-full btn-primary btn-rounded gap-3 px-6">
+                                    <Icon :name="currentButtonOneData.icon" class="size-6" />
+                                    <span>{{ currentButtonOneData.label }}</span>
+                                </button>
+                            </NuxtLink>
+                            <NuxtLink v-if="currentButtonTwoActive" class="intro-x" :href="currentButtonTwoData?.target">
+                                <button :class="'!btn-' + currentButtonTwoData.style" class="btn w-full btn-secondary btn-rounded gap-3 px-6">
+                                    <Icon :name="currentButtonTwoData.icon" class="size-6" />
+                                    <span>{{ currentButtonTwoData.label }}</span>
+                                </button>
+                            </NuxtLink>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="flex items-center place-content-center lg:col-span-5 justify-end">
-                <NuxtImg
-                    class="mx-auto size-96 border-4 border-white rounded-full object-center object-cover bg-white"
-                    :class="addIntroClass && '-intro-x'"
-                    :src="currentImageUrl"
-                />
+                <div class="flex items-center place-content-center lg:col-span-5 justify-end">
+                    <NuxtImg
+                        class="mx-auto size-96 border-4 border-white rounded-full object-center object-cover bg-white"
+                        :class="addIntroClass && '-intro-x'"
+                        :src="currentImageUrl"
+                    />
+                </div>
             </div>
         </section>
         <section class="relative bg-slate-50">
