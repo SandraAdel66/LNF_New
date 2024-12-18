@@ -44,14 +44,14 @@ const texts = sliders.value as Slider[];
 //         description: 'Tailored marketing strategies, including SEO and social media, to reach your target audience effectively and drive business growth.',
 //     },
 // ];
-const currentText = ref(texts[0].text);
-const currentId = ref(texts[0].id);
-const currentImageUrl = ref(texts[0].imageUrl);
-const currentDescription = ref(texts[0].description);
-const currentButtonOneActive = ref(texts[0].buttonOneActive);
-const currentButtonTwoActive = ref(texts[0].buttonTwoActive);
-const currentButtonOneData = ref(texts[0].buttonOne);
-const currentButtonTwoData = ref(texts[0].buttonTwo);
+const currentText = ref(texts[0]?.text);
+const currentId = ref(texts[0]?.id);
+const currentImageUrl = ref(texts[0]?.imageUrl);
+const currentDescription = ref(texts[0]?.description);
+const currentButtonOneActive = ref(texts[0]?.buttonOneActive);
+const currentButtonTwoActive = ref(texts[0]?.buttonTwoActive);
+const currentButtonOneData = ref(texts[0]?.buttonOne);
+const currentButtonTwoData = ref(texts[0]?.buttonTwo);
 const addIntroClass = ref(false);
 let textIndex = 0;
 let charIndex = 0;
@@ -103,7 +103,7 @@ const introImageUrl = ref('/images/bg.svg');
 <template>
     <div v-if="status !== 'pending'">
         <section class="lg:min-h-[30rem] bg-cover bg-bottom bg-blue-100" :style="{ backgroundImage: `url(${introImageUrl})` }">
-            <div class="container px-6 grid lg:grid-cols-12 gap-5 items-center pt-12">
+            <div v-if="slidersStatus !== 'pending'" class="container px-6 grid lg:grid-cols-12 gap-5 items-center pt-12">
                 <div class="flex items-center lg:col-span-7 justify-start">
                     <div class="flex flex-col gap-3">
                         <div class="-intro-y">
