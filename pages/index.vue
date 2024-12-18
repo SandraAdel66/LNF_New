@@ -16,7 +16,7 @@ useSeoMeta({
     description: (page.value as Page)?.des,
 });
 
-const texts = sliders.value as Slider[];
+const texts = (sliders.value as Slider[]) ?? [];
 // const texts = [
 //     {
 //         id: 'web-development',
