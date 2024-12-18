@@ -49,7 +49,7 @@ const isSectionActive = (section: PageSection, idx: number) => {
                                 type="button"
                                 :class="[isSectionActive(section, index) ? 'active-section' : 'opacity-65', 'side__nav font-medium hover:text-primary']"
                             >
-                                <span>{{ section.title }}</span>
+                                <span>{{ useStripHtml(section.title) }}</span>
                             </NuxtLink>
                         </li>
                     </ul>
@@ -57,7 +57,7 @@ const isSectionActive = (section: PageSection, idx: number) => {
                 <div id="content-sections" class="prose prose-slate prose-sm space-y-8">
                     <template v-for="section in props.sections" :key="section.id">
                         <div :id="section.slug" class="section__div">
-                            <div class="font-bold text-3xl">{{ section.title }}</div>
+                            <div class="font-bold text-3xl">{{ useStripHtml(section.title) }}</div>
                             <div v-html="section.description" />
                         </div>
                     </template>

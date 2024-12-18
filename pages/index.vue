@@ -131,6 +131,7 @@ const introImageUrl = ref('/images/bg.svg');
                 </div>
                 <div class="flex items-center place-content-center lg:col-span-5 justify-end">
                     <NuxtImg
+                        v-if="currentImageUrl"
                         class="mx-auto size-96 border-4 border-white rounded-full object-center object-cover bg-white"
                         :class="addIntroClass && '-intro-x'"
                         :src="currentImageUrl"
@@ -138,20 +139,15 @@ const introImageUrl = ref('/images/bg.svg');
                 </div>
             </div>
         </section>
-        <section class="relative bg-slate-50">
+        <section v-if="page && page.pageSections && page?.pageSections.some((s: PageSection) => s.slug === 'the-core-idea')" class="relative bg-slate-50">
             <div class="container px-6">
                 <div class="py-12">
-                    <div class="text-center">
-                        <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">The Core</span>Idea</span>
-                    </div>
-                    <div class="max-w-5xl mx-auto text-base mt-3 text-justify" style="text-align-last: center">
-                        The Logistics Network Federation (LNF) stands as a beacon of cooperative strength and shared vision transcending the traditional boundaries of competition.
-                        It is the embodiment of a powerful idea: At the heart of the LNF lies a simple yet profound idea: unity in diversity. By bringing together freight and
-                        logistics networks from across the globe, we harness a wealth of experience, perspectives, and capabilities. However, with this vast potential also come our
-                        shared challenges—increasing member networks, ensuring profitability, solidifying the credibility of our financial protection schemes, and organizing
-                        hallmark events that epitomize our collaborative spirit and shared expertise. The LNF is about creating a symbiotic ecosystem where every network
-                        flourishes, transforming individual successes into shared victories to achieve unprecedented success.
-                    </div>
+                    <div class="text-center text-3xl font-bold" v-html="page.pageSections.find((s: PageSection) => s.slug === 'the-core-idea').title" />
+                    <div
+                        class="max-w-5xl mx-auto text-base mt-3 text-justify"
+                        style="text-align-last: center"
+                        v-html="page.pageSections.find((s: PageSection) => s.slug === 'the-core-idea').description"
+                    />
                 </div>
             </div>
         </section>
@@ -163,18 +159,15 @@ const introImageUrl = ref('/images/bg.svg');
                 <SectionTeam class="mt-8" />
             </div>
         </section>
-        <section class="relative bg-slate-50 py-12">
+        <section v-if="page && page.pageSections && page?.pageSections.some((s: PageSection) => s.slug === 'about-lnf')" class="relative bg-slate-50 py-12">
             <div class="container px-6">
-                <div class="text-center">
-                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">About</span>LNF</span>
-                </div>
-                <div class="max-w-5xl mx-auto text-base mt-3 text-justify" style="text-align-last: center">
-                    In an era where change is the only constant, and innovation is the engine of growth, we find ourselves at a crossroads. How do we navigate the complexities of
-                    global trade, regulatory landscapes, and technological disruptions? The answer lies in unity, collaboration, and collective innovation. LNF, the Logistics
-                    Networks Federation of Freight Forwarders, is a non-governmental, membership-based organization founded in 2023 and headquartered in New York, USA. We represent
-                    service providers in logistics and freight networks and supply chain management. Through our services and publications, we support various areas of logistics
-                    activity and help formulate industry policy on critical logistics issues. We promote trade facilitation and best practices among the freight-forwarding
-                    community.
+                <div class="py-12">
+                    <div class="text-center text-3xl font-bold" v-html="page.pageSections.find((s: PageSection) => s.slug === 'about-lnf').title" />
+                    <div
+                        class="max-w-5xl mx-auto text-base mt-3 text-justify"
+                        style="text-align-last: center"
+                        v-html="page.pageSections.find((s: PageSection) => s.slug === 'about-lnf').description"
+                    />
                 </div>
             </div>
         </section>
