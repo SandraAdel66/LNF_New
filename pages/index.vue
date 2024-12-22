@@ -86,15 +86,14 @@ watch(currentId, () => {
 onMounted(() => {
     typeText();
 });
-const skills = ref([
-    { category: 'web-developing', name: 'PHP', icon: 'simple-icons:php' },
-    { category: 'web-developing', name: 'Javascript', icon: 'akar-icons:javascript-fill' },
-    { category: 'web-developing', name: 'Typescript', icon: 'akar-icons:typescript-fill' },
-    { category: 'web-developing', name: 'Laravel', icon: 'simple-icons:laravel' },
-    { category: 'web-developing', name: 'Vue js', icon: 'mdi:vuejs' },
-    { category: 'web-developing', name: 'Nuxt js', icon: 'tabler:brand-nuxt' },
-    { category: 'web-developing', name: 'Wordpress', icon: 'mdi:wordpress' },
-    { category: 'web-developing', name: 'Tailwind CSS', icon: 'simple-icons:tailwindcss' },
+const networkLogos = ref([
+    { mode: true, name: 'AFBN', logo: '/images/logos/5.png' },
+    { mode: false, name: 'AirCargo', logo: '/images/logos/1.png' },
+    { mode: true, name: 'CPN', logo: '/images/logos/3.png' },
+    { mode: true, name: 'JGC Line', logo: '/images/logos/2.png' },
+    { mode: true, name: 'UConnect', logo: '/images/logos/4.png' },
+    { mode: true, name: 'WSA', logo: '/images/logos/7.png' },
+    { mode: false, name: 'WorldRing', logo: '/images/logos/6.png' },
 ]);
 
 const introImageUrl = ref('/images/bg.svg');
@@ -171,23 +170,25 @@ const introImageUrl = ref('/images/bg.svg');
                 </div>
             </div>
         </section>
-        <!--        <section class="relative white py-12">-->
-        <!--            <div class="flex flex-col gap-5">-->
-        <!--                <div class="text-center mt-8">-->
-        <!--                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">Our</span>Networks</span>-->
-        <!--                </div>-->
-        <!--                <div class="container flex flex-col gap-8 px-6 py-5">-->
-        <!--                    <ul class="grid md:grid-cols-6 sm:grid-cols-4 grid-cols-2 gap-8 lg:grid-cols-8 p-5">-->
-        <!--                        <li v-for="skill in skills" :key="skill.icon" class="flex place-content-center group intro-x">-->
-        <!--                            <div class="flex flex-col flex-wrap gap-2 text-center opacity-50 group-hover:opacity-100 ease-in-out duration-300">-->
-        <!--                                <Icon :name="skill.icon" class="size-16 mx-auto" />-->
-        <!--                                <span class="group-hover:text-primary transition-colors font-medium whitespace-nowrap">{{ skill.name }}</span>-->
-        <!--                            </div>-->
-        <!--                        </li>-->
-        <!--                    </ul>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </section>-->
+        <section class="relative white py-12">
+            <div class="flex flex-col gap-5">
+                <div class="text-center mt-8">
+                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">Our</span>Networks</span>
+                </div>
+                <div class="w-full">
+                    <ul class="container flex px-6 py-5 gap-8 p-5 place-content-center items-center">
+                        <li v-for="(network, index) in networkLogos" :key="network.name" class="intro-x">
+                            <div
+                                class="flex flex-col flex-wrap gap-2 text-center ease-in-out duration-300"
+                                :class="[!network.mode && 'bg-sky-950 py-1 px-3 rounded-lg', networkLogos.length - 1 === index && '!bg-slate-950']"
+                            >
+                                <NuxtImg :src="network.logo" :title="network.name" :alt="network.name" class="w-full h-14 mx-auto" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 

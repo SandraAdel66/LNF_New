@@ -27,7 +27,7 @@
         "@vuelidate/core": "^2.0.3",
         "@vuelidate/validators": "^2.0.4",
         "@vuepic/vue-datepicker": "^8.8.1",
-        "nuxt": "^3.13.2",
+        "nuxt": "^3.14.1592",
         "pinia": "^2.1.7",
         "vue": "^3.5.12",
         "vue-select": "^4.0.0-beta.6",
