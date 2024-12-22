@@ -85,32 +85,8 @@ export default defineNuxtConfig({
                 lang: 'en',
                 dir: 'ltr',
             },
-            render: {
-                csp: {
-                    reportOnly: false, // Set to true to only report violations
-                    policies: {
-                        'default-src': ["'self'"],
-                        'base-uri': ["'self'"],
-                        'font-src': ["'self'", 'https://fonts.bunny.net'],
-                        'frame-ancestors': ["'self'"],
-                        'img-src': ["'self'", 'data:'],
-                        'object-src': ["'none'"],
-                        'script-src': ["'self'", "'unsafe-inline'", 'https://apis.google.com'],
-                        'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.bunny.net'],
-                        'connect-src': ["'self'", process.env.APP_URL ?? 'https://api.lnfederation.test'],
-                    },
-                },
-            },
         },
         pageTransition: { name: 'page', mode: 'out-in' },
-    },
-    routeRules: {
-        // Don't add any /dashboard/** URLs to the sitemap.xml
-        '/dashboard/**': { robots: false },
-    },
-    sitemap: {
-        // exclude all URLs that start with /dashboard
-        exclude: ['/dashboard/**'],
     },
     modules: [
         '@nuxtjs/tailwindcss',

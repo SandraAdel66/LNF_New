@@ -171,23 +171,23 @@ const introImageUrl = ref('/images/bg.svg');
                 </div>
             </div>
         </section>
-        <section class="relative white py-12">
-            <div class="flex flex-col gap-5">
-                <div class="text-center mt-8">
-                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">Our</span>Networks</span>
-                </div>
-                <div class="container flex flex-col gap-8 px-6 py-5">
-                    <ul class="grid md:grid-cols-6 sm:grid-cols-4 grid-cols-2 gap-8 lg:grid-cols-8 p-5">
-                        <li v-for="skill in skills" :key="skill.icon" class="flex place-content-center group intro-x">
-                            <div class="flex flex-col flex-wrap gap-2 text-center opacity-50 group-hover:opacity-100 ease-in-out duration-300">
-                                <Icon :name="skill.icon" class="size-16 mx-auto" />
-                                <span class="group-hover:text-primary transition-colors font-medium whitespace-nowrap">{{ skill.name }}</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        <!--        <section class="relative white py-12">-->
+        <!--            <div class="flex flex-col gap-5">-->
+        <!--                <div class="text-center mt-8">-->
+        <!--                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">Our</span>Networks</span>-->
+        <!--                </div>-->
+        <!--                <div class="container flex flex-col gap-8 px-6 py-5">-->
+        <!--                    <ul class="grid md:grid-cols-6 sm:grid-cols-4 grid-cols-2 gap-8 lg:grid-cols-8 p-5">-->
+        <!--                        <li v-for="skill in skills" :key="skill.icon" class="flex place-content-center group intro-x">-->
+        <!--                            <div class="flex flex-col flex-wrap gap-2 text-center opacity-50 group-hover:opacity-100 ease-in-out duration-300">-->
+        <!--                                <Icon :name="skill.icon" class="size-16 mx-auto" />-->
+        <!--                                <span class="group-hover:text-primary transition-colors font-medium whitespace-nowrap">{{ skill.name }}</span>-->
+        <!--                            </div>-->
+        <!--                        </li>-->
+        <!--                    </ul>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </section>-->
     </div>
 </template>
 
