@@ -11,39 +11,18 @@ const { data: sliders, status: slidersStatus } = await useApiFetch(`/api/get-sli
     transform: (sliders) => (sliders as ApiResponse).data as Slider[],
 });
 
+const { data: networkLogos, status: logosStatus } = await useApiFetch(`/api/get-logo-company/public`, {
+    lazy: true,
+    transform: (networkLogos) => (networkLogos as ApiResponse).data as NetworkLogos[],
+});
+
 useSeoMeta({
     title: (page.value as Page)?.name,
     description: (page.value as Page)?.des,
 });
 
 const texts = (sliders.value as Slider[]) ?? [];
-// const texts = [
-//     {
-//         id: 'web-development',
-//         imageUrl: '/images/about-bg3.jpg',
-//         text: 'Uniting for a Stronger Tomorrow',
-//         description:
-//             'LNF stands as a beacon of cooperative strength and shared vision, transcending the traditional boundaries of competition. By banding together, we leverage our combined expertise, resources, and networks to achieve unprecedented success.',
-//     },
-//     {
-//         id: 'graphic-design',
-//         imageUrl: '/images/about-bg3-light.jpg',
-//         text: 'Financial Protection',
-//         description: 'Stunning, impactful designs tailored to your brand. Elevate your identity and captivate your audience with our creative expertise.',
-//     },
-//     {
-//         id: 'media-production',
-//         imageUrl: '/images/bulb-with-eyes.jpg',
-//         text: 'Increasing Membership',
-//         description: "High-quality video and photography production to tell your brand's story and engage your audience. Let's create captivating visuals together.",
-//     },
-//     {
-//         id: 'marketing-strategies',
-//         imageUrl: '/images/ui-ux.jpg',
-//         text: 'Mutual Benefits',
-//         description: 'Tailored marketing strategies, including SEO and social media, to reach your target audience effectively and drive business growth.',
-//     },
-// ];
+
 const currentText = ref(texts[0]?.text);
 const currentId = ref(texts[0]?.id);
 const currentImageUrl = ref(texts[0]?.imageUrl);
@@ -86,15 +65,6 @@ watch(currentId, () => {
 onMounted(() => {
     typeText();
 });
-const networkLogos = ref([
-    { mode: true, name: 'AFBN', logo: '/images/logos/5.png' },
-    { mode: false, name: 'AirCargo', logo: '/images/logos/1.png' },
-    { mode: true, name: 'CPN', logo: '/images/logos/3.png' },
-    { mode: true, name: 'JGC Line', logo: '/images/logos/2.png' },
-    { mode: true, name: 'UConnect', logo: '/images/logos/4.png' },
-    { mode: true, name: 'WSA', logo: '/images/logos/7.png' },
-    { mode: false, name: 'WorldRing', logo: '/images/logos/6.png' },
-]);
 
 const introImageUrl = ref('/images/bg.svg');
 </script>
@@ -177,12 +147,9 @@ const introImageUrl = ref('/images/bg.svg');
                 </div>
                 <div class="w-full">
                     <ul class="container flex px-6 py-5 gap-8 p-5 place-content-center items-center">
-                        <li v-for="(network, index) in networkLogos" :key="network.name" class="intro-x">
-                            <div
-                                class="flex flex-col flex-wrap gap-2 text-center ease-in-out duration-300"
-                                :class="[!network.mode && 'bg-sky-950 py-1 px-3 rounded-lg', networkLogos.length - 1 === index && '!bg-slate-950']"
-                            >
-                                <NuxtImg :src="network.logo" :title="network.name" :alt="network.name" class="w-full h-14 mx-auto" />
+                        <li v-for="network in networkLogos" :key="network.name" class="intro-x">
+                            <div class="flex flex-col flex-wrap gap-2 text-center ease-in-out duration-300">
+                                <NuxtImg :src="network.imageUrl" :title="network.name" :alt="network.name" class="w-full h-14 mx-auto rounded-lg" />
                             </div>
                         </li>
                     </ul>

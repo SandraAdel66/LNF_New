@@ -25,6 +25,15 @@ type ButtonObjectData = {
     target: string;
 };
 
+type NetworkLogos = {
+    id: number;
+    name: string;
+    active: boolean;
+    position: string;
+    imageUrl: string;
+    image: Media | null;
+};
+
 type Slider = {
     id: number;
     text: string;
@@ -39,7 +48,9 @@ type Slider = {
     image: Media | null;
 };
 type ApiResponseData =
+    | NetworkLogos
     | Slider
+    | NetworkLogos[]
     | Slider[]
     | PageSection
     | PageSection[]
