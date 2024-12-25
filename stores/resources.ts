@@ -82,6 +82,5 @@ export const useResourceStore = defineStore('resource', () => {
         setServices,
         termsConditions,
         setTermsConditions,
-        setTermsConditions,
     };
 });
