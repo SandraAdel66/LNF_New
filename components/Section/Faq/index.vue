@@ -52,7 +52,7 @@ const isSectionActive = (section: FAQItem, idx: number) => {
                     <template v-for="section in faqs" :key="section.id">
                         <div :id="section.slug" class="section__div">
                             <div class="font-bold text-3xl">{{ section.name }}</div>
-                            <div v-html="section.description" />
+                            <div v-html="section.des" />
                         </div>
                     </template>
                 </div>
