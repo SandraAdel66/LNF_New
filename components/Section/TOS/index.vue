@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const resources = useResourceStore();
-const tos = resources.guideLines ?? [];
+const tos = resources.termsConditions ?? [];
 
 const route = useRoute();
 const router = useRouter();

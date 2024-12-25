@@ -4,6 +4,7 @@ export const useResourceStore = defineStore('resource', () => {
     const settings = ref<PublicSetting[]>();
     const services = ref<Service[]>();
     const guideLines = ref<GuideLine[]>();
+    const termsConditions = ref<GuideLine[]>();
     const faq = ref<FAQItem[]>();
 
     const setCountries = (data?: Country[]) => {
@@ -17,6 +18,9 @@ export const useResourceStore = defineStore('resource', () => {
     };
     const setGuideline = (data?: GuideLine[]) => {
         guideLines.value = data;
+    };
+    const setTermsConditions = (data?: GuideLine[]) => {
+        termsConditions.value = data;
     };
     const setFAQ = (data?: FAQItem[]) => {
         faq.value = data;
@@ -36,12 +40,14 @@ export const useResourceStore = defineStore('resource', () => {
             setServices((res.value as any).services as Service[]);
             setGuideline((res.value as any).guideLines as GuideLine[]);
             setFAQ((res.value as any).faqs as FAQItem[]);
+            setTermsConditions((res.value as any).termsConditions as GuideLine[]);
         }
         if (error && error.value) {
             setCountries();
             setCities();
             setServices();
             setGuideline();
+            setTermsConditions();
             console.error(error);
         }
     };
@@ -74,5 +80,8 @@ export const useResourceStore = defineStore('resource', () => {
         fetchResources,
         services,
         setServices,
+        termsConditions,
+        setTermsConditions,
+        setTermsConditions,
     };
 });
