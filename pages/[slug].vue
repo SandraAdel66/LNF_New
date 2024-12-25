@@ -19,6 +19,8 @@ useSeoMeta({
             <SectionAbout v-if="slug === 'about'" :sections="(page as Page).pageSections as PageSection[]" />
             <SectionGuideLine v-if="slug === 'membership'" />
             <SectionPolicy v-if="slug === 'policies'" />
+            <SectionTOS v-if="slug === 'terms-and-conditions'" />
+            <SectionFaq v-if="slug === 'faq'" />
             <SectionContactForm v-if="slug === 'contact'" />
             <SectionEvents v-if="slug === 'events'" :page="page as Page" />
             <SectionArticles v-if="slug === 'news'" />

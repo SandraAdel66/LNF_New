@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const resources = useResourceStore();
-const faqs = resources.faq ?? [];
+const tos = resources.guideLines ?? [];
 
 const route = useRoute();
 const router = useRouter();
@@ -22,7 +22,7 @@ onMounted(async () => {
     }
 });
 
-const isSectionActive = (section: FAQItem, idx: number) => {
+const isSectionActive = (section: GuideLine, idx: number) => {
     if (route.hash) {
         const slugFromHash = route.hash.replace('#', '');
         return slugFromHash === section.slug;
@@ -32,26 +32,26 @@ const isSectionActive = (section: FAQItem, idx: number) => {
 };
 </script>
 <template>
-    <div v-if="(faqs as FAQItem[]).length > 0">
+    <div v-if="(tos as GuideLine[]).length > 0">
         <div class="container my-5 px-6">
             <div class="flex lg:flex-row flex-col gap-5 mb-8">
                 <div class="px-5 border-r border-slate-200 relative">
                     <ul class="list-disc list-inside sticky top-5">
-                        <li v-for="(section, index) in faqs as FAQItem[]" :key="index" class="py-2 whitespace-nowrap">
+                        <li v-for="(section, index) in tos as GuideLine[]" :key="index" class="py-2 whitespace-nowrap">
                             <NuxtLink
                                 :href="'#' + section.slug"
                                 type="button"
                                 :class="[isSectionActive(section, index) ? 'active-section' : 'opacity-65', 'side__nav font-medium hover:text-primary']"
                             >
-                                <span>{{ section.name }}</span>
+                                <span>{{ section.title }}</span>
                             </NuxtLink>
                         </li>
                     </ul>
                 </div>
                 <div id="content-sections" class="prose prose-slate prose-sm space-y-8">
-                    <template v-for="section in faqs" :key="section.id">
+                    <template v-for="section in tos" :key="section.id">
                         <div :id="section.slug" class="section__div">
-                            <div class="font-bold text-3xl">{{ section.name }}</div>
+                            <div class="font-bold text-3xl">{{ section.title }}</div>
                             <div v-html="section.description" />
                         </div>
                     </template>

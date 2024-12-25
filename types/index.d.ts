@@ -155,6 +155,24 @@ type Article = {
     createdAt: string | null;
 };
 
+type GuideLine = {
+    id: number;
+    title: string;
+    slug: string;
+    active: boolean;
+    description: string;
+    position: number;
+};
+
+type FAQItem = {
+    id: number;
+    name: string;
+    slug: string;
+    active: boolean;
+    des: string;
+    position: number;
+};
+
 type Service = {
     id: number;
     name: string;

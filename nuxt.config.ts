@@ -52,7 +52,7 @@ export default defineNuxtConfig({
     nitro: {
         routeRules: {
             '/backend/**': {
-                proxy: `https://apitest.lnfederation.com/**`,
+                proxy: `http://api.lnfederation.test:8715/**`,
             },
             '/get-geoip/**': {
                 proxy: `http://ip-api.com/json/**`,

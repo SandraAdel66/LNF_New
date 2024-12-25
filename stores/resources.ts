@@ -3,6 +3,8 @@ export const useResourceStore = defineStore('resource', () => {
     const cities = ref<City[]>();
     const settings = ref<PublicSetting[]>();
     const services = ref<Service[]>();
+    const guideLines = ref<GuideLine[]>();
+    const faq = ref<FAQItem[]>();
 
     const setCountries = (data?: Country[]) => {
         countries.value = data;
@@ -13,7 +15,12 @@ export const useResourceStore = defineStore('resource', () => {
     const setServices = (data?: Service[]) => {
         services.value = data;
     };
-
+    const setGuideline = (data?: GuideLine[]) => {
+        guideLines.value = data;
+    };
+    const setFAQ = (data?: FAQItem[]) => {
+        faq.value = data;
+    };
     const setSettings = (data?: PublicSetting[]) => {
         settings.value = data;
     };
@@ -27,11 +34,14 @@ export const useResourceStore = defineStore('resource', () => {
             setCountries((res.value as any).countries as Country[]);
             setCities((res.value as any).cities as City[]);
             setServices((res.value as any).services as Service[]);
+            setGuideline((res.value as any).guideLines as GuideLine[]);
+            setFAQ((res.value as any).faqs as FAQItem[]);
         }
         if (error && error.value) {
             setCountries();
             setCities();
             setServices();
+            setGuideline();
             console.error(error);
         }
     };
@@ -56,6 +66,10 @@ export const useResourceStore = defineStore('resource', () => {
         fetchSettings,
         setSettings,
         setCountries,
+        guideLines,
+        faq,
+        setFAQ,
+        setGuideline,
         cities,
         fetchResources,
         services,
