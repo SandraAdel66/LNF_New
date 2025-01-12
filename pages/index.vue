@@ -85,13 +85,13 @@ const introImageUrl = ref('/images/bg.svg');
                         <div class="mt-5 flex items-center gap-5">
                             <NuxtLink v-if="currentButtonOneActive" class="intro-x" :href="currentButtonOneData?.target">
                                 <button :class="'!btn-' + currentButtonOneData.style" class="btn w-full btn-primary btn-rounded gap-3 px-6">
-                                    <Icon :name="currentButtonOneData.icon" class="size-6" />
+                                    <Icon v-if="currentButtonOneData.icon" :name="currentButtonOneData.icon" class="size-6" />
                                     <span>{{ currentButtonOneData.label }}</span>
                                 </button>
                             </NuxtLink>
                             <NuxtLink v-if="currentButtonTwoActive" class="intro-x" :href="currentButtonTwoData?.target">
                                 <button :class="'!btn-' + currentButtonTwoData.style" class="btn w-full btn-secondary btn-rounded gap-3 px-6">
-                                    <Icon :name="currentButtonTwoData.icon" class="size-6" />
+                                    <Icon v-if="currentButtonTwoData.icon" :name="currentButtonTwoData.icon" class="size-6" />
                                     <span>{{ currentButtonTwoData.label }}</span>
                                 </button>
                             </NuxtLink>
