@@ -6,13 +6,15 @@ const { data: page, status } = await useApiFetch(`/api/get-page/${slug.value}`, 
     transform: (page) => (page as ApiResponse).data as Page,
 });
 
-const { data: sliders, status: slidersStatus } = await useApiFetch(`/api/get-slider`, {
-    lazy: true,
+const {
+    data: sliders,
+    execute: loadSliders,
+    status: slidersStatus,
+} = await useApiFetch(`/api/get-slider`, {
     transform: (sliders) => (sliders as ApiResponse).data as Slider[],
 });
 
 const { data: networkLogos, status: logosStatus } = await useApiFetch(`/api/get-logo-company/public`, {
-    lazy: true,
     transform: (networkLogos) => (networkLogos as ApiResponse).data as NetworkLogos[],
 });
 
@@ -37,21 +39,21 @@ let charIndex = 0;
 const typingSpeed = 100;
 const pauseDuration = 4000;
 const typeText = () => {
-    if (charIndex < texts[textIndex].text.length) {
-        currentText.value = texts[textIndex].text.substring(0, charIndex + 1);
+    if (charIndex < texts[textIndex]?.text.length) {
+        currentText.value = texts[textIndex]?.text.substring(0, charIndex + 1);
         charIndex++;
         setTimeout(typeText, typingSpeed);
     } else {
         setTimeout(() => {
             textIndex = (textIndex + 1) % texts.length;
             charIndex = 0;
-            currentId.value = texts[textIndex].id;
-            currentImageUrl.value = texts[textIndex].imageUrl;
-            currentDescription.value = texts[textIndex].description;
-            currentButtonOneActive.value = texts[textIndex].buttonOneActive;
-            currentButtonTwoActive.value = texts[textIndex].buttonTwoActive;
-            currentButtonOneData.value = texts[textIndex].buttonOne;
-            currentButtonTwoData.value = texts[textIndex].buttonTwo;
+            currentId.value = texts[textIndex]?.id;
+            currentImageUrl.value = texts[textIndex]?.imageUrl;
+            currentDescription.value = texts[textIndex]?.description;
+            currentButtonOneActive.value = texts[textIndex]?.buttonOneActive;
+            currentButtonTwoActive.value = texts[textIndex]?.buttonTwoActive;
+            currentButtonOneData.value = texts[textIndex]?.buttonOne;
+            currentButtonTwoData.value = texts[textIndex]?.buttonTwo;
             typeText();
         }, pauseDuration);
     }
@@ -61,6 +63,9 @@ watch(currentId, () => {
     setTimeout(() => {
         addIntroClass.value = false;
     }, 1000); // Adjust duration as needed
+});
+onMounted(async () => {
+    await loadSliders();
 });
 onMounted(() => {
     typeText();
@@ -140,7 +145,7 @@ const introImageUrl = ref('/images/bg.svg');
                 </div>
             </div>
         </section>
-        <section class="relative white py-12">
+        <section v-if="logosStatus !== 'pending'" class="relative white py-12">
             <div class="flex flex-col gap-5">
                 <div class="text-center mt-8">
                     <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">Our</span>Networks</span>
