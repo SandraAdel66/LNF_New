@@ -9,6 +9,33 @@ type ApiResponse = {
     meta?: any;
 };
 
+type Expo = {
+    id: number;
+    name: string;
+    duration: [string, string];
+    venue: string;
+    city: string;
+    active: boolean;
+    countryId: number;
+    countryName: string;
+    country: Country;
+    packages: Package[];
+    imageUrl: string;
+    image: Media | null;
+};
+
+type PackageDetail = {
+    title: string | null;
+    active: boolean;
+};
+
+type Package = {
+    id: number;
+    name: string;
+    price: string;
+    details: PackageDetail[];
+};
+
 type Policy = {
     id: number;
     title: string;
@@ -48,6 +75,10 @@ type Slider = {
     image: Media | null;
 };
 type ApiResponseData =
+    | Package
+    | Package[]
+    | Expo
+    | Expo[]
     | NetworkLogos
     | Slider
     | NetworkLogos[]
