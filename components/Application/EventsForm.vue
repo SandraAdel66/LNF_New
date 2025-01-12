@@ -14,22 +14,23 @@ const { data: networks, status: networksStatus } = await useApiFetch(`/api/get-l
 
 const resources = useResourceStore();
 const isLoading = ref(false);
+const formSubmitted = ref(false);
 
 const application = ref({
-    name: undefined,
-    city: undefined,
-    countryId: undefined,
+    name: null,
+    city: null,
+    countryId: null,
     image: null,
-    email: undefined,
-    cpName: undefined,
-    cpJobTitle: undefined,
-    cpEmail: undefined,
-    cpCellNumber: undefined,
-    cpPhoneNumber: undefined,
+    email: null,
+    cpName: null,
+    cpJobTitle: null,
+    cpEmail: null,
+    cpCellNumber: null,
+    cpPhoneNumber: null,
     status: false,
-    packageId: undefined,
-    networkId: undefined,
-    expoId: undefined,
+    packageId: null,
+    networkId: null,
+    expoId: null,
 });
 
 const rules = ref({
@@ -51,20 +52,20 @@ const rules = ref({
 
 const resetContactForm = async () => {
     application.value = {
-        name: undefined,
-        city: undefined,
-        countryId: undefined,
+        name: null,
+        city: null,
+        countryId: null,
         image: null,
-        email: undefined,
-        cpName: undefined,
-        cpJobTitle: undefined,
-        cpEmail: undefined,
-        cpCellNumber: undefined,
-        cpPhoneNumber: undefined,
+        email: null,
+        cpName: null,
+        cpJobTitle: null,
+        cpEmail: null,
+        cpCellNumber: null,
+        cpPhoneNumber: null,
         status: false,
-        packageId: undefined,
-        networkId: undefined,
-        expoId: undefined,
+        packageId: null,
+        networkId: null,
+        expoId: null,
     };
 };
 
@@ -95,15 +96,20 @@ const submitApplication = async () => {
         });
         await resetContactForm();
         isLoading.value = false;
+        formSubmitted.value = true;
     }
     if (error.value) {
         useToast({ title: 'Error', message: error.value.message, type: 'error', duration: 5000 });
     }
 };
+
+const resetFormSubmitionStatus = () => {
+    formSubmitted.value = false;
+};
 </script>
 <template>
     <div v-if="expo && expoStatus !== 'pending'" class="max-w-7xl mx-auto px-6">
-        <div class="lg:grid-cols-12 grid gap-5 my-5">
+        <div v-if="!formSubmitted" class="lg:grid-cols-12 grid gap-5 my-5">
             <div class="lg:col-span-12">
                 <div class="text-center pb-5 mb-5 border-b-2 border-dashed">
                     <h1 class="text-3xl font-bold">{{ expo.name }}</h1>
@@ -199,6 +205,12 @@ const submitApplication = async () => {
             </div>
             <div class="lg:col-span-12">
                 <button :disabled="isLoading" type="button" class="w-full btn btn-primary" @click="submitApplication">Submit</button>
+            </div>
+        </div>
+        <div v-else>
+            <div class="my-12 p-5 font-semibold text-center max-w-2xl bg-success/25 text-success border rounded-xl mx-auto">You Application has been submitted successfully</div>
+            <div class="flex justify-center gap-5">
+                <button type="button" class="btn btn-sm btn-secondary whitespace-nowrap" @click="resetFormSubmitionStatus">Submit another form</button>
             </div>
         </div>
     </div>

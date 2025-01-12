@@ -211,6 +211,7 @@ watch(
             value.value = null;
         }
     },
+    { immediate: true },
 );
 function removeFile() {
     uploading.value = true;
