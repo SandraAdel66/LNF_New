@@ -7,7 +7,7 @@ const { data: expo, status: expoStatus } = await useApiFetch(`/api/get-current-e
     lazy: true,
     transform: (expo) => (expo as ApiResponse).data as Expo,
 });
-const { data: networks, status: networksStatus } = await useApiFetch(`/api/get-logo-company/public`, {
+const { data: networks, status: networksStatus } = await useApiFetch(`/api/get-expo-list`, {
     lazy: true,
     transform: (networks) => (networks as ApiResponse).data as NetworkLogos[],
 });
