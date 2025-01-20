@@ -1,12 +1,17 @@
 <script lang="ts" setup>
 const props = defineProps<{
     section: PageSection;
+    id: string;
 }>();
 </script>
 
 <template>
-    <div>
+    <div :id="id">
         <SectionIntro v-if="section.type === 'intro' || section.type === 'grid-home-section'" :section="props.section" />
+        <SectionEventsGrid v-if="section.type === 'events-grid'" :section="props.section" />
+        <SectionTeam v-if="section.type === 'team-grid'" :section="props.section" />
+        <SectionNetwork v-if="section.type === 'network-grid'" :section="props.section" />
+        <SectionIntroNoTitle v-if="section.type === 'intro-no-title'" :section="props.section" />
         <SectionDefaultWithImage v-else-if="section.type === 'image-banner-section'" :section="props.section" />
         <SectionBenefitsGrid v-else-if="section.type === 'benefits-grid'" :section="props.section" />
         <SectionBenefitsList v-else-if="section.type === 'benefits-list'" :section="props.section" />
@@ -23,9 +28,9 @@ const props = defineProps<{
         <SectionFreightCalculator v-else-if="section.type === 'freight-tools'" :section="props.section" />
         <SectionContactForm v-else-if="section.type === 'contact-form'" :section="props.section" />
         <SectionDefault v-else-if="section.type === 'about-right-image' || section.type === 'about-left-image' || section.type === 'about-no-image'" :section="props.section" />
-        <div v-else>
-            {{ section }}
-        </div>
+        <!--        <div v-else>-->
+        <!--            {{ section }}-->
+        <!--        </div>-->
         <!--        <div v-if="section.type === 'benefits-grid'" class="hero-divider-top z-10">-->
         <!--            <svg data-name="Layer 1" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">-->
         <!--                <path-->

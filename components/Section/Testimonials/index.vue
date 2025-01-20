@@ -14,7 +14,7 @@ const { data: testimonials, status } = await useApiFetch(`/api/testimonial-publi
         <div class="text-center max-w-4xl mx-auto py-8">
             <div v-if="props.section.postTitle" class="text-lg font-medium" v-html="props.section.postTitle" />
             <div v-if="props.section.title" class="text-3xl lg:text-4xl font-bold text-primary" v-html="props.section.title" />
-            <div v-if="props.section.des" class="text-xl font-light mt-3 text-justify-center" v-html="props.section.des" />
+            <div v-if="props.section.description" class="text-xl font-light mt-3 text-justify-center" v-html="props.section.description" />
         </div>
         <div v-if="status !== 'pending'">
             <Swiper

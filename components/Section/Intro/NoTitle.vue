@@ -5,11 +5,9 @@ const props = defineProps<{
 </script>
 
 <template>
-    <div class="container pb-8">
-        <div class="text-center max-w-4xl mx-auto pt-8">
-            <div v-if="props.section.postTitle" class="text-lg font-medium" v-html="props.section.postTitle" />
-            <div v-if="props.section.title" class="text-3xl lg:text-4xl font-bold text-primary" v-html="props.section.title" />
-            <div v-if="props.section.description" class="text-xl font-light mt-3 text-justify-center" v-html="props.section.description" />
+    <div>
+        <div class="text-center max-w-4xl mx-auto py-8">
+            <div v-if="props.section.description" class="text-xl text-slate-800 mt-3 text-justify-center" v-html="props.section.description" />
         </div>
         <div class="mt-8 max-w-xs mx-auto sm:max-w-none md:flex md:justify-center sm:space-x-4 space-x-0 sm:space-y-0 space-y-4">
             <div v-if="props.section.buttonOneActive">
@@ -48,21 +46,6 @@ const props = defineProps<{
                     </a>
                 </template>
             </div>
-        </div>
-        <div v-if="props.section.children.length > 0" class="relative max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch md:max-w-2xl lg:max-w-none">
-            <NuxtLink
-                v-for="item in props.section.children"
-                :key="item.id"
-                target="_blank"
-                :href="item.subTitle"
-                class="hover:scale-105 transition-all relative flex h-full flex-col border border-sky-100 items-center p-6 bg-sky-50 rounded-2xl"
-            >
-                <div class="flex justify-center items-center size-32 p-6 rounded-tl-full rounded-tr-full rounded-bl-full bg-primary text-white font-bold mb-3 text-lg">
-                    <NuxtImg v-if="item.imageUrl" :src="item.imageUrl" />
-                </div>
-                <h4 class="text-xl font-bold text-primary leading-snug tracking-tight mb-1">{{ item.title }}</h4>
-                <!--                <p class="text-center font-light text-base line-clamp-4" v-html="item.description" />-->
-            </NuxtLink>
         </div>
     </div>
 </template>

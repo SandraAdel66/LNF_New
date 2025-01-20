@@ -11,7 +11,7 @@ const userStore = useUserStore();
         <div class="flex md:flex-row flex-col items-center gap-5">
             <div>
                 <div v-if="props.section.title" class="text-2xl" v-html="props.section.title" />
-                <div v-if="props.section.des" class="mt-2 font-extralight leading-6" v-html="props.section.des" />
+                <div v-if="props.section.description" class="mt-2 font-extralight leading-6" v-html="props.section.description" />
             </div>
             <div v-if="props.section.buttonOneActive" class="whitespace-nowrap">
                 <template v-if="props.section.buttonLinkTypeOne">

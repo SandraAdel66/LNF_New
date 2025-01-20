@@ -14,7 +14,7 @@ const { data: headerMenu } = await useApiFetch(`/api/get-menu/${headerMenuId.val
             <NuxtLink href="/">
                 <NuxtImg class="h-20 shrink-0" :title="useSettingValue('app_name')" :alt="useSettingValue('app_name')" :src="useSettingValue('app_logo_light')" />
             </NuxtLink>
-            <div>
+            <div class="lg:block hidden">
                 <div class="flex gap-5 items-center justify-end">
                     <div class="text-xs font-medium">
                         <ul class="flex items-center gap-5 opacity-75">

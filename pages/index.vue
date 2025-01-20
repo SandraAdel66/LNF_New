@@ -75,13 +75,12 @@ const introImageUrl = ref('/images/bg.svg');
 </script>
 
 <template>
-    <div v-if="status !== 'pending'">
-        <section class="lg:min-h-[30rem] bg-cover bg-bottom bg-blue-100" :style="{ backgroundImage: `url(${introImageUrl})` }">
+    <div v-if="page && status !== 'pending'">
+        <section class="lg:min-h-[30rem] bg-cover bg-bottom bg-sky-100" :style="{ backgroundImage: `url(${introImageUrl})` }">
             <div v-if="slidersStatus !== 'pending'" class="container px-6 grid lg:grid-cols-12 gap-5 items-center pt-12">
                 <div class="flex items-center lg:col-span-7 justify-start">
                     <div class="flex flex-col gap-3">
                         <div class="-intro-y">
-                            <div class="font-normal 2xl:text-lg text-base">Logistics Network Federation</div>
                             <div :class="'font-extrabold 2xl:text-4xl text-3xl mt-2 leading-tight text-primary'">{{ currentText }}</div>
                         </div>
                         <p :class="['text-lg', { '-intro-x': addIntroClass }]">
@@ -113,54 +112,9 @@ const introImageUrl = ref('/images/bg.svg');
                 </div>
             </div>
         </section>
-        <section v-if="page && page.pageSections && page?.pageSections.some((s: PageSection) => s.slug === 'the-core-idea')" class="relative bg-slate-50">
-            <div class="container px-6">
-                <div class="py-12">
-                    <div class="text-center text-3xl font-bold" v-html="page.pageSections.find((s: PageSection) => s.slug === 'the-core-idea').title" />
-                    <div
-                        class="max-w-5xl mx-auto text-base mt-3 text-justify"
-                        style="text-align-last: center"
-                        v-html="page.pageSections.find((s: PageSection) => s.slug === 'the-core-idea').description"
-                    />
-                </div>
-            </div>
-        </section>
-        <section class="relative bg-white py-12">
-            <div class="container px-6">
-                <div class="text-center">
-                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">Board</span>Members</span>
-                </div>
-                <SectionTeam class="mt-8" />
-            </div>
-        </section>
-        <section v-if="page && page.pageSections && page?.pageSections.some((s: PageSection) => s.slug === 'about-lnf')" class="relative bg-slate-50 py-12">
-            <div class="container px-6">
-                <div class="py-12">
-                    <div class="text-center text-3xl font-bold" v-html="page.pageSections.find((s: PageSection) => s.slug === 'about-lnf').title" />
-                    <div
-                        class="max-w-5xl mx-auto text-base mt-3 text-justify"
-                        style="text-align-last: center"
-                        v-html="page.pageSections.find((s: PageSection) => s.slug === 'about-lnf').description"
-                    />
-                </div>
-            </div>
-        </section>
-        <section v-if="logosStatus !== 'pending'" class="relative white py-12">
-            <div class="flex flex-col gap-5">
-                <div class="text-center mt-8">
-                    <span class="text-3xl font-bold"><span class="font-medium text-primary mr-2">Our</span>Networks</span>
-                </div>
-                <div class="w-full">
-                    <ul class="container flex px-6 py-5 gap-8 p-5 place-content-center items-center">
-                        <li v-for="network in networkLogos" :key="network.name" class="intro-x">
-                            <div class="flex flex-col flex-wrap gap-2 text-center ease-in-out duration-300">
-                                <NuxtImg :src="network.imageUrl" :title="network.name" :alt="network.name" class="w-full h-14 mx-auto rounded-lg" />
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        <template v-for="section in (page as Page)?.pageSections as PageSection[]" :key="section.id">
+            <Section :id="section.slug" class="even:bg-slate-50" :section="section" />
+        </template>
     </div>
 </template>
 

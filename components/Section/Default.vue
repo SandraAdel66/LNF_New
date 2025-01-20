@@ -18,12 +18,12 @@ const props = defineProps<{
             </div>
             <div class="h-full lg:col-span-7">
                 <div v-if="props.section.title" class="text-2xl font-bold text-primary" v-html="props.section.title" />
-                <div v-if="props.section.des" class="text-lg font-light mt-3 text-justify" v-html="props.section.des" />
+                <div v-if="props.section.description" class="text-lg font-light mt-3 text-justify" v-html="props.section.description" />
             </div>
         </template>
         <div v-else-if="props.section.type === 'about-no-image'" class="lg:col-span-12">
             <div v-if="props.section.title" class="text-2xl font-bold text-primary text-center" v-html="props.section.title" />
-            <div v-if="props.section.des" class="text-lg font-light mt-3 text-justify-center" v-html="props.section.des" />
+            <div v-if="props.section.description" class="text-lg font-light mt-3 text-justify-center" v-html="props.section.description" />
         </div>
     </div>
 </template>

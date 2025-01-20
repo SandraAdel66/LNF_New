@@ -10,7 +10,7 @@ const props = defineProps<{
             <div class="flex flex-col gap-2 py-12 text-center">
                 <div v-if="props.section.title" class="text-4xl lg:text-6xl font-extrabold" v-html="props.section.title" />
                 <div v-if="props.section.subTitle" class="text-2xl font-semibold" v-html="props.section.subTitle" />
-                <div v-if="props.section.des" class="text-lg font-semibold" v-html="props.section.des" />
+                <div v-if="props.section.description" class="text-lg font-semibold" v-html="props.section.description" />
             </div>
             <div class="flex gap-5 max-w-3xl mx-auto">
                 <NuxtLink v-if="props.section.buttonOneActive">

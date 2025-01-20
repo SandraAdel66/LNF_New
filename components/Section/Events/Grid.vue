@@ -49,19 +49,9 @@ const props = defineProps<{
                 </template>
             </div>
         </div>
-        <div v-if="props.section.children.length > 0" class="relative max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-stretch md:max-w-2xl lg:max-w-none">
-            <NuxtLink
-                v-for="item in props.section.children"
-                :key="item.id"
-                target="_blank"
-                :href="item.subTitle"
-                class="hover:scale-105 transition-all relative flex h-full flex-col border border-sky-100 items-center p-6 bg-sky-50 rounded-2xl"
-            >
-                <div class="flex justify-center items-center size-32 p-6 rounded-tl-full rounded-tr-full rounded-bl-full bg-primary text-white font-bold mb-3 text-lg">
-                    <NuxtImg v-if="item.imageUrl" :src="item.imageUrl" />
-                </div>
-                <h4 class="text-xl font-bold text-primary leading-snug tracking-tight mb-1">{{ item.title }}</h4>
-                <!--                <p class="text-center font-light text-base line-clamp-4" v-html="item.description" />-->
+        <div v-if="props.section.children.length > 0" class="relative max-w-sm mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-4 items-stretch md:max-w-2xl lg:max-w-none">
+            <NuxtLink v-for="item in props.section.children" :key="item.id" :to="item.subTitle" class="hover:scale-105 transition-all h-full items-center p-6">
+                <NuxtImg v-if="item.imageUrl" class="w-full h-full object-center object-contain" :src="item.imageUrl" />
             </NuxtLink>
         </div>
     </div>
