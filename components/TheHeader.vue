@@ -16,19 +16,19 @@ const { data: headerMenu } = await useApiFetch(`/api/get-menu/${headerMenuId.val
             </NuxtLink>
             <div class="lg:block hidden">
                 <div class="flex gap-5 items-center justify-end">
-                    <div class="text-xs font-medium">
-                        <ul class="flex items-center gap-5 opacity-75">
-                            <li>
-                                <NuxtLink class="hover:text-primary transition-colors" href="/policies">Policies</NuxtLink>
-                            </li>
-                            <li>
-                                <NuxtLink class="hover:text-primary transition-colors" href="/faq">FAQ</NuxtLink>
-                            </li>
-                            <li>
-                                <NuxtLink class="hover:text-primary transition-colors" href="/terms-and-conditions">Terms & Conditions</NuxtLink>
-                            </li>
-                        </ul>
-                    </div>
+                    <!--                    <div class="text-xs font-medium">-->
+                    <!--                        <ul class="flex items-center gap-5 opacity-75">-->
+                    <!--                            <li>-->
+                    <!--                                <NuxtLink class="hover:text-primary transition-colors" href="/policies">Policies</NuxtLink>-->
+                    <!--                            </li>-->
+                    <!--                            <li>-->
+                    <!--                                <NuxtLink class="hover:text-primary transition-colors" href="/faq">FAQ</NuxtLink>-->
+                    <!--                            </li>-->
+                    <!--                            <li>-->
+                    <!--                                <NuxtLink class="hover:text-primary transition-colors" href="/terms-and-conditions">Terms & Conditions</NuxtLink>-->
+                    <!--                            </li>-->
+                    <!--                        </ul>-->
+                    <!--                    </div>-->
                     <NuxtLink href="/application-form">
                         <button class="btn btn-sm btn-primary gap-3 px-6">
                             <Icon name="solar:documents-linear" class="size-5" />
