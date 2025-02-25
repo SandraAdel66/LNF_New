@@ -24,40 +24,20 @@ const props = defineProps<{
                     <div class="lg:col-span-12 mt-5">
                     <div v-if="props.section.buttonOneActive || props.section.buttonTwoActive" class="flex flex-col md:flex-row justify-start gap-5">
                     <div v-if="props.section.buttonOneActive">
-                        <template v-if="props.section.buttonOne?.target === '_self'">
-                            <NuxtLink target="_self" :to="props.section.buttonOne.url">
-                                <button :class="'btn-' + props.section.buttonOne?.style" class="btn px-6 btn-rounded md:w-fit w-full">
-                                    <Icon v-if="props.section.buttonOne?.icon" :name="props.section.buttonOne?.icon" class="size-5 mr-2" />
-                                    {{ props.section.buttonOne?.label }}
-                                </button>
-                            </NuxtLink>
-                        </template>
-                        <template v-else>
-                            <NuxtLink target="_black" :to="props.section.buttonOne.url">
-                                <button :class="'btn-' + props.section.buttonOne?.style" class="btn px-6 btn-rounded md:w-fit w-full">
-                                    <Icon v-if="props.section.buttonOne?.icon" :name="props.section.buttonOne?.icon" class="size-5 mr-2" />
-                                    {{ props.section.buttonOne?.label }}
-                                </button>
-                            </NuxtLink>
-                        </template>
+                        <NuxtLink :target="props.section.buttonOne.target" :to="props.section.buttonOne.url">
+                            <button :class="'btn-' + props.section.buttonOne?.style" class="btn px-6 btn-rounded md:w-fit w-full">
+                                <Icon v-if="props.section.buttonOne?.icon" :name="props.section.buttonOne?.icon" class="size-5 mr-2" />
+                                {{ props.section.buttonOne?.label }}
+                            </button>
+                        </NuxtLink>
                     </div>
                     <div v-if="props.section.buttonTwoActive">
-                        <template v-if="props.section.buttonTwo?.target === '_self'">
-                            <NuxtLink target="_self" :to="props.section.buttonTwo.url">
-                                <button :class="'btn-' + props.section.buttonTwo?.style" class="btn px-6 btn-rounded md:w-fit w-full">
-                                    <Icon v-if="props.section.buttonTwo?.icon" :name="props.section.buttonTwo?.icon" class="size-5 mr-2" />
-                                    {{ props.section.buttonTwo?.label }}
-                                </button>
-                            </NuxtLink>
-                        </template>
-                        <template v-else>
-                            <NuxtLink target="_black" :to="props.section.buttonTwo.url">
-                                <button :class="'btn-' + props.section.buttonTwo?.style" class="btn px-6 btn-rounded md:w-fit w-full">
-                                    <Icon v-if="props.section.buttonTwo?.icon" :name="props.section.buttonTwo?.icon" class="size-5 mr-2" />
-                                    {{ props.section.buttonTwo?.label }}
-                                </button>
-                            </NuxtLink>
-                        </template>
+                        <NuxtLink :target="props.section.buttonTwo.target" :to="props.section.buttonTwo.url">
+                            <button :class="'btn-' + props.section.buttonTwo?.style" class="btn px-6 btn-rounded md:w-fit w-full">
+                                <Icon v-if="props.section.buttonTwo?.icon" :name="props.section.buttonTwo?.icon" class="size-5 mr-2" />
+                                {{ props.section.buttonTwo?.label }}
+                            </button>
+                        </NuxtLink>
                     </div>
                     </div>
                     </div>
