@@ -4,9 +4,7 @@ export default defineNuxtConfig({
     ssr: true,
     devtools: { enabled: true },
     devServer: {
-        port: 8717,
-        host: process.env.APP_URL ?? 'lnfederation.test',
-        url: process.env.APP_URL ?? 'http://lnfederation.test',
+        port: 3600,
     },
     tailwindcss: {
         cssPath: ['~/assets/css/global.scss', { injectPosition: 'first' }],
@@ -43,7 +41,7 @@ export default defineNuxtConfig({
         dirs: ['./stores'],
     },
     site: {
-        url: process.env.APP_URL ?? 'https://lnfederation.test',
+        url: process.env.APP_URL ?? 'https://lnfederation.com',
         name: 'Logistics Network Federation',
         description:
             'Logistics Network Federation is a premier web development and digital marketing agency specializing in creating stunning, responsive websites and innovative marketing solutions.',
@@ -88,15 +86,5 @@ export default defineNuxtConfig({
         },
         pageTransition: { name: 'page', mode: 'out-in' },
     },
-    modules: [
-        '@nuxtjs/tailwindcss',
-        'vue3-carousel-nuxt',
-        '@pinia/nuxt',
-        '@morev/vue-transitions/nuxt',
-        'nuxt-headlessui',
-        '@nuxt/image',
-        '@nuxt/eslint',
-        '@nuxtjs/seo',
-        '@nuxt/icon',
-    ],
+    modules: ['@nuxtjs/tailwindcss', 'vue3-carousel-nuxt', '@pinia/nuxt', '@morev/vue-transitions/nuxt', 'nuxt-headlessui', '@nuxt/image', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/icon', 'nuxt-swiper'],
 });

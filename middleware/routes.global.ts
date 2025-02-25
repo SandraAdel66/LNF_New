@@ -1,13 +1,12 @@
-export default defineNuxtRouteMiddleware(async (to) => {
+export default defineNuxtRouteMiddleware(async (to, from) => {
     const userStore = useUserStore();
     const visitStore = useVisitStore();
     const resources = useResourceStore();
-    const route = useRoute();
     if (userStore.token) {
         await userStore.fetchAuthUser();
     }
-    if (route.query?.ref) {
-        userStore.setRefValue(route.query?.ref as string);
+    if (from.query?.ref) {
+        userStore.setRefValue(from.query?.ref as string);
     }
     if (visitStore.ipDetails && import.meta.client) {
         const visitPathInfo = ref({

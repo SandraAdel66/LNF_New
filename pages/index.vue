@@ -76,42 +76,8 @@ const introImageUrl = ref('/images/bg.svg');
 
 <template>
     <div v-if="page && status !== 'pending'">
-        <section class="lg:min-h-[30rem] bg-cover bg-bottom bg-sky-100" :style="{ backgroundImage: `url(${introImageUrl})` }">
-            <div v-if="slidersStatus !== 'pending'" class="container px-6 grid lg:grid-cols-12 gap-5 items-center pt-12">
-                <div class="flex items-center lg:col-span-7 justify-start">
-                    <div class="flex flex-col gap-3">
-                        <div class="-intro-y">
-                            <div :class="'font-extrabold 2xl:text-4xl text-3xl mt-2 leading-tight text-primary'">{{ currentText }}</div>
-                        </div>
-                        <p :class="['text-lg', { '-intro-x': addIntroClass }]">
-                            {{ currentDescription }}
-                        </p>
-                        <div class="mt-5 flex items-center gap-5">
-                            <NuxtLink v-if="currentButtonOneActive" class="intro-x" :href="currentButtonOneData?.target">
-                                <button :class="'!btn-' + currentButtonOneData.style" class="btn w-full btn-primary btn-rounded gap-3 px-6">
-                                    <Icon v-if="currentButtonOneData.icon" :name="currentButtonOneData.icon" class="size-6" />
-                                    <span>{{ currentButtonOneData.label }}</span>
-                                </button>
-                            </NuxtLink>
-                            <NuxtLink v-if="currentButtonTwoActive" class="intro-x" :href="currentButtonTwoData?.target">
-                                <button :class="'!btn-' + currentButtonTwoData.style" class="btn w-full btn-secondary btn-rounded gap-3 px-6">
-                                    <Icon v-if="currentButtonTwoData.icon" :name="currentButtonTwoData.icon" class="size-6" />
-                                    <span>{{ currentButtonTwoData.label }}</span>
-                                </button>
-                            </NuxtLink>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center place-content-center lg:col-span-5 justify-end">
-                    <NuxtImg
-                        v-if="currentImageUrl"
-                        class="mx-auto size-96 border-4 border-white rounded-full object-center object-cover bg-white"
-                        :class="addIntroClass && '-intro-x'"
-                        :src="currentImageUrl"
-                    />
-                </div>
-            </div>
-        </section>
+        <LazySectionHomeSlider :data="sliders" />
+    
         <template v-for="section in (page as Page)?.pageSections as PageSection[]" :key="section.id">
             <Section :id="section.slug" class="even:bg-slate-50" :section="section" />
         </template>
