@@ -37,7 +37,7 @@ register();
                 <div v-if="slide.text" class="intro-y font-bold text-4xl leading-[3rem]" v-html="slide.text" />
                 <div v-if="slide.description" class="intro-y text-xl " v-html="slide.description" />
                 <div v-if="slide.buttonOneActive" class="space-x-4 intro-y">
-                  <NuxtLink :target="slide.buttonOne.target" :to="slide.buttonOne.url">
+                  <NuxtLink target="_blank" :to="slide.buttonOne.target">
                       <button :class="['btn btn-lg !px-8 btn-rounded btn-' + slide.buttonOne.style + ' mt-4']">{{ slide.buttonOne.label }}</button>
                   </NuxtLink>
                 </div>
