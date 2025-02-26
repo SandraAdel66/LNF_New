@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { email, required } from '@vuelidate/validators';
 import useVuelidate from '@vuelidate/core';
-import { useDateNoTimeFormatter } from '~/composables/useDateNoTimeFormatter';
 
 const { data: expo, status: expoStatus } = await useApiFetch(`/api/get-current-expo`, {
     lazy: true,

@@ -1,4 +1,6 @@
 <script setup>
+import { email, required } from '@vuelidate/validators';
+import useVuelidate from '@vuelidate/core';
 const footerData = ref({
     copyright: useSettingValue('copyrights_text') ?? null,
     address: useSettingValue('office_address') ?? null,
@@ -9,6 +11,7 @@ const footerData = ref({
         footerMenuTwo: undefined,
     },
 });
+
 const getMenuItems = async (id) => {
     const { data: menu, error } = await useApiFetch(`/api/get-menu/${id}`, {
         transform: (headerMenu) => headerMenu.data,
@@ -35,21 +38,70 @@ onMounted(async () => {
     await footerMenuOne();
     await footerMenuTwo();
 });
+
+const isLoading = ref(false);
+const newsletter = ref({
+    firstName: null,
+    lastName: null,
+    email: null,
+});
+
+const rules = ref({
+    firstName: { required },
+    lastName: { required },
+    email: { required, email },
+});
+
+const v$ = useVuelidate(rules, newsletter.value);
+
+
+const resetForm = async () => {
+    newsletter.value = {
+        firstName: null,
+        lastName: null,
+        email: null,
+    };
+};
+const submitNewsletter = async () => {
+    const result = await v$.value.$validate();
+    if (!result) {
+        isLoading.value = false;
+        useToast({ title: 'Error', message: 'Please fill all required fields', type: 'error', duration: 5000 });
+        return false;
+    }
+    const { data, error } = await useApiFetch('/api/create-newsletter', {
+        method: 'POST',
+        data: newsletter.value,
+    });
+    if (data.value) {
+        useToast({
+            title: 'Success',
+            message: 'Email has been added to the newsletter list',
+            type: 'success',
+            duration: 5000,
+        });
+        await resetForm();
+        isLoading.value = false;
+    }
+    if (error.value) {
+        useToast({ title: 'Error', message: error.value.message, type: 'error', duration: 5000 });
+    }
+};
 </script>
 
 <template>
     <div class="bg-slate-100 px-4 dark:text-slate-300 -shadow-md">
         <div class="container px-8 py-4">
             <div class="grid gap-8 md:grid-cols-12">
-                <div class="intro-y lg:col-span-4 h-full hidden lg:block">
-                    <ApplicationLogo class="w-64" />
+                <div class="intro-y lg:col-span-3 h-full hidden lg:block">
+                    <ApplicationLogo class="w-48" />
                     <div class="mt-4">
                         {{ footerData.address }}
                     </div>
                 </div>
                 <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuOne" :menu="footerData.menus.footerMenuOne" />
-                <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuTwo" :menu="footerData.menus.footerMenuTwo" />
-                <div class="lg:col-span-4 hidden md:block intro-y h-full">
+                <!-- <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuTwo" :menu="footerData.menus.footerMenuTwo" /> -->
+                <div class="lg:col-span-3 hidden md:block intro-y h-full">
                     <h2 class="font-medium text-primary text-sm whitespace-nowrap">Bank Details</h2>
                     <div class="mt-2">
                         <ul class="divide-y divide-dashed divide-slate-300/75 leading-tight">
@@ -63,6 +115,40 @@ onMounted(async () => {
                             </li>
                         </ul>
                     </div>
+                </div>
+                <div class="intro-y lg:col-span-4 h-full hidden lg:block">
+                    <h2 class="font-medium text-primary text-sm whitespace-nowrap">
+                       LNF Newsletter
+                    </h2>
+                    <form @submit.prevent="submitNewsletter" class="grid lg:grid-cols-12 gap-3">
+                        <FormTextInput
+                        rounded
+                            v-model="newsletter.firstName"
+                            :errors="v$.firstName.$errors"
+                            class="lg:col-span-6"
+                            name="cp-cell-number"
+                            placeholder="First Name"
+                        />
+                        <FormTextInput
+                        rounded
+                            v-model="newsletter.lastName"
+                            :errors="v$.lastName.$errors"
+                            class="lg:col-span-6"
+                            name="cp-cell-number"
+                            placeholder="Last Name"
+                        />
+                        <FormTextInput
+                        rounded
+                            v-model="newsletter.email"
+                            :errors="v$.email.$errors"
+                            class="lg:col-span-12"
+                            name="cp-cell-number"
+                            placeholder="Email"
+                        />
+                        <div class="lg:col-span-12">
+                            <button :disabled="isLoading" type="button" class="w-full btn btn-sm btn-rounded btn-primary" @click="submitNewsletter">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
