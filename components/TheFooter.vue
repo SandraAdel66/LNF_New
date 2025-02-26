@@ -54,7 +54,6 @@ const rules = ref({
 
 const v$ = useVuelidate(rules, newsletter.value);
 
-
 const resetForm = async () => {
     newsletter.value = {
         firstName: null,
@@ -71,7 +70,7 @@ const submitNewsletter = async () => {
     }
     const { data, error } = await useApiFetch('/api/create-newsletter', {
         method: 'POST',
-        data: newsletter.value,
+        body: newsletter.value,
     });
     if (data.value) {
         useToast({
@@ -99,7 +98,7 @@ const submitNewsletter = async () => {
                         {{ footerData.address }}
                     </div>
                 </div>
-                <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuOne" :menu="footerData.menus.footerMenuOne" />
+                <ApplicationFooterMenu v-if="footerData.menus.footerMenuOne" class="lg:col-span-2" :menu="footerData.menus.footerMenuOne" />
                 <!-- <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuTwo" :menu="footerData.menus.footerMenuTwo" /> -->
                 <div class="lg:col-span-3 hidden md:block intro-y h-full">
                     <h2 class="font-medium text-primary text-sm whitespace-nowrap">Bank Details</h2>
@@ -117,34 +116,11 @@ const submitNewsletter = async () => {
                     </div>
                 </div>
                 <div class="intro-y lg:col-span-4 h-full hidden lg:block">
-                    <h2 class="font-medium text-primary text-sm whitespace-nowrap">
-                       LNF Newsletter
-                    </h2>
-                    <form @submit.prevent="submitNewsletter" class="grid lg:grid-cols-12 gap-3">
-                        <FormTextInput
-                        rounded
-                            v-model="newsletter.firstName"
-                            :errors="v$.firstName.$errors"
-                            class="lg:col-span-6"
-                            name="cp-cell-number"
-                            placeholder="First Name"
-                        />
-                        <FormTextInput
-                        rounded
-                            v-model="newsletter.lastName"
-                            :errors="v$.lastName.$errors"
-                            class="lg:col-span-6"
-                            name="cp-cell-number"
-                            placeholder="Last Name"
-                        />
-                        <FormTextInput
-                        rounded
-                            v-model="newsletter.email"
-                            :errors="v$.email.$errors"
-                            class="lg:col-span-12"
-                            name="cp-cell-number"
-                            placeholder="Email"
-                        />
+                    <h2 class="font-medium text-primary text-sm whitespace-nowrap">LNF Newsletter</h2>
+                    <form class="grid lg:grid-cols-12 gap-3" @submit.prevent="submitNewsletter">
+                        <FormTextInput v-model="newsletter.firstName" rounded :errors="v$.firstName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="First Name" />
+                        <FormTextInput v-model="newsletter.lastName" rounded :errors="v$.lastName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Last Name" />
+                        <FormTextInput v-model="newsletter.email" rounded :errors="v$.email.$errors" class="lg:col-span-12" name="cp-cell-number" placeholder="Email" />
                         <div class="lg:col-span-12">
                             <button :disabled="isLoading" type="button" class="w-full btn btn-sm btn-rounded btn-primary" @click="submitNewsletter">Submit</button>
                         </div>

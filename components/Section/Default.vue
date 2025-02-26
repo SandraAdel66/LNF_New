@@ -22,33 +22,31 @@ const props = defineProps<{
                     <div v-if="props.section.title" class="text-2xl font-bold text-primary" v-html="props.section.title" />
                     <div v-if="props.section.description" class="text-lg font-light mt-3 text-justify" v-html="props.section.description" />
                     <div class="lg:col-span-12 mt-5">
-                    <div v-if="props.section.buttonOneActive || props.section.buttonTwoActive" class="flex flex-col md:flex-row justify-start gap-5">
-                    <div v-if="props.section.buttonOneActive">
-                        <NuxtLink :target="props.section.buttonOne.target" :to="props.section.buttonOne.url">
-                            <button :class="'btn-' + props.section.buttonOne?.style" class="btn px-6 btn-rounded md:w-fit w-full">
-                                <Icon v-if="props.section.buttonOne?.icon" :name="props.section.buttonOne?.icon" class="size-5 mr-2" />
-                                {{ props.section.buttonOne?.label }}
-                            </button>
-                        </NuxtLink>
+                        <div v-if="props.section.buttonOneActive || props.section.buttonTwoActive" class="flex flex-col md:flex-row justify-start gap-5">
+                            <div v-if="props.section.buttonOneActive">
+                                <NuxtLink :target="props.section.buttonOne.target" :to="props.section.buttonOne.url">
+                                    <button :class="'btn-' + props.section.buttonOne?.style" class="btn px-6 btn-rounded md:w-fit w-full">
+                                        <Icon v-if="props.section.buttonOne?.icon" :name="props.section.buttonOne?.icon" class="size-5 mr-2" />
+                                        {{ props.section.buttonOne?.label }}
+                                    </button>
+                                </NuxtLink>
+                            </div>
+                            <div v-if="props.section.buttonTwoActive">
+                                <NuxtLink :target="props.section.buttonTwo.target" :to="props.section.buttonTwo.url">
+                                    <button :class="'btn-' + props.section.buttonTwo?.style" class="btn px-6 btn-rounded md:w-fit w-full">
+                                        <Icon v-if="props.section.buttonTwo?.icon" :name="props.section.buttonTwo?.icon" class="size-5 mr-2" />
+                                        {{ props.section.buttonTwo?.label }}
+                                    </button>
+                                </NuxtLink>
+                            </div>
+                        </div>
                     </div>
-                    <div v-if="props.section.buttonTwoActive">
-                        <NuxtLink :target="props.section.buttonTwo.target" :to="props.section.buttonTwo.url">
-                            <button :class="'btn-' + props.section.buttonTwo?.style" class="btn px-6 btn-rounded md:w-fit w-full">
-                                <Icon v-if="props.section.buttonTwo?.icon" :name="props.section.buttonTwo?.icon" class="size-5 mr-2" />
-                                {{ props.section.buttonTwo?.label }}
-                            </button>
-                        </NuxtLink>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    </template>
-                    <div v-else-if="props.section.type === 'about-no-image'" class="lg:col-span-12">
-                        <div v-if="props.section.title" class="text-2xl font-bold text-primary text-center" v-html="props.section.title" />
-                        <div v-if="props.section.description" class="text-lg font-light mt-3 text-justify-center" v-html="props.section.description" />
-                    </div>
-            
+                </div>
+            </template>
+            <div v-else-if="props.section.type === 'about-no-image'" class="lg:col-span-12">
+                <div v-if="props.section.title" class="text-2xl font-bold text-primary text-center" v-html="props.section.title" />
+                <div v-if="props.section.description" class="text-lg font-light mt-3 text-justify-center" v-html="props.section.description" />
+            </div>
         </div>
-        
     </div>
 </template>

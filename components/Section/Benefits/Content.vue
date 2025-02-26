@@ -22,7 +22,8 @@ const props = defineProps<{
                     <div class="grid md:grid-cols-2 grid-cols-1 gap-5 items-start">
                         <div v-html="section.detail" />
                         <div>
-                            <NuxtImg :alt="section.name" :src="section.imageUrl" :title="section.name" class="w-full h-full object-contain rounded-md" /></div>
+                            <NuxtImg :alt="section.name" :src="section.imageUrl" :title="section.name" class="w-full h-full object-contain rounded-md" />
+                        </div>
                     </div>
                 </div>
             </template>
@@ -35,7 +36,8 @@ const props = defineProps<{
             </template>
             <template v-if="section.type === 'image'">
                 <div class="intro-y py-2 text-justify">
-                    <NuxtImg :alt="section.name" :src="section.imageUrl" :title="section.name" class="w-full max-h-80 object-cover rounded-md" /></div>
+                    <NuxtImg :alt="section.name" :src="section.imageUrl" :title="section.name" class="w-full max-h-80 object-cover rounded-md" />
+                </div>
             </template>
             <template v-if="section.type === 'divider'">
                 <div class="intro-y my-2 border-b border-dashed border-slate-200 content-['']" />

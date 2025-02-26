@@ -44,10 +44,10 @@
     }
 
     html {
-        font-family: "Montserrat", serif;
+        font-family: 'Montserrat', serif;
         @apply text-lg min-h-screen scroll-smooth;
         & body {
-            @apply m-0 antialiased text-sm text-black ;
+            @apply m-0 antialiased text-sm text-black;
         }
     }
 }
@@ -59,12 +59,16 @@
 
 .prose {
     max-width: 100% !important;
-    & h1, h2, h3, h4, h5, h6, p {
+    & h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
         margin: 1rem 0 0 0 !important;
     }
 }
-
-
 
 /* Extra Styles */
 .text-justify-center {
