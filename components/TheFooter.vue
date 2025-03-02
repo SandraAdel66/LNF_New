@@ -122,7 +122,7 @@ const submitNewsletter = async () => {
                         <FormTextInput v-model="newsletter.lastName" rounded :errors="v$.lastName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Last Name" />
                         <FormTextInput v-model="newsletter.email" rounded :errors="v$.email.$errors" class="lg:col-span-12" name="cp-cell-number" placeholder="Email" />
                         <div class="lg:col-span-12">
-                            <button :disabled="isLoading" type="button" class="w-full btn btn-sm btn-rounded btn-primary" @click="submitNewsletter">Submit</button>
+                            <button :disabled="isLoading" type="button" class="w-full btn btn-sm btn-rounded btn-warning " @click="submitNewsletter">Submit</button>
                         </div>
                     </form>
                 </div>
