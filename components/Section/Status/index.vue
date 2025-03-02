@@ -18,7 +18,11 @@ const states = [
                 </li>
             </ul>
             <ul class="md:hidden sm:grid hidden grid-cols-2 md:divide-dashed md:divide-x !divide-white/10 text-center items-center">
-                <li v-for="(item, index) in states" :key="index" class="p-2 intro-x text-white last:border-t last:border-l first:border-r first:border-b border-white/10 border-dashed">
+                <li
+                    v-for="(item, index) in states"
+                    :key="index"
+                    class="p-2 intro-x text-white last:border-t last:border-l first:border-r first:border-b border-white/10 border-dashed"
+                >
                     <ApplicationStatusIcon :name="item.icon" class="w-12 h-12 mx-auto fill-current stroke-[1px]" />
                     <div class="mt-4 text-xl">{{ item.name }}</div>
                     <SectionStatusCounter :end-value="item.number" :suffix="'+'" class="mt-2 text-4xl font-bold" />

@@ -29,7 +29,9 @@
                     </div>
                 </div>
             </div>
-            <div class="max-w-5xl mx-auto overflow-hidden py-1 text-sm px-5 bg-danger text-white rounded-full">No articles has been found to show in the home slider, Please disable or add news.</div>
+            <div class="max-w-5xl mx-auto overflow-hidden py-1 text-sm px-5 bg-danger text-white rounded-full">
+                No articles has been found to show in the home slider, Please disable or add news.
+            </div>
         </div>
     </div>
 </template>

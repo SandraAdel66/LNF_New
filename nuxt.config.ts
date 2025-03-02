@@ -86,5 +86,16 @@ export default defineNuxtConfig({
         },
         pageTransition: { name: 'page', mode: 'out-in' },
     },
-    modules: ['@nuxtjs/tailwindcss', 'vue3-carousel-nuxt', '@pinia/nuxt', '@morev/vue-transitions/nuxt', 'nuxt-headlessui', '@nuxt/image', '@nuxt/eslint', '@nuxtjs/seo', '@nuxt/icon', 'nuxt-swiper'],
+    modules: [
+        '@nuxtjs/tailwindcss',
+        'vue3-carousel-nuxt',
+        '@pinia/nuxt',
+        '@morev/vue-transitions/nuxt',
+        'nuxt-headlessui',
+        '@nuxt/image',
+        '@nuxt/eslint',
+        '@nuxtjs/seo',
+        '@nuxt/icon',
+        'nuxt-swiper',
+    ],
 });

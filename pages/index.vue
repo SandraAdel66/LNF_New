@@ -77,7 +77,7 @@ const introImageUrl = ref('/images/bg.svg');
 <template>
     <div v-if="page && status !== 'pending'">
         <LazySectionHomeSlider :data="sliders" />
-    
+
         <template v-for="section in (page as Page)?.pageSections as PageSection[]" :key="section.id">
             <Section :id="section.slug" class="even:bg-slate-50" :section="section" />
         </template>
