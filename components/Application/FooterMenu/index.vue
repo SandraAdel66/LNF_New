@@ -9,7 +9,7 @@ defineProps({
 
 <template>
     <div class="hidden md:block intro-y h-full">
-        <h2 class="font-medium text-primary text-sm whitespace-nowrap">
+        <h2 class="font-medium text-white text-sm whitespace-nowrap">
             {{ menu.name }}
         </h2>
         <ul class="mt-4 flex flex-col gap-2 text-sm">
