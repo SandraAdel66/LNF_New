@@ -98,9 +98,9 @@ const submitNewsletter = async () => {
                         {{ footerData.address }}
                     </div>
                 </div>
-                <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuOne" :menu="footerData.menus.footerMenuOne" />
-                <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuTwo" :menu="footerData.menus.footerMenuTwo" />
-                <div class="lg:col-span-4 hidden md:block intro-y h-full">
+                <ApplicationFooterMenu v-if="footerData.menus.footerMenuOne" class="lg:col-span-2" :menu="footerData.menus.footerMenuOne" />
+                <!-- <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuTwo" :menu="footerData.menus.footerMenuTwo" /> -->
+                <div class="lg:col-span-3 hidden md:block intro-y h-full">
                     <h2 class="font-medium text-white text-sm whitespace-nowrap">Bank Details</h2>
                     <div class="mt-2">
                         <ul class="divide-y divide-dashed divide-slate-300/75 leading-tight">
@@ -116,7 +116,7 @@ const submitNewsletter = async () => {
                     </div>
                 </div>
                 <div class="intro-y lg:col-span-4 h-full hidden lg:block">
-                    <h2 class="font-medium text-primary text-sm whitespace-nowrap">LNF Newsletter</h2>
+                    <h2 class="font-medium text-white text-sm whitespace-nowrap">LNF Newsletter</h2>
                     <form class="grid lg:grid-cols-12 gap-3" @submit.prevent="submitNewsletter">
                         <FormTextInput v-model="newsletter.firstName" rounded :errors="v$.firstName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="First Name" />
                         <FormTextInput v-model="newsletter.lastName" rounded :errors="v$.lastName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Last Name" />
