@@ -31,7 +31,7 @@ export default {
                 danger: 'rgb(var(--color-danger) / <alpha-value>)',
                 light: 'rgb(var(--color-light) / <alpha-value>)',
                 dark: 'rgb(var(--color-dark) / <alpha-value>)',
-                navy: "#1a65a4", // Deep navy blue
+                navy: "#16508d", // Deep navy blue
 
             },
             container: {
