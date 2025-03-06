@@ -5,12 +5,20 @@ defineProps<{
 </script>
 
 <template>
-    <div class="intro-x bg-slate-50 overflow-hidden border border-slate-100 shadow-sm rounded-xl">
-        <NuxtImg class="m-0 w-full h-52 object-cover object-top" :src="member.imageUrl" :alt="member.name" :title="member.name + ' - ' + member.title" />
-        <div class="px-5 pt-2 pb-2 text-center leading-tight space-y-1">
-            <div class="text-xs font-semibold">{{ member.name }}</div>
-            <div class="text-xs font-light">{{ member.title }}</div>
-            <div class="text-xs font-medium truncate">{{ member.network }}</div>
+    <div class="intro-x overflow-hidden ">
+        <!-- Image with responsive height -->
+        <NuxtImg 
+            class="m-0 w-full sm:h-60 md:h-55 sm:object-contain object-cover object-top" 
+            :src="member.imageUrl" 
+            :alt="member.name" 
+            :title="member.name + ' - ' + member.title" 
+        />
+        
+        <!-- Member Info -->
+        <div class="px-4 sm:px-5 pt-3 pb-3 text-center leading-tight space-y-1">
+            <div class="text-sm sm:text-base font-semibold text-white">{{ member.name }}</div>
+            <div class="text-xs sm:text-sm font-light text-gray-300">{{ member.title }}</div>
+            <div class="text-xs sm:text-sm font-medium truncate text-gray-400">{{ member.network }}</div>
         </div>
     </div>
 </template>
