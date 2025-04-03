@@ -1,6 +1,12 @@
 <script setup>
 import { email, required } from '@vuelidate/validators';
 import useVuelidate from '@vuelidate/core';
+import {useSettingKey} from "~/composables/useSettingKey.js";
+const dataUser = useSettingKey();
+console.log(dataUser)
+const usdIpan = computed(() => dataUser.find(item => item.name === 'usd_ipan'));
+const swiftCode = computed(() => dataUser.find(item => item.name === 'swift_code'));
+
 const footerData = ref({
     copyright: useSettingValue('copyrights_text') ?? null,
     address: useSettingValue('office_address') ?? null,
@@ -90,32 +96,32 @@ const submitNewsletter = async () => {
 
 <template>
     <div class="bg-navy px-4 text-white shadow-md py-6">
-        <div class="container px-8 py-6">
+        <div class="container">
             <div class="grid gap-8 md:grid-cols-12">
-                <div class="intro-y lg:col-span-3 h-full hidden lg:block">
+                <div class="intro-y lg:col-span-3 h-full  lg:block">
                     <ApplicationLogo class="w-48" />
                     <div class="mt-4">
                         {{ footerData.address }}
                     </div>
                 </div>
-                <ApplicationFooterMenu v-if="footerData.menus.footerMenuOne" class="lg:col-span-2" :menu="footerData.menus.footerMenuOne" />
-                <!-- <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuTwo" :menu="footerData.menus.footerMenuTwo" /> -->
-                <div class="lg:col-span-3 hidden md:block intro-y h-full">
+              <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuOne" :menu="footerData.menus.footerMenuOne" />
+
+              <div class="lg:col-span-3  md:block intro-y h-full">
                     <h2 class="font-medium text-white text-sm whitespace-nowrap">Bank Details</h2>
                     <div class="mt-2">
                         <ul class="divide-y divide-dashed divide-slate-300/75 leading-tight">
-                            <li class="text-xs text-left py-2">
+                            <li class="text-xs text-left py-2" v-if="swiftCode">
                                 <div class="opacity-75">SWIFT Code</div>
                                 <div class="mt-1.5">{{ useSettingValue('swift_code') }}</div>
                             </li>
-                            <li class="text-xs text-left py-2">
+                            <li class="text-xs text-left py-2" v-if="usdIpan">
                                 <div class="opacity-75">USD IBAN</div>
                                 <div class="mt-1.5">{{ useSettingValue('usd_ipan') }}</div>
                             </li>
                         </ul>
                     </div>
                 </div>
-                <div class="intro-y lg:col-span-4 h-full hidden lg:block">
+                <div class="intro-y lg:col-span-4 h-full  lg:block">
                     <h2 class="font-medium text-white text-sm whitespace-nowrap">LNF Newsletter</h2>
                     <form class="grid lg:grid-cols-12 gap-3" @submit.prevent="submitNewsletter">
                         <FormTextInput v-model="newsletter.firstName" rounded :errors="v$.firstName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="First Name" />

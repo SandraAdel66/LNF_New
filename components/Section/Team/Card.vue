@@ -18,7 +18,7 @@ defineProps<{
         <div class="px-4 sm:px-5 pt-3 pb-3 text-center leading-tight space-y-1">
             <div class="text-sm sm:text-base font-semibold text-white">{{ member.name }}</div>
             <div class="text-xs sm:text-sm font-light text-gray-300">{{ member.title }}</div>
-            <div class="text-xs sm:text-sm font-medium truncate text-gray-400">{{ member.network }}</div>
+            <div class="text-xs sm:text-sm font-medium text-gray-400">{{ member.network }}</div>
         </div>
     </div>
 </template>

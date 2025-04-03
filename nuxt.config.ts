@@ -4,7 +4,7 @@ export default defineNuxtConfig({
     ssr: true,
     devtools: { enabled: true },
     devServer: {
-        port: 3600,
+        port: process.env.PORT ?? 3600,
     },
     tailwindcss: {
         cssPath: ['~/assets/css/global.scss', { injectPosition: 'first' }],

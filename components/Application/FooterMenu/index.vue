@@ -8,7 +8,7 @@ defineProps({
 </script>
 
 <template>
-    <div class="hidden md:block intro-y h-full">
+    <div class="md:block intro-y h-full">
         <h2 class="font-medium text-white text-sm whitespace-nowrap">
             {{ menu.name }}
         </h2>
