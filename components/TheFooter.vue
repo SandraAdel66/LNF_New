@@ -107,7 +107,7 @@ const submitNewsletter = async () => {
               <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuOne" :menu="footerData.menus.footerMenuOne" />
 
               <div class="lg:col-span-3  md:block intro-y h-full">
-                    <h2 class="font-medium text-white text-sm whitespace-nowrap">Bank Details</h2>
+                    <h2 class="font-medium text-white text-sm whitespace-nowrap" v-if="usdIpan || swiftCode">>Bank Details</h2>
                     <div class="mt-2">
                         <ul class="divide-y divide-dashed divide-slate-300/75 leading-tight">
                             <li class="text-xs text-left py-2" v-if="swiftCode">
