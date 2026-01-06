@@ -23,52 +23,89 @@ useSeoMeta({
     description: (page.value as Page)?.des,
 });
 
-const texts = (sliders.value as Slider[]) ?? [];
-
-const currentText = ref(texts[0]?.text);
-const currentId = ref(texts[0]?.id);
-const currentImageUrl = ref(texts[0]?.imageUrl);
-const currentDescription = ref(texts[0]?.description);
-const currentButtonOneActive = ref(texts[0]?.buttonOneActive);
-const currentButtonTwoActive = ref(texts[0]?.buttonTwoActive);
-const currentButtonOneData = ref(texts[0]?.buttonOne);
-const currentButtonTwoData = ref(texts[0]?.buttonTwo);
+// Initialize with safe defaults
+const texts = ref<Slider[]>([]);
+const currentText = ref('');
+const currentId = ref(0);
+const currentImageUrl = ref('');
+const currentDescription = ref('');
+const currentButtonOneActive = ref(false);
+const currentButtonTwoActive = ref(false);
+const currentButtonOneData = ref({ icon: '', label: '', style: '', target: '' });
+const currentButtonTwoData = ref({ icon: '', label: '', style: '', target: '' });
 const addIntroClass = ref(false);
+
 let textIndex = 0;
 let charIndex = 0;
 const typingSpeed = 100;
 const pauseDuration = 4000;
+
+// Safe typeText function
 const typeText = () => {
-    if (charIndex < texts[textIndex]?.text.length) {
-        currentText.value = texts[textIndex]?.text.substring(0, charIndex + 1);
+    if (!texts.value.length || !texts.value[textIndex]?.text) {
+        return;
+    }
+
+    const currentSlider = texts.value[textIndex];
+    const textToType = currentSlider.text || '';
+    
+    if (charIndex < textToType.length) {
+        currentText.value = textToType.substring(0, charIndex + 1);
         charIndex++;
         setTimeout(typeText, typingSpeed);
     } else {
         setTimeout(() => {
-            textIndex = (textIndex + 1) % texts.length;
+            textIndex = (textIndex + 1) % texts.value.length;
             charIndex = 0;
-            currentId.value = texts[textIndex]?.id;
-            currentImageUrl.value = texts[textIndex]?.imageUrl;
-            currentDescription.value = texts[textIndex]?.description;
-            currentButtonOneActive.value = texts[textIndex]?.buttonOneActive;
-            currentButtonTwoActive.value = texts[textIndex]?.buttonTwoActive;
-            currentButtonOneData.value = texts[textIndex]?.buttonOne;
-            currentButtonTwoData.value = texts[textIndex]?.buttonTwo;
+            
+            const nextSlider = texts.value[textIndex];
+            if (nextSlider) {
+                currentId.value = nextSlider.id || 0;
+                currentImageUrl.value = nextSlider.imageUrl || '';
+                currentDescription.value = nextSlider.description || '';
+                currentButtonOneActive.value = nextSlider.buttonOneActive || false;
+                currentButtonTwoActive.value = nextSlider.buttonTwoActive || false;
+                currentButtonOneData.value = nextSlider.buttonOne || { icon: '', label: '', style: '', target: '' };
+                currentButtonTwoData.value = nextSlider.buttonTwo || { icon: '', label: '', style: '', target: '' };
+            }
+            
             typeText();
         }, pauseDuration);
     }
 };
+
+// Watch for sliders data changes
+watch(sliders, (newSliders) => {
+    if (newSliders && Array.isArray(newSliders) && newSliders.length > 0) {
+        texts.value = newSliders as Slider[];
+        
+        const firstSlider = texts.value[0];
+        if (firstSlider) {
+            currentText.value = '';
+            currentId.value = firstSlider.id || 0;
+            currentImageUrl.value = firstSlider.imageUrl || '';
+            currentDescription.value = firstSlider.description || '';
+            currentButtonOneActive.value = firstSlider.buttonOneActive || false;
+            currentButtonTwoActive.value = firstSlider.buttonTwoActive || false;
+            currentButtonOneData.value = firstSlider.buttonOne || { icon: '', label: '', style: '', target: '' };
+            currentButtonTwoData.value = firstSlider.buttonTwo || { icon: '', label: '', style: '', target: '' };
+            
+            textIndex = 0;
+            charIndex = 0;
+            typeText();
+        }
+    }
+}, { immediate: true });
+
 watch(currentId, () => {
     addIntroClass.value = true;
     setTimeout(() => {
         addIntroClass.value = false;
-    }, 1000); // Adjust duration as needed
+    }, 1000);
 });
+
 onMounted(async () => {
     await loadSliders();
-});
-onMounted(() => {
-    typeText();
 });
 
 const introImageUrl = ref('/images/bg.svg');
@@ -76,11 +113,33 @@ const introImageUrl = ref('/images/bg.svg');
 
 <template>
     <div v-if="page && status !== 'pending'">
-        <LazySectionHomeSlider :data="sliders" />
+        <LazySectionHomeSlider 
+            :data="sliders" 
+            :current-text="currentText"
+            :current-id="currentId"
+            :current-image-url="currentImageUrl"
+            :current-description="currentDescription"
+            :current-button-one-active="currentButtonOneActive"
+            :current-button-two-active="currentButtonTwoActive"
+            :current-button-one-data="currentButtonOneData"
+            :current-button-two-data="currentButtonTwoData"
+            :add-intro-class="addIntroClass"
+        />
 
         <template v-for="section in (page as Page)?.pageSections as PageSection[]" :key="section.id">
             <Section :id="section.slug" class="even:bg-slate-50" :section="section" />
         </template>
+    </div>
+    
+    <div v-else-if="status === 'pending'" class="flex justify-center items-center min-h-screen">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+    </div>
+    
+    <div v-else class="flex justify-center items-center min-h-screen">
+        <div class="text-center">
+            <h2 class="text-2xl font-bold text-red-600 mb-4">Error Loading Page</h2>
+            <p class="text-gray-600">Please try refreshing the page.</p>
+        </div>
     </div>
 </template>
 

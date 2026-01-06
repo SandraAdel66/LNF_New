@@ -95,7 +95,7 @@ const submitNewsletter = async () => {
 </script>
 
 <template>
-    <div class="bg-navy px-4 text-white shadow-md py-6">
+    <div class="bg-[#0f2c49] px-4 text-white shadow-md py-6">
         <div class="container">
             <div class="grid gap-8 md:grid-cols-12">
                 <div class="intro-y lg:col-span-3 h-full  lg:block">
