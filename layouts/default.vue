@@ -5,6 +5,7 @@
     <div class="relative flex min-h-screen flex-col overflow-x-hidden">
         <ToastList />
         <TheHeader />
+        <NavBar />
         <main class="grow">
             <slot />
         </main>

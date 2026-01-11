@@ -31,7 +31,7 @@ onMounted(() => {
             
             <!-- إذا في text نعرض المحتوى -->
             <div v-if="firstImage.text" class="image-content">
-                <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-4xl mx-auto">
                     <div class="text-center text-white">
                         <div v-if="firstImage.text"
                             class="image-title"
@@ -78,6 +78,8 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 20vh;
+    min-height: 0;
 }
 
 /* خلفية الصورة */
@@ -88,7 +90,7 @@ onMounted(() => {
     width: 100%;
     height: 100%;
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-repeat: no-repeat;
     background-blend-mode: multiply;
     z-index: 1;
@@ -263,8 +265,8 @@ onMounted(() => {
 /* Laptop Small (1024-1279px) */
 @media (min-width: 1024px) and (max-width: 1279px) {
     .single-image {
-        min-height: 500px !important;
-        height: 500px !important;
+        height: 30vh !important;
+        min-height: 0 !important;
     }
     
     .image-title {
@@ -283,8 +285,8 @@ onMounted(() => {
 /* Laptop Large (1280-1439px) */
 @media (min-width: 1280px) and (max-width: 1439px) {
     .single-image {
-        min-height: 550px !important;
-        height: 550px !important;
+        height: 30vh !important;
+        min-height: 0 !important;
     }
     
     .image-title {
@@ -299,8 +301,8 @@ onMounted(() => {
 /* Desktop (1440-1735px) */
 @media (min-width: 1440px) and (max-width: 1736px) {
     .single-image {
-        min-height: 700px !important;
-        height: 700px !important;
+        height: 30vh !important;
+        min-height: 0 !important;
     }
     
     .image-title {
@@ -320,8 +322,8 @@ onMounted(() => {
 /* Large Desktop (1736-1999px) */
 @media (min-width: 1736px) and (max-width: 1999px) {
     .single-image {
-        min-height: 800px !important;
-        height: 800px !important;
+        height: 30vh !important;
+        min-height: 0 !important;
     }
     
     .image-title {
@@ -341,8 +343,8 @@ onMounted(() => {
 /* Desktop Large (1920px فما فوق) */
 @media (min-width: 1920px) {
     .single-image {
-        min-height: 800px !important;
-        height: 800px !important;
+        height: 30vh !important;
+        min-height: 0 !important;
     }
     
     .image-title {
