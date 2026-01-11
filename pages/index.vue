@@ -125,8 +125,9 @@ const introImageUrl = ref('/images/bg.svg');
             :current-button-two-data="currentButtonTwoData"
             :add-intro-class="addIntroClass"
         />
-
-        <template v-for="section in (page as Page)?.pageSections as PageSection[]" :key="section.id">
+<!-- hna kol el components mwgooda check b3den 3l4an tms7i el components w t add new ones ya sandraaa -->
+ <!-- b3d ma 3mlt slice2 4elt 2 components but i think not effecient enough ask mohamed bokra urgent -->
+        <template v-for="section in ((page as Page)?.pageSections as PageSection[])?.slice(2)" :key="section.id">
             <Section :id="section.slug" class="even:bg-slate-50" :section="section" />
         </template>
     </div>

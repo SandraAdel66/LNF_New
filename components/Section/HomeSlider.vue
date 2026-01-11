@@ -78,7 +78,7 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 20vh;
+    height: 40vh;
     min-height: 0;
 }
 
@@ -265,7 +265,7 @@ onMounted(() => {
 /* Laptop Small (1024-1279px) */
 @media (min-width: 1024px) and (max-width: 1279px) {
     .single-image {
-        height: 30vh !important;
+        height: 40vh !important;
         min-height: 0 !important;
     }
     
@@ -285,7 +285,7 @@ onMounted(() => {
 /* Laptop Large (1280-1439px) */
 @media (min-width: 1280px) and (max-width: 1439px) {
     .single-image {
-        height: 30vh !important;
+        height: 40vh !important;
         min-height: 0 !important;
     }
     
@@ -301,7 +301,7 @@ onMounted(() => {
 /* Desktop (1440-1735px) */
 @media (min-width: 1440px) and (max-width: 1736px) {
     .single-image {
-        height: 30vh !important;
+        height: 40vh !important;
         min-height: 0 !important;
     }
     
@@ -322,7 +322,7 @@ onMounted(() => {
 /* Large Desktop (1736-1999px) */
 @media (min-width: 1736px) and (max-width: 1999px) {
     .single-image {
-        height: 30vh !important;
+        height: 40vh !important;
         min-height: 0 !important;
     }
     
@@ -343,7 +343,7 @@ onMounted(() => {
 /* Desktop Large (1920px فما فوق) */
 @media (min-width: 1920px) {
     .single-image {
-        height: 30vh !important;
+        height: 40vh !important;
         min-height: 0 !important;
     }
     

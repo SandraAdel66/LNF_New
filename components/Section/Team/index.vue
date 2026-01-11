@@ -17,12 +17,26 @@ const props = defineProps<{
             <div v-if="props.section.description" class="text-xl font-light mt-3 text-justify-center" v-html="props.section.description" />
         </div>
         
-        <div v-if="status !== 'pending'" class="max-w-5xl mx-auto px-4 sm:px-6">
-            <!-- Grid مع ارتفاع متساوي للكروت -->
-            <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-6 py-8">
-                <template v-for="member in team as Team[]" :key="member.id">
-                    <SectionTeamCard :member="member" />
-                </template>
+        <div v-if="status !== 'pending'" class="w-fit mx-auto px-4 sm:px-6">
+            <div class="space-y-6 py-8">
+                <!-- First row: 4 images -->
+                <div class="grid grid-cols-4 gap-6">
+                    <template v-for="member in (team as Team[]).slice(0, 4)" :key="member.id">
+                        <SectionTeamCard :member="member" />
+                    </template>
+                </div>
+                
+                <!-- Second row: 3 images in centered wrapper -->
+                <div class="flex justify-center">
+                    <div class="grid grid-cols-3 gap-6" style="width: calc(75% + 1.5rem)">
+                        <template v-for="member in (team as Team[]).slice(4, 7)" :key="member.id">
+                            <!-- Force same width as first row items -->
+                            <div class="w-full">
+                                <SectionTeamCard :member="member" />
+                            </div>
+                        </template>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

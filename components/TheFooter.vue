@@ -50,6 +50,9 @@ const newsletter = ref({
     firstName: null,
     lastName: null,
     email: null,
+    address: null,
+    subject: null,
+    message: null
 });
 
 const rules = ref({
@@ -126,7 +129,10 @@ const submitNewsletter = async () => {
                     <form class="grid lg:grid-cols-12 gap-3" @submit.prevent="submitNewsletter">
                         <FormTextInput v-model="newsletter.firstName" rounded :errors="v$.firstName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="First Name" />
                         <FormTextInput v-model="newsletter.lastName" rounded :errors="v$.lastName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Last Name" />
-                        <FormTextInput v-model="newsletter.email" rounded :errors="v$.email.$errors" class="lg:col-span-12" name="cp-cell-number" placeholder="Email" />
+                        <FormTextInput v-model="newsletter.email" rounded :errors="v$.email.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Email Address" />
+                        <!-- <FormTextInput v-model="newsletter.address" rounded :errors="v$.address.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Address" /> -->
+                        <!-- <FormTextInput v-model="newsletter.subject" rounded :errors="v$.subject.$errors" class="lg:col-span-12" name="cp-cell-number" placeholder="Subject" />
+                        <FormTextInput v-model="newsletter.message" rounded :errors="v$.message.$errors" class="lg:col-span-12" name="cp-cell-number" placeholder="Message" /> -->
                         <div class="lg:col-span-12">
                             <button :disabled="isLoading" type="button" class="w-full btn btn-sm btn-rounded btn-warning " @click="submitNewsletter">Submit</button>
                         </div>
