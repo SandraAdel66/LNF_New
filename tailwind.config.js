@@ -19,6 +19,7 @@ export default {
             fontFamily: {
                 script: ['Pacifico', 'handwriting'],
                 'script-extra': ['Comforter', 'handwriting'],
+                'merriweather': ['Merriweather', 'serif'],
             },
             colors: {
                 primary: 'rgb(var(--color-primary) / <alpha-value>)',

@@ -135,7 +135,7 @@ onUnmounted(() => {
                 <!-- Application Form Button (Right Side) -->
                 <div class="inline-flex">
                     <NuxtLink href="/application-form">
-                        <button class="btn bg-white text-[#1A4480] hover:bg-gray-100 hover:scale-[1.02] gap-3 px-6 border-0 transition-all duration-300 font-medium">
+                        <button class="btn bg-white text-[#1A4480] font-bold hover:bg-gray-100 hover:scale-[1.02] gap-3 px-6 border-0 transition-all duration-300">
                             <Icon name="solar:documents-linear" class="size-5" />
                             <span>Application Form</span>
                         </button>
