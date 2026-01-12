@@ -9,12 +9,12 @@ defineProps<{
         <!-- Container للصورة مع نسبة ثابتة -->
         <div class="relative aspect-square w-full overflow-hidden ">
             <NuxtImg 
-                class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                class="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-300 hover:scale-40 scale-90 transform-gpu"
                 :src="member.imageUrl" 
                 :alt="member.name" 
                 :title="member.name + ' - ' + member.title"
                 format="webp"
-                quality="80"
+                quality="100"
                 sizes="sm:100vw md:50vw lg:25vw"
                 :modifiers="{ fit: 'cover', gravity: 'face' }"
             />

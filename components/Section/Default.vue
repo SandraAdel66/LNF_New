@@ -13,7 +13,7 @@ const props = defineProps<{
                     props.section.type === 'about-right-image' && 'order-last',
                     'lg:col-span-5 flex items-center'
                 ]">
-                    <div class="w-full"> <!-- Wrapper for consistent sizing -->
+                    <div class="w-full">
                         <NuxtImg
                             v-if="props.section.image"
                             :alt="props.section.title"

@@ -35,10 +35,10 @@ onUnmounted(() => {
 <template>
     <div class="w-full bg-[#1A4480]">
         <div class="container mx-auto px-4 lg:px-8">
-            <!-- Main container with centered alignment -->
-            <div class="flex items-center justify-center py-2 gap-6">
+            <!-- Main container with space between menu and button -->
+            <div class="flex items-center justify-between py-2 gap-4">
                 <!-- Menu Items (Left Side) -->
-                <div class="inline-flex">
+                <div class="flex-1">
                     <ul class="flex items-center gap-1 font-medium">
                         <template v-for="item in (headerMenu as NavigationMenu).menuItems as NavigationMenuItem[]" :key="item.id">
                             <template v-if="item.children.length > 0">
@@ -66,7 +66,7 @@ onUnmounted(() => {
                                                 :class="hoveredItem === item.id && 'rotate-180'" 
                                             />
                                         </NuxtLink>
-                                        
+
                                         <!-- Underline for active/hover -->
                                         <span 
                                             class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-white transition-all duration-300 w-0"
@@ -76,7 +76,7 @@ onUnmounted(() => {
                                             ]"
                                         ></span>
                                     </div>
-                                    
+
                                     <!-- Submenu Dropdown -->
                                     <div 
                                         v-show="hoveredItem === item.id"
@@ -117,7 +117,7 @@ onUnmounted(() => {
                                         <Icon v-if="item.icon" :name="item.icon" class="shrink-0 size-5" />
                                         <span class="leading-10 capitalize">{{ item.name }}</span>
                                     </NuxtLink>
-                                    
+
                                     <!-- Underline for active/hover -->
                                     <span 
                                         class="absolute bottom-0 left-1/2 transform -translate-x-1/2 h-0.5 bg-white transition-all duration-300 w-0"
@@ -133,7 +133,7 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Application Form Button (Right Side) -->
-                <div class="inline-flex">
+                <div class="flex-shrink-0 mr-5">
                     <NuxtLink href="/application-form">
                         <button class="btn bg-white text-[#1A4480] font-bold hover:bg-gray-100 hover:scale-[1.02] gap-3 px-6 border-0 transition-all duration-300">
                             <Icon name="solar:documents-linear" class="size-5" />
