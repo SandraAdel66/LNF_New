@@ -33,7 +33,6 @@ const isSectionActive = (section: Policy, idx: number) => {
     }
 };
 
-// Optional: Add intersection observer for auto-highlighting current section
 const observer = ref<IntersectionObserver | null>(null);
 
 onMounted(() => {
@@ -73,7 +72,7 @@ onUnmounted(() => {
     <div v-if="status !== 'pending' && (policies as Policy[]).length > 0">
         <div class="container my-5 px-6">
             <div class="flex lg:flex-row flex-col gap-8">
-                <!-- LEFT SIDEBAR - STICKY -->
+                <!-- LEFT SIDEBAR -->
                 <div class="lg:w-1/4">
                     <div class="lg:sticky lg:top-24">
                         <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
@@ -117,21 +116,21 @@ onUnmounted(() => {
                                 class="section__div bg-white rounded-xl shadow-sm p-6 md:p-8 border border-gray-100 scroll-mt-24"
                                 :data-section-index="index"
                             >
-                                <!-- Section Header WITH NUMBERING -->
+                                <!-- Section Header -->
                                 <div class="mb-8 pb-6 border-b border-gray-200">
                                     <div class="flex items-center gap-3 mb-3">
-                                        <!-- NUMBERING BADGE -->
+                                        <!-- numbering-->
                                         <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-lg">
                                             {{ index + 1 }}
                                         </div>
-                                        <h2 class="font-bold text-2xl md:text-3xl text-gray-900">
+                                        <h2 class="font-bold text-2xl md:text-3xl text-[#1A4480]">
                                             {{ section.title }}
                                         </h2>
                                     </div>
                                 </div>
 
                                 <!-- Section Content -->
-                                <div class="prose prose-lg max-w-none">
+                                <div class="prose prose-lg max-w-none text-[#1A4480]">
                                     <div v-html="section.description" />
                                 </div>
 
@@ -156,7 +155,6 @@ onUnmounted(() => {
     height: fit-content;
 }
 
-// Custom scrollbar for the sidebar (if content overflows)
 @media (max-width: 1023px) {
     .lg\:sticky {
         position: static;
@@ -172,7 +170,6 @@ onUnmounted(() => {
     }
 }
 
-// Smooth scrolling behavior
 html {
     scroll-behavior: smooth;
 }
@@ -180,8 +177,6 @@ html {
 .section__div {
     scroll-margin-top: 6rem;
 }
-
-// Ensure full background coverage for active items
 .side__nav {
     &:hover, &.active-section {
         margin-left: -0.25rem;

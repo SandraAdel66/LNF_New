@@ -35,11 +35,6 @@ const footerMenuOne = async () => {
     footerData.value.menus.footerMenuOne = await getMenuItems(menuId);
 };
 
-const footerMenuTwo = async () => {
-    const menuId = await useSettingValue('footer_menu_2');
-    footerData.value.menus.footerMenuTwo = await getMenuItems(menuId);
-};
-
 onMounted(async () => {
     await footerMenuOne();
     await footerMenuTwo();
@@ -100,43 +95,33 @@ const submitNewsletter = async () => {
 <template>
     <div class="bg-[#0f2c49] px-4 text-white shadow-md py-6">
         <div class="container">
-            <div class="grid gap-8 md:grid-cols-12">
-                <div class="intro-y lg:col-span-3 h-full  lg:block">
+            <div class="grid gap-8 md:grid-cols-12 items-start">
+                <!-- LEFT DIV -->
+                <div class="intro-y lg:col-span-4 h-full lg:block">
                     <ApplicationLogo class="w-48" />
                     <div class="mt-4">
                         {{ footerData.address }}
                     </div>
                 </div>
-              <ApplicationFooterMenu class="lg:col-span-2" v-if="footerData.menus.footerMenuOne" :menu="footerData.menus.footerMenuOne" />
 
-              <div class="lg:col-span-3  md:block intro-y h-full">
-                    <h2 class="font-medium text-white text-sm whitespace-nowrap" v-if="usdIpan || swiftCode">>Bank Details</h2>
-                    <div class="mt-2">
-                        <ul class="divide-y divide-dashed divide-slate-300/75 leading-tight">
-                            <li class="text-xs text-left py-2" v-if="swiftCode">
-                                <div class="opacity-75">SWIFT Code</div>
-                                <div class="mt-1.5">{{ useSettingValue('swift_code') }}</div>
-                            </li>
-                            <li class="text-xs text-left py-2" v-if="usdIpan">
-                                <div class="opacity-75">USD IBAN</div>
-                                <div class="mt-1.5">{{ useSettingValue('usd_ipan') }}</div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="intro-y lg:col-span-4 h-full  lg:block">
-                    <h2 class="font-medium text-white text-sm whitespace-nowrap">LNF Newsletter</h2>
-                    <form class="grid lg:grid-cols-12 gap-3" @submit.prevent="submitNewsletter">
-                        <FormTextInput v-model="newsletter.firstName" rounded :errors="v$.firstName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="First Name" />
-                        <FormTextInput v-model="newsletter.lastName" rounded :errors="v$.lastName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Last Name" />
-                        <FormTextInput v-model="newsletter.email" rounded :errors="v$.email.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Email Address" />
-                        <!-- <FormTextInput  rounded  class="lg:col-span-6" name="cp-cell-number" placeholder="Address" />
-                        <FormTextInput v-model="newsletter.subject" rounded :errors="v$.subject.$errors" class="lg:col-span-12" name="cp-cell-number" placeholder="Subject" />
-                        <FormTextInput v-model="newsletter.message" rounded :errors="v$.message.$errors" class="lg:col-span-12" name="cp-cell-number" placeholder="Message" /> -->
-                        <div class="lg:col-span-12">
-                            <button :disabled="isLoading" type="button" class="w-full btn btn-sm btn-rounded btn-warning " @click="submitNewsletter">Submit</button>
+                <!-- RIGHT DIV -->
+                <div class="intro-y lg:col-span-8 h-full lg:block">
+                    <div class="flex justify-end">
+                        <div class="w-full lg:w-2/3">
+                            <h2 class="font-medium text-white text-sm whitespace-nowrap mb-4">LNF Newsletter</h2>
+                            <form class="grid lg:grid-cols-12 gap-3" @submit.prevent="submitNewsletter">
+                                <FormTextInput v-model="newsletter.firstName" rounded :errors="v$.firstName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="First Name" />
+                                <FormTextInput v-model="newsletter.lastName" rounded :errors="v$.lastName.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Last Name" />
+                                <FormTextInput v-model="newsletter.email" rounded :errors="v$.email.$errors" class="lg:col-span-6" name="cp-cell-number" placeholder="Email Address" />
+                                <FormTextInput v-model="newsletter.address" rounded :errors="v$.address?.$errors" class="lg:col-span-6" name="address" placeholder="Address" />
+                                <FormTextInput v-model="newsletter.subject" rounded class="lg:col-span-12" name="subject" placeholder="Subject" />
+                                <FormTextInput v-model="newsletter.message" rounded class="lg:col-span-12" name="message" placeholder="Message" />
+                                <div class="lg:col-span-12">
+                                    <button :disabled="isLoading" type="button" class="w-full btn btn-sm btn-rounded btn-warning " @click="submitNewsletter">Submit</button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

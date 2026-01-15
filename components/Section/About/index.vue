@@ -78,7 +78,7 @@ onUnmounted(() => {
     <div v-if="props.sections && props.sections.length > 0">
         <div class="container my-5 px-6">
             <div class="flex lg:flex-row flex-col gap-8">
-                <!-- LEFT SIDEBAR - FIXED -->
+                <!-- LEFT SIDEBAR-->
                 <div class="lg:w-1/4">
                     <div class="lg:sticky lg:top-24">
                         <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
@@ -121,10 +121,10 @@ onUnmounted(() => {
                                 class="section__div bg-white rounded-xl shadow-sm p-6 md:p-8 border border-gray-100 scroll-mt-24"
                                 :data-section-index="index"
                             >
-                                <!-- Section Header WITH NUMBERING -->
+                                <!-- Section Header -->
                                 <div class="mb-8 pb-6 border-b border-gray-200">
                                     <div class="flex items-center gap-3 mb-3">
-                                        <!-- NUMBERING BADGE -->
+                                        <!-- numbering -->
                                         <div class="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-lg">
                                             {{ index + 1 }}
                                         </div>
